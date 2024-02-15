@@ -4,8 +4,14 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import TextBox from '../components/Textbox';
 import Combo from '../components/ComboBox';
 import city from '../components/CityList';
+import { useNavigate } from 'react-router-dom';
 
 function Register() {
+  const navigate = useNavigate();
+
+    const navigateToStaffMenu = () => {
+    navigate('/StaffMenu');
+    }
   return (
     <div className="App">
       <div>
@@ -26,7 +32,7 @@ function Register() {
       <div><label>Emergency Contact #:</label><TextBox/></div>
       <div></div>
       <div>
-        <button>Register</button>
+        <button onClick={navigateToStaffMenu}>Register</button>
       </div>
     </div>
     

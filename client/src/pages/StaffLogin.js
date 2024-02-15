@@ -13,6 +13,13 @@ export const StaffLogin = () => {
         // 👇️ navigate to /
         navigate('/');
       };
+    const navigateToStaffMenu = () => {
+    navigate('/StaffMenu');
+    }
+    const loginButton = () => {
+        printData();
+        navigateToStaffMenu();
+    }
   return (
     <>
     <div>
@@ -29,7 +36,7 @@ export const StaffLogin = () => {
         {/* Component TextBox^ */}
     </div>
     <div>
-        <button onClick={printData}>Login</button>
+        <button onClick={loginButton}>Login</button>
     </div>
     <div>
         <button onClick={navigateHome}>Return to Home Page</button>
