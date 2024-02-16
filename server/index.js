@@ -19,6 +19,12 @@ app.get('/', (req, res, next) => {
     // })
 });
 
+app.post('/api/insert', (req, res) => {
+    const sqlInsert = "INSERT INTO sites (name) VALUES (?,?);";
+    db.query(sqlInsert, [siteName], (err, result) => {
+        
+    });
+});
 app.listen(3001, () => {
     console.log('Worked!');
 });
