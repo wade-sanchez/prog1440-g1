@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react'
 import { SitesButtons } from '../components/SitesButtons'
 import Axios from 'axios';
 import { ReturnToStaffMenu } from '../components/ReturnToStaffMenuBtn';
+import { Fieldset } from '../components/Fieldset';
 
 export const AddSites = () => {
   // const[siteName, addSiteName] = useState("");
@@ -11,6 +12,7 @@ export const AddSites = () => {
   return (
     <>
         <div><h1>Add Sites</h1></div>
+        <Fieldset>
         <div>
            <SitesButtons/>
         </div>
@@ -27,6 +29,7 @@ export const AddSites = () => {
         {/* connect with backend - then to sites table in mysql */}
 
         <ReturnToStaffMenu/>
+        </Fieldset>
     </>
   )
 }

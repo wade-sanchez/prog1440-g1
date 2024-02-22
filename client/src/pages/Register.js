@@ -19,7 +19,7 @@ function Register() {
       <div><label>First Name*:</label><TextBox/></div>
       <div><label>Last Name*:</label><TextBox/></div>
       <div><label>Preferred Name:</label><TextBox/></div>
-      <div><label>Birth Date*:</label><TextBox tbType={'date'}/></div>
+      <div><label>Birth Date*:</label><TextBox id={"bDay"} tbName={'birthDay'} tbType={'date'} /></div>
       <div><label>City</label><Combo/></div> 
       {/* combobox: list all cities in the vicinity of Durham Region */}
       <div><label>Street Address:</label><TextBox/></div>

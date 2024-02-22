@@ -47,7 +47,7 @@ export const StaffMenu = () => {
         <button onClick={navigateToAddSites}>Add/Edit Sites</button>
     </div>
     <div>
-        <button onClick={navigateToEditProfile}>Edit Profile</button>
+        <button onClick={navigateToEditProfile}>Edit Youth Profile</button>
     </div>
     <div>
         <button onClick={navigateToEditAddress}>Edit Address</button>

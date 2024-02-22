@@ -2,9 +2,9 @@ import React from "react";
 //import '../App.css';
 
 
-const TextBox = ({tbName, tbType, id}) => {
+const TextBox = ({tbName, tbType, id, placeholder}) => {
   return (
-    <input id={id} name={tbName} type={tbType} />
+    <input id={id} name={tbName} type={tbType} placeholder={placeholder} />
   );
 }
 

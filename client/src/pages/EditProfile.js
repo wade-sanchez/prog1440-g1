@@ -7,6 +7,8 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import TextBox from '../components/Textbox';
 import Combo from '../components/ComboBox';
 import { ReturnToStaffMenu } from '../components/ReturnToStaffMenuBtn';
+import { Fieldset } from '../components/Fieldset';
+import { SearchBar } from '../components/SearchBar';
 //import city from '../components/CityList';
 //import { useNavigate } from 'react-router-dom';
 
@@ -16,10 +18,17 @@ function EditProfile() {
       <div>
         <h1>Edit Youth Profile</h1>
       </div>
+      <Fieldset>
+      {/* <div>
+      <TextBox tbType="text" placeholder="Search for entry to edit..." tbName="search"></TextBox>
+      </div>
+    <button type="submit"><i class="fa fa-search">Search</i></button> */}
+    <SearchBar/> 
+    {/* next step: alert - entry found or not found */}
       <div><label>First Name*:</label><TextBox/></div>
       <div><label>Last Name*:</label><TextBox/></div>
       <div><label>Preferred Name:</label><TextBox/></div>
-      <div><label>Birth Date*:</label><TextBox tbType={'date'}/></div>
+      <div><label>Birth Date*:</label><TextBox id={"bDay"} tbName={'birthDay'} tbType={'date'} /></div>
       <div><label>City</label><Combo/></div> 
       {/* combobox: list all cities in the vicinity of Durham Region */}
       <div><label>Street Address:</label><TextBox/></div>
@@ -35,6 +44,7 @@ function EditProfile() {
       </div>
 
       <ReturnToStaffMenu/>
+      </Fieldset>
     </div>
     
   );
