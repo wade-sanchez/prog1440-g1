@@ -6,12 +6,13 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 //import data from './components/DummyList.js';
 import TextBox from '../components/Textbox';
 import Combo from '../components/ComboBox';
+import { ReturnToStaffMenu } from '../components/ReturnToStaffMenuBtn';
 //import city from '../components/CityList';
 //import { useNavigate } from 'react-router-dom';
 
 function EditProfile() {
   return (
-    <div className="App">
+    <div className="wrapper">
       <div>
         <h1>Edit Youth Profile</h1>
       </div>
@@ -32,6 +33,8 @@ function EditProfile() {
       <div>
         <button>Register</button>
       </div>
+
+      <ReturnToStaffMenu/>
     </div>
     
   );

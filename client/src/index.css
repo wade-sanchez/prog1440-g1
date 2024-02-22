@@ -7,7 +7,106 @@ body {
   -moz-osx-font-smoothing: grayscale;
 }
 
+
+.wrapper{
+  width: 50vw;
+  justify-content: center;
+  align-content: center;
+  /* background: grey; */
+  text-align: center;
+  margin: auto;
+}
+
+
+input{
+  border-radius: 20px;
+  height:50%;
+  width: 50%;
+  border: none;
+  outline: none;
+  border: 1px solid;
+  padding:7px 7px 7px 7px;
+  /* justify-content: center; */
+  /* margin: auto; */
+  /* display: flex; */
+}
+
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
+}
+
+.App {
+  text-align: center;
+}
+
+h1{
+  margin-bottom: 100px;
+}
+body{
+  margin: 0;
+  background-color: lightgray;
+}
+
+.container{
+  max-width: 860px;
+  margin: auto;
+}
+
+.card {
+  background-color: white;
+  border-radius: 5px;
+  padding: 10px 20px 30px;
+  margin-top: 50px;
+}
+
+select{
+  border-radius: 10px;
+}
+
+.checks label{
+  margin-top: 0;
+}
+
+label:first-of-type{
+  margin-top: 0;
+}
+
+button{
+  /* color: antiquewhite; */
+  border-radius: 10px !important;
+  /* background-color: gray; */
+}
+
+button.btnHome{
+  margin-top: 3% !important;
+}
+
+label.lblYouthLogin{
+  margin-right: 1vw;
+  text-align: right;
+}
+
+div.divYouthLogin{
+  text-align: center;
+}
+
+div.divYouthLoginInner{
+  text-align: left;
+  margin-left: 27%;
+}
+
+div.btnYouthLogin{
+  margin-top: 2%;
+  margin-bottom: 2%;
+}
+
+h3.h3YouthLogin{
+  margin-top: 0%;
+  margin-bottom:0%;
+}
+
+input#bDay{
+  /* color: red; */
+  text-align: center;
 }

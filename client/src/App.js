@@ -1,4 +1,4 @@
-import './App.css';
+//import './App.css';
 import Navbar from './components/NavBar';
 import { Home } from './pages/Home';
 import 'bootstrap/dist/css/bootstrap.min.css';
@@ -14,8 +14,8 @@ import { RemoveSites } from './pages/Removesites';
 import EditProfile from './pages/EditProfile';
 import { EditAddress } from './pages/EditAddress';
 import { EditEContact } from './pages/EditEContact';
-import { Reports } from './pages/Reports';
-
+// import { Reports } from './pages/Reports';
+import { GroupEvent } from './pages/GroupEvent';
 
 function App() {
   
@@ -35,7 +35,8 @@ function App() {
       <Route path='editecontact' element={<EditEContact/>} />
       <Route path='editaddress' element={<EditAddress />} />
       <Route path='editprofile' element={<EditProfile/>} />
-      <Route path='reports' element={<Reports/>} />
+      {/* <Route path='reports' element={<Reports/>} /> */}
+      <Route path='groupevent' element={<GroupEvent/>}/>
       </Routes>
     </div>
     

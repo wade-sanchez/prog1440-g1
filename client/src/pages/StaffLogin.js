@@ -21,7 +21,7 @@ export const StaffLogin = () => {
         navigateToStaffMenu();
     }
   return (
-    <>
+    <div className="wrapper">
     <div>
         <h1> Clarington Youth Centres Staff Login </h1>
     </div>
@@ -41,6 +41,6 @@ export const StaffLogin = () => {
     <div>
         <button onClick={navigateHome}>Return to Home Page</button>
     </div>
-    </>
+    </div>
   )
 }

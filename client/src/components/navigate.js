@@ -5,7 +5,7 @@ export const navigateTo = () => {
     const Navigate = useNavigate();
 
     const navigateToPage = ({navigateTo}) => {
-    navigate({navigateTo});
+    {navigate+`navigateTo`};
 
   }
   return (

@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import { SitesButtons } from '../components/SitesButtons'
 import Axios from 'axios';
+import { ReturnToStaffMenu } from '../components/ReturnToStaffMenuBtn';
 
 export const AddSites = () => {
   // const[siteName, addSiteName] = useState("");
@@ -24,6 +25,8 @@ export const AddSites = () => {
         // onClick={submitReview}
         >Add a New Site</button>
         {/* connect with backend - then to sites table in mysql */}
+
+        <ReturnToStaffMenu/>
     </>
   )
 }

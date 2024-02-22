@@ -1,10 +1,10 @@
 import React from "react";
-import '../App.css';
+//import '../App.css';
 
 
-const TextBox = ({tbName, tbType}) => {
+const TextBox = ({tbName, tbType, id}) => {
   return (
-    <input name={tbName} type={tbType} />
+    <input id={id} name={tbName} type={tbType} />
   );
 }
 

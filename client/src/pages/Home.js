@@ -1,8 +1,10 @@
 import React from 'react'
+import '../index'
 // import BlueButton from '../components/Button';
 import Combo from '../components/ComboBox';
 import { useNavigate, Route, Routes } from 'react-router-dom';
 import YouthLogin from './YouthLogin';
+//import { Fieldset } from '../components/Fieldset';
 
 export const Home = () => {
     const navigate = useNavigate();
@@ -12,22 +14,30 @@ export const Home = () => {
 
   }
   return (
-    <div>
-        <h1>Welcome to Clarington Youth Centre!</h1>
-        <h3>Please Select the appropriate Site and Program:</h3>
-        <p>Hellow</p>
+    <div className='wrapper'>
+      
+        <h1>Welcome to the Clarington Youth Centre!</h1>
+        <div>Please select the appropriate Site and Program:</div>
+        <br/>
         <div>
-            <label>Site Selection:</label><Combo/>
-            <label>Program Selection:</label><Combo> </Combo>
+          <div>
+            <label class="lblHome" for="siteSelect">Site Selection:</label>
+            <Combo dataType="data" id="siteSelect"/>
+          </div>
+          <div>
+            <label class="lblHome" for="programSelect">Program Selection:</label>
+            <Combo dataType="siteData" id="programSelect"> </Combo>
+          </div>
             <br/>
             {/* <BlueButton onClick={navigateToSignIn} btnText={'Go to Sign-In'}/> */}
             {/* Component Button^ */}
-            <button onClick={navigateToSignIn}>Go to Sign-In</button>
+            <button class="btnHome" onClick={navigateToSignIn}>Go to Sign-In</button>
             {/* Hard Coded Button^ */}
             <Routes>
                 <Route path='youthlogin' element={<YouthLogin/>} />
             </Routes>
         </div>
+      
     </div>
   )
 }

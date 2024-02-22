@@ -3,15 +3,19 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 //import data from './components/DummyList.js';
 import TextBox from '../components/Textbox';
 import Combo from '../components/ComboBox';
-import city from '../components/CityList';
+import { Fieldset} from '../components/Fieldset';
+//import city from '../components/CityList';
 //import { useNavigate } from 'react-router-dom';
 
 function Register() {
   return (
-    <div className="App">
+    <div className="wrapper">
+      <form>
       <div>
         <h1>Clarington Youth Centre Registration</h1>
       </div>
+        <Fieldset>
+      
       <div><label>First Name*:</label><TextBox/></div>
       <div><label>Last Name*:</label><TextBox/></div>
       <div><label>Preferred Name:</label><TextBox/></div>
@@ -29,6 +33,9 @@ function Register() {
       <div>
         <button>Register</button>
       </div>
+      
+      </Fieldset>
+      </form>
     </div>
     
   );

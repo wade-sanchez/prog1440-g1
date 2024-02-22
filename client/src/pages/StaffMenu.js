@@ -25,15 +25,23 @@ export const StaffMenu = () => {
     navigate('/EditEContact');
   }
 
-  const navigateToReports = () => {
-    navigate('/Reports');
+  // const navigateToReports = () => {
+  //   navigate('/Reports');
+  // }
+
+  const navigateToGroupEvent = () => {
+    navigate('/GroupEvent');
   }
 
+  const generateReport = () => {
+    alert("Generate Report as .csv file");
+    // insert report stuff
+  }
   return (
-    <>
+    <div className='wrapper'>
     <div><h1>CYC Staff Menu</h1></div>
      <div>
-        <button onClick={``}>Enter Group Event Count</button>
+        <button onClick={navigateToGroupEvent}>Enter Group Event Count</button>
     </div>
     <div>
         <button onClick={navigateToAddSites}>Add/Edit Sites</button>
@@ -48,8 +56,8 @@ export const StaffMenu = () => {
         <button onClick={navigateToEditEContact}>Edit Emergency Contact Information</button>
     </div>
     <div>
-        <button onClick={navigateToReports}>Generate Report</button>
+        <button onClick={generateReport}>Generate Report</button>
     </div>
-    </>
+    </div>
   )
 }

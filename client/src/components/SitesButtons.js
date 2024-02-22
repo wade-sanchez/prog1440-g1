@@ -9,9 +9,9 @@ export const SitesButtons = () => {
     const navigateToEditSites = () => {
         navigate('/EditSites');
         }
-    const navigateToRemoveSites = () => {
-        navigate('/RemoveSites');
-        }
+    // const navigateToRemoveSites = () => {
+        // navigate('/RemoveSites');
+        // }
   return (
     <>
         <div>
@@ -20,9 +20,9 @@ export const SitesButtons = () => {
         <div>
             <button onClick={navigateToEditSites}>Edit Sites</button>
         </div>
-        <div>
-            <button onClick={navigateToRemoveSites}>Delete Sites</button>
-        </div>
+        {/* <div> */}
+            {/* <button onClick={navigateToRemoveSites}>Delete Sites</button> */}
+        {/* </div> */}
     </>
   )
 }
