@@ -7,7 +7,7 @@ export const StaffLogin = () => {
     const printData = () => {
         let userName=document.getElementsByName('userName');
         let password=document.getElementsByName('password');
-        alert("Username: " + userName[0].value + "\nPassword: " + password[0].value);
+        alert("Username:\n " + userName[0].value + "\nPassword: " + password[0].value);
     }
     const navigateHome = () => {
         // 👇️ navigate to /
@@ -23,23 +23,25 @@ export const StaffLogin = () => {
   return (
     <div className="wrapper">
     <div>
-        <h1> Clarington Youth Centres Staff Login </h1>
+        <h1 className="heading"> Clarington Youth Centres Staff Login </h1>
     </div>
-    <div>
-        <label>Username: </label>
-        <TextBox tbName={'userName'} tbType={'text'} />
+    <div className="input-box">
+        <label className= "label1">Username:   </label>
+        <div><TextBox  tbName={'userName'} tbType={'text'} /></div>
         {/* Component TextBox^ */}
     </div>
-    <div>
-        <label>Password: </label>
-        <TextBox tbName={'password'} tbType={'text'} />
+    <br/>
+    <div className="input-box">
+        <label className="label1">Password:   </label>
+        <div><TextBox tbName={'password'} tbType={'text'} /></div>
         {/* Component TextBox^ */}
     </div>
-    <div>
-        <button onClick={loginButton}>Login</button>
+    <br/>
+    <div className="input-box">
+        <button className="button1" onClick={loginButton}>Login</button>
     </div>
-    <div>
-        <button onClick={navigateHome}>Return to Home Page</button>
+    <div className="input-box">
+        <button className="button1" onClick={navigateHome}>Return to Home Page</button>
     </div>
     </div>
   )

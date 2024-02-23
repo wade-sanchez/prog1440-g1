@@ -11,24 +11,24 @@ export const AddSites = () => {
   // }
   return (
     <>
-        <div><h1>Add Sites</h1></div>
+        <div><h1 className="heading">Add Sites</h1></div>
         <Fieldset>
         <div>
-           <SitesButtons/>
+           <SitesButtons className="button2"/>
         </div>
-        <label>Add a New Site: </label>
-        <input name='siteName' type='text' 
+        <label className="label1">Add a New Site: </label>
+        <div><input name='siteName' type='text' 
         // onChange={(e) => {
         //   setSiteName(e.target.value);
         // }
         // }
-        ></input>
-        <button
+        ></input></div><br/>
+        <button className="button1"
         // onClick={submitReview}
-        >Add a New Site</button>
+        >Add</button>
         {/* connect with backend - then to sites table in mysql */}
-
-        <ReturnToStaffMenu/>
+        <br/> <br/>
+        <ReturnToStaffMenu className="button1"/>
         </Fieldset>
     </>
   )

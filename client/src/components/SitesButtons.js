@@ -1,7 +1,7 @@
 import React from 'react'
 import { useNavigate } from 'react-router-dom'
 
-export const SitesButtons = () => {
+export const SitesButtons = ({className}) => {
     const navigate = useNavigate();
     const navigateToAddSites = () => {
         navigate('/AddSites');
@@ -15,14 +15,16 @@ export const SitesButtons = () => {
   return (
     <>
         <div>
-            <button onClick={navigateToAddSites}>Add Sites</button>
+            <button className={className} onClick={navigateToAddSites}>Add Sites</button>
         </div>
+        <br/>
         <div>
-            <button onClick={navigateToEditSites}>Edit Sites</button>
+            <button className={className} onClick={navigateToEditSites}>Edit Sites</button>
         </div>
         {/* <div> */}
             {/* <button onClick={navigateToRemoveSites}>Delete Sites</button> */}
         {/* </div> */}
+        <br/>
     </>
   )
 }

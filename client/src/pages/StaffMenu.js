@@ -39,24 +39,24 @@ export const StaffMenu = () => {
   }
   return (
     <div className='wrapper'>
-    <div><h1>CYC Staff Menu</h1></div>
-     <div>
-        <button onClick={navigateToGroupEvent}>Enter Group Event Count</button>
+    <div><h1 className='heading'>CYC Staff Menu</h1></div>
+     <div className="input-box" >
+        <button className="button2" onClick={navigateToGroupEvent}>Enter Group Event Count</button>
     </div>
-    <div>
-        <button onClick={navigateToAddSites}>Add/Edit Sites</button>
+    <div className="input-box">
+        <button className="button2" onClick={navigateToAddSites}>Add/Edit Sites</button>
     </div>
-    <div>
-        <button onClick={navigateToEditProfile}>Edit Youth Profile</button>
+    <div className="input-box">
+        <button className="button2" onClick={navigateToEditProfile}>Edit Youth Profile</button>
     </div>
-    <div>
-        <button onClick={navigateToEditAddress}>Edit Address</button>
+    <div className="input-box">
+        <button className="button2" onClick={navigateToEditAddress}>Edit Address</button>
     </div>
-    <div>
-        <button onClick={navigateToEditEContact}>Edit Emergency Contact Information</button>
+    <div className="input-box">
+        <button className="button2" onClick={navigateToEditEContact}>Edit Emergency Contact Information</button>
     </div>
-    <div>
-        <button onClick={generateReport}>Generate Report</button>
+    <div className="input-box">
+        <button className="button2" onClick={generateReport}>Generate Report</button>
     </div>
     </div>
   )

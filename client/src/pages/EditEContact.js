@@ -8,17 +8,18 @@ import { SearchBar } from '../components/SearchBar'
 export const EditEContact = () => {
   return (
     <div>
-      <h1>Edit Youth Emergency Contact Information</h1>
-    <div>Search entry:</div>
+      <h1 className='heading'>Edit Youth Emergency Contact Information</h1>
+    <div className="input-box"> <label className='label1'>Search:</label></div>
     {/* <TextBox tbType="text" placeholder="Search for entry to edit..." tbName="search"></TextBox>
     <button type="submit"><i class="fa fa-search">Search</i></button> */}
     <SearchBar/>
     {/* display name */}
-    <div><label>Emergency Contact Person:</label></div>
+    <div  className="input1"><label className='label1'>Emergency Contact Person:</label></div>
     <TextBox tbType="text"></TextBox>
-    <div><label>Emergency Contact #:</label></div>
-    <TextBox tbType="text" ></TextBox>
-      <ReturnToStaffMenu/>
+    <div  className="input1"><label className='label1' >Emergency Contact #:</label></div>
+    <TextBox tbType="text" ></TextBox><br/><br/>
+    <div><button className="button1">Edit Youth Emergency Contact</button></div>
+    <br/> <ReturnToStaffMenu className="button1"/>
     </div>
   )
 }

@@ -7,22 +7,22 @@ import { SearchBar } from '../components/SearchBar'
 export const EditSites = () => {
   return (
     <div className='wrapper'>
-        <div><h1>Edit Sites</h1></div>
+        <div><h1 className="heading">Edit Sites</h1></div>
         <Fieldset>
         <div>
-           <SitesButtons/>
+           <SitesButtons className="button2"/>
         </div>
-        <div>Search entry:</div>
+        <label className="label1">Search entry:</label>
         {/* <TextBox tbType="text" placeholder="Search for entry to edit..." tbName="search"></TextBox>
         <button type="submit"><i class="fa fa-search">Search</i></button> */}
-        <SearchBar/>
-        <div><label>Edit Sites: </label><TextBox tbType="text"></TextBox></div>
+        <div><SearchBar/></div>
+        <div><label className="label1">Edit Sites: </label><div><TextBox tbType="text"></TextBox></div></div>
         {/* <div display="none">hidden stuff</div> */}
-        {/* SHOW SEARCHED ITEM HERE */}
-        <button
+        {/* SHOW SEARCHED ITEM HERE */}<br/>
+        <button className="button1"
         // onClick={submitReview}
         >Add a New Site</button>
-        <ReturnToStaffMenu/>
+        <br/><br/><ReturnToStaffMenu className="button1"/>
         </Fieldset>
     </div>
   )
