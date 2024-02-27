@@ -34,23 +34,25 @@ const YouthLogin = () => {
         <div className="wrapper">
             <h1>Youth Sign-In Page</h1>
             <div className="divYouthLogin">
-                <div className="divYouthLoginInner"><label class="lblYouthLogin">First Name: </label></div>
+                {/* <div className="divYouthLoginInner"> */}
+                    <label class="lblYouthLogin">First Name: </label>
+                {/* </div> */}
                 {/* <input type="text" /> */}
                 <TextBox tbName={'fNameTB'} tbType={'text'}/>
             </div>
             <div className="divYouthLogin"> 
-                <div className="divYouthLoginInner">
-                    <label >Last Name: </label>
-                </div>
+                {/* <div className="divYouthLoginInner"> */}
+                    <label class="lblYouthLogin">Last Name: </label>
+                {/* </div> */}
                 {/* <input type="text" /> */}
                 {/* HardCoded TextBox^ */}
                 <TextBox tbName={'lNameTB'} tbType={'text'}/>
                 {/* Component TextBox^ */}
             </div>
             <div className="divYouthLogin">
-                <div className="divYouthLoginInner">
+                {/* <div className="divYouthLoginInner"> */}
                 <label class="lblYouthLogin">Birth Day: </label>
-                </div>
+                {/* </div> */}
                 {/* <input type="text" /> */}
                 {/* HardCoded TextBox^ */}
                 <TextBox id={"bDay"} tbName={'birthDay'} tbType={'date'} />

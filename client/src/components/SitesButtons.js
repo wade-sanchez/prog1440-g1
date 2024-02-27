@@ -1,5 +1,6 @@
 import React from 'react'
 import { useNavigate } from 'react-router-dom'
+import ReusableButton from './Button';
 
 export const SitesButtons = ({className}) => {
     const navigate = useNavigate();
@@ -15,11 +16,11 @@ export const SitesButtons = ({className}) => {
   return (
     <>
         <div>
-            <button className={className} onClick={navigateToAddSites}>Add Sites</button>
+            <ReusableButton className={className} onClick={navigateToAddSites}>Add Sites</ReusableButton>
         </div>
         <br/>
         <div>
-            <button className={className} onClick={navigateToEditSites}>Edit Sites</button>
+            <ReusableButton className={className} onClick={navigateToEditSites}>Edit Sites</ReusableButton>
         </div>
         {/* <div> */}
             {/* <button onClick={navigateToRemoveSites}>Delete Sites</button> */}

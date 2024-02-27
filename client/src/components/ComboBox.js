@@ -35,14 +35,16 @@ export default function Combo(){
         
     }
         return(
-            <div className="App">
+            <>
                 {/* {selected} */}
                 {/* <br/> */}
-            <select onChange={changeChoice}>
-                <option value="Select Option!">Select Option</option>
-                {data.map((data) => <option key={data.id} value={data.id}>{data.Program}</option>)}
-            {/* edit when backend is ready */}
-            </select>
-            </div>
+                <select onChange={changeChoice}>
+                    <option value="Select Option!">
+                        Select Option
+                    </option>
+                    {data.map((data) => <option key={data.id} value={data.id}>{data.Program}</option>)}
+                       {/* edit when backend is ready */}
+                </select>
+            </>
         );
 }

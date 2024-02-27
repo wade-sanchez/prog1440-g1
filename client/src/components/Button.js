@@ -1,15 +1,13 @@
 import React from "react";
-import '../App.css';
+import '../index.css';
 
 
-const BlueButton = ({btnText}) => {
+const ReusableButton = ({btnText, className, onClick}) => {
   return (
-    <button
-      className={``} onClick={``}
-    >
+    <button className={className} onClick={onClick}>
       {btnText}
     </button>
   );
 }
 
-export default BlueButton
+export default ReusableButton
