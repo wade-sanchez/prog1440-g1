@@ -4,6 +4,7 @@ import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
 import { Link } from 'react-router-dom';
 import Container from 'react-bootstrap/Container';
+import './styles.css'
 //import { Home } from '../../pages/Home';
 
 const header = () => {
@@ -11,10 +12,11 @@ const header = () => {
     <>
     <div>
       <Navbar bg="dark" data-bs-theme="dark">
-          <Container><Navbar.Brand as={ Link } to='/'>JHS Durham - Clarington Youth Centres</Navbar.Brand>
+          <Container className='container'><Navbar.Brand className='me-auto' as={ Link } to='/'>JHS Durham - Clarington Youth Centres</Navbar.Brand>
           <Nav className="me-auto">
             <Nav.Link as={ Link } to='/'>Home</Nav.Link>
-            {/* <Nav.Link as={ Link } to='YouthLogin'>Youth Login</Nav.Link> */}
+            <Nav.Link as={ Link } to='SiteSelect'>Youth Login</Nav.Link>
+            <Nav.Link as={ Link } to='Register'>Youth Registration</Nav.Link>
             <Nav.Link as={ Link } to='StaffLogin'>Staff Login</Nav.Link>
             {/* <Nav.Link as={ Link } href="#">Exit</Nav.Link> */}
           </Nav>

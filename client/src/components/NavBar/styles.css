@@ -1,0 +1,7 @@
+.container {
+    background-color: rgba(var(--bs-dark-rgb),var(--bs-bg-opacity)) !important;
+}
+
+.me-auto{
+    background-color: rgba(var(--bs-dark-rgb),var(--bs-bg-opacity)) !important;
+}

@@ -1,9 +1,6 @@
 import React from 'react'
 import '../index'
-// import BlueButton from '../components/Button';
-import Combo from '../components/ComboBox';
-import { useNavigate, Route, Routes } from 'react-router-dom';
-import YouthLogin from './YouthLogin';
+import { useNavigate } from 'react-router-dom';
 
 //import { Fieldset } from '../components/Fieldset';
 
@@ -12,16 +9,30 @@ export const Home = () => {
 
     const navigateToSiteSelect = () => {
     navigate('/SiteSelect');
+    }
 
-  }
+    const navigateToStaffLogin = () => {
+      navigate('/StaffLogin');
+    }
+
+    const navigateToRegister = () => {
+    navigate('/Register');
+    }
   return (
     <div className="wrapper">
-      <h1>Welcome to the Clarington Youth Centre!</h1>
-      <button class="btnHome" onClick={navigateToSiteSelect}>Go to Sign-In</button>
+      <h1>
+        Welcome to the Clarington Youth Centre!
+      </h1>
+      <button class="btnHome" onClick={navigateToSiteSelect}>
+        Start Youth Sign-In System
+      </button>
       {/* Hard Coded Button^ */}
-        <Routes>
-          <Route path='youthlogin' element={<YouthLogin/>} />
-        </Routes>
+      <button class="btnHome" onClick={navigateToRegister}>
+        Register
+      </button>
+      <button class="btnHome" onClick={navigateToStaffLogin}>
+        Staff Login
+      </button>
     </div>
   )
 }

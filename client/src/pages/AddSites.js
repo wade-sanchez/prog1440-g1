@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import { SitesButtons } from '../components/SitesButtons'
-import Axios from 'axios';
+// import Axios from 'axios';
 import { ReturnToStaffMenu } from '../components/ReturnToStaffMenuBtn';
 import { Fieldset } from '../components/Fieldset';
 
@@ -14,7 +14,7 @@ export const AddSites = () => {
         <div><h1 className="heading">Add Sites</h1></div>
         <Fieldset>
         <div>
-           <SitesButtons className="button2"/>
+           <SitesButtons className="button2" btnText="Test"/>
         </div>
         <label className="label1">Add a New Site: </label>
         <div><input name='siteName' type='text' 

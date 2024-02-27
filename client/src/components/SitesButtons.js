@@ -16,11 +16,11 @@ export const SitesButtons = ({className}) => {
   return (
     <>
         <div>
-            <ReusableButton className={className} onClick={navigateToAddSites}>Add Sites</ReusableButton>
+            <ReusableButton btnText={"Add Sites"} className={className} onClick={navigateToAddSites}/>
         </div>
         <br/>
         <div>
-            <ReusableButton className={className} onClick={navigateToEditSites}>Edit Sites</ReusableButton>
+            <ReusableButton btnText={"Edit Sites"} className={className} onClick={navigateToEditSites}/>
         </div>
         {/* <div> */}
             {/* <button onClick={navigateToRemoveSites}>Delete Sites</button> */}
