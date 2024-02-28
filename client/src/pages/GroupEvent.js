@@ -15,22 +15,35 @@ export const GroupEvent = () => {
     navigate('/StaffMenu');
   }
   return (
-    <div className='wrapper'>
-        <h1 className='heading'>Group Event Registration</h1>
-        <div ><div ><label className='label1'>Site:</label></div><Combo></Combo></div>
-        <div><div><label className='label1'>Program:</label></div><Combo></Combo></div>
-        <div><div><label className='label1'>Date:</label></div><TextBox tbType={'date'}/></div>
-        <div><div><label className='label1'>City:</label></div><Combo></Combo></div>
-        <div><div><label className='label1'>Event Name:</label></div><TextBox tbType={'text'}/></div>
-        <div><div><label className='label1'>Description:</label></div><textarea>asdasdsad</textarea></div>
-        <div><div><label className='label1'>Attendance Count:</label></div><TextBox tbType={'number'}/></div>
-        <div><div><label className='label1'>Volunteer Count:</label></div><TextBox tbType={'number'}/></div>
-        <div><div><label className='label1'>Total Volunteer Hours:</label></div><TextBox tbType={'number'}/></div>
-        <br/><br/>
-        <div><button  className= "button1"onClick={regGroupEvent}>Register Group Event</button></div>
-        <br/>
+    <>
+    <h1 className='heading'>Group Event Registration</h1>
+    <div className='wrapper-registration'>
+        
+        <div>
+        <div><label className="EditProfileLabel">Site:</label><Combo></Combo></div>
+        <div><label className="EditProfileLabel">Program:</label><Combo></Combo></div>
+        <div><label className="EditProfileLabel">Date:</label><TextBox tbType={'date'}/></div>
+        </div>
+        <div>   
+        <div><label className="EditProfileLabel">City:</label><Combo></Combo></div>
+        <div><label className="EditProfileLabel">Event Name:</label><TextBox tbType={'text'}/></div>
+        <div><label className="EditProfileLabel">Description:</label><textarea>asdasdsad</textarea></div>
+        </div>
+        <div>
+        <div><label className="EditProfileLabel">Attendance Count:</label><TextBox tbType={'number'}/></div>
+        <div><label className="EditProfileLabel">Volunteer Count:</label><TextBox tbType={'number'}/></div>
+        <div><label className="EditProfileLabel">Total Volunteer Hours:</label><TextBox tbType={'number'}/></div>
+        </div>
+        
+        
+    </div>
+    <div className="registration-buttons">
+      <div>
+        <button  className= "button1"onClick={regGroupEvent}>Register Group Event</button>
+      </div>
         <div><ReturnToStaffMenu className="button1"></ReturnToStaffMenu></div>
         {/* add bottom spacing */}
     </div>
+    </>
   )
 }

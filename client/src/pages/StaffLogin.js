@@ -5,8 +5,8 @@ import { useNavigate } from 'react-router-dom';
 export const StaffLogin = () => {
     const navigate = useNavigate();
     const printData = () => {
-        let userName=document.getElementsByName('userName');
-        let password=document.getElementsByName('password');
+        let userName=document.getElementsByName('staffUserName');
+        let password=document.getElementsByName('staffPassword');
         alert("Username:\n " + userName[0].value + "\nPassword: " + password[0].value);
     }
     const navigateHome = () => {
@@ -21,28 +21,27 @@ export const StaffLogin = () => {
         navigateToStaffMenu();
     }
   return (
-    <div className="wrapper">
+    <>
     <div>
         <h1 className="heading"> Clarington Youth Centres Staff Login </h1>
     </div>
-    <div className="input-box">
-        <label className= "label1">Username:   </label>
-        <div><TextBox  tbName={'userName'} tbType={'text'} /></div>
-        {/* Component TextBox^ */}
+    <div className="wrapper-registration">
+        <div className="input-box">
+            {/* <label className= "label1">Username:   </label> */}
+            <div><TextBox placeholder={'Username'}  tbName={'staffUserName'} tbType={'text'} /></div>
+            {/* Component TextBox^ */}
+        </div>
+        <div className="input-box">
+            {/* <label className="label1">Password:   </label> */}
+            <div><TextBox placeholder={'Password'} tbName={'staffPassword'} tbType={'password'} /></div>
+            {/* Component TextBox^ */}
+        </div>
     </div>
-    <br/>
-    <div className="input-box">
-        <label className="label1">Password:   </label>
-        <div><TextBox tbName={'password'} tbType={'text'} /></div>
-        {/* Component TextBox^ */}
-    </div>
-    <br/>
-    <div className="input-box">
+    <div>
+    <div className='wrapper-button'>
         <button className="button1" onClick={loginButton}>Login</button>
     </div>
-    <div className="input-box">
-        <button className="button1" onClick={navigateHome}>Return to Home Page</button>
     </div>
-    </div>
+    </>
   )
 }

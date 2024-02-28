@@ -28,6 +28,8 @@ const YouthLogin = () => {
         alert("Username: " + fName[0].value + "\nPassword: " + lName[0].value
         + "\nBirth Day: " + dDay[0].value);
     }
+
+    
     // TESTING BUTTON TO GET VALUES FROM TEXT BOXES
     return(
      
@@ -35,27 +37,27 @@ const YouthLogin = () => {
             <h1>Youth Sign-In Page</h1>
             <div className="divYouthLogin">
                 {/* <div className="divYouthLoginInner"> */}
-                    <label class="lblYouthLogin">First Name: </label>
+                    {/* <label class="lblYouthLogin">First Name: </label> */}
                 {/* </div> */}
                 {/* <input type="text" /> */}
-                <TextBox tbName={'fNameTB'} tbType={'text'}/>
+                <TextBox tbName={'fNameTB'} tbType={'text'} placeholder={'First Name'} />
             </div>
             <div className="divYouthLogin"> 
                 {/* <div className="divYouthLoginInner"> */}
-                    <label class="lblYouthLogin">Last Name: </label>
+                    {/* <label class="lblYouthLogin">Last Name: </label> */}
                 {/* </div> */}
                 {/* <input type="text" /> */}
                 {/* HardCoded TextBox^ */}
-                <TextBox tbName={'lNameTB'} tbType={'text'}/>
+                <TextBox tbName={'lNameTB'} tbType={'text'} placeholder={'Last Name'}/>
                 {/* Component TextBox^ */}
             </div>
             <div className="divYouthLogin">
                 {/* <div className="divYouthLoginInner"> */}
-                <label class="lblYouthLogin">Birth Day: </label>
+                {/* <label class="lblYouthLogin">Birth Day: </label> */}
                 {/* </div> */}
                 {/* <input type="text" /> */}
                 {/* HardCoded TextBox^ */}
-                <TextBox id={"bDay"} tbName={'birthDay'} tbType={'date'} />
+                <TextBox id={"bDay"} tbName={'birthDay'} tbType={'text'} placeholder={'Birth Date'} onFocus={(e) => e.target.type='date'}/>
                 {/* Component TextBox^ */}
             </div>
             <br/>

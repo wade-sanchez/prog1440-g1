@@ -18,7 +18,7 @@ function EditProfile() {
     <h1>Edit Profile</h1>
     <div className="wrapper-registration">
       <div>
-        <h1 className='heading'>Search for a profile:</h1>
+        <h1>Search for a profile:</h1>
         <SearchBar/>
       </div>
       {/* <Fieldset> */}

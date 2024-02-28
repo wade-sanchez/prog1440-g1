@@ -26,25 +26,43 @@ body {
   display: flex;
   flex-wrap: wrap;
   width: 100vw;
-  justify-content: center;
+  justify-content: space-evenly;
   align-items: center;
   /* background: grey; */
   text-align: center;
   margin: auto;
+  align-content: stretch;
+}
+
+div.wrapper-button{
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  /* gap: 50px; */
+  margin-top: 50px;
 }
 
 .input-box {
   width: 100%;
-  height: 35px;
+  height: 10px;
   margin: 30px 0;
 
 }
+
+.staffMenuButtons {
+  width: 100%;
+  height: 50px;
+  margin: 30px 0;
+
+}
+
 .input1{
   width: 100%;
   height: 100px;
   margin: 30px 0;
 
 }
+
 .label1 {
   width: 100px;
   font-size: 20px;
@@ -66,7 +84,12 @@ body {
   margin-right: 10px;
 }
 .comboboxReg{
-  width: 12vw;;
+  width: 24vw;;
+}
+
+/* change when viewport is laptop */
+.comboBirthDate{
+  width: 25vw;
 }
 
 .button1 {
@@ -92,14 +115,15 @@ body {
 
 .registration-buttons{
   display: flex;
-  justify-content: flex-end;
+  justify-content: center;
   gap: 50px;
-  margin-right: 120px;
+  /* margin-right: 120px; */
 }
+
 input{
   border-radius: 20px;
   height:50%;
-  width: 50%;
+  /* width: 50%; */
   border: none;
   outline: none;
   border: 1px solid;
@@ -171,7 +195,11 @@ label.lblYouthLogin{
 }
 
 div.divYouthLogin{
-  text-align: center;
+  /* display: flex; */
+  /* justify-content: center !important; */
+  /* align-items: center !important; */
+  text-align: center !important;
+  /* width: 20% !important; */
 }
 
 div.divYouthLoginInner{
@@ -189,7 +217,7 @@ h3.h3YouthLogin{
   margin-bottom:0%;
 }
 
-input#bDay{
+input#bDay.{
   /* color: red; */
   text-align: center;
 }

@@ -14,10 +14,10 @@ const header = () => {
       <Navbar bg="dark" data-bs-theme="dark">
           <Container className='container'><Navbar.Brand className='me-auto' as={ Link } to='/'>JHS Durham - Clarington Youth Centres</Navbar.Brand>
           <Nav className="me-auto">
-            <Nav.Link as={ Link } to='/'>Home</Nav.Link>
-            <Nav.Link as={ Link } to='SiteSelect'>Youth Login</Nav.Link>
-            <Nav.Link as={ Link } to='Register'>Youth Registration</Nav.Link>
-            <Nav.Link as={ Link } to='StaffLogin'>Staff Login</Nav.Link>
+            <Nav.Link className='linkTest' as={ Link } to='/'>Home</Nav.Link>
+            <Nav.Link className='linkTest' as={ Link } to='SiteSelect'>Login</Nav.Link>
+            <Nav.Link className='linkTest' as={ Link } to='Register'>Registration</Nav.Link>
+            <Nav.Link className='linkTest' as={ Link } to='StaffLogin'>Staff Login</Nav.Link>
             {/* <Nav.Link as={ Link } href="#">Exit</Nav.Link> */}
           </Nav>
           </Container>

@@ -2,9 +2,9 @@ import React from "react";
 //import '../App.css';
 
 
-const TextBox = ({tbName, tbType, id, placeholder}) => {
+const TextBox = ({className, tbName, tbType, id, placeholder, value, onFocus, type}) => {
   return (
-    <input id={id} name={tbName} type={tbType} placeholder={placeholder} />
+    <input className={className} id={id} name={tbName} type={tbType} placeholder={placeholder} value={value} onFocus={onFocus}/>
   );
 }
 

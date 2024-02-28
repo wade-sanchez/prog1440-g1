@@ -13,9 +13,11 @@ export const SearchBar = ({className, btnText}) => {
     <TextBox tbType="text" placeholder="Search for entry to edit..." tbName="search"></TextBox>
     <br/>
     <label className='EditProfileLabel'>Birth Date*: </label>
-    <TextBox tbType="date" placeholder="Search for entry to edit..." tbName="search"></TextBox>
+    <TextBox className="comboBirthDate" tbType="date" placeholder="Search for entry to edit..." tbName="search"></TextBox>
     <br/>
-    <button className={className} type="submit"><i class="fa fa-search">Search</i></button>
+    <div>
+    <button type="submit"><i class="fa fa-search">Search</i></button>
+    </div>
     </>
   )
 }

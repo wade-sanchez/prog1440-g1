@@ -1,7 +1,21 @@
 .container {
     background-color: rgba(var(--bs-dark-rgb),var(--bs-bg-opacity)) !important;
+    margin: auto;
+    /* width: 10%; */
 }
 
 .me-auto{
     background-color: rgba(var(--bs-dark-rgb),var(--bs-bg-opacity)) !important;
+    /* width: 20%; */
+}
+
+.linkTest{
+    /* width: 12vw; */
+    text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: nowrap;
+    margin: 0;
+    padding: 0;
+    display: flex;
+
 }

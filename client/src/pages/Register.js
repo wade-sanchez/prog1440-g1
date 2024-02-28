@@ -9,35 +9,42 @@ import Combo from '../components/ComboBox';
 
 function Register() {
   return (
-    <div className="wrapper-registration">
-      <form>
+    <>
       <div>
         <h1>Clarington Youth Centre Registration</h1>
       </div>
+      <div className="wrapper-registration">
+
         {/* <Fieldset> */}
-      
-      <div><label>First Name*:</label><TextBox/></div>
-      <div><label>Last Name*:</label><TextBox/></div>
-      <div><label>Preferred Name:</label><TextBox/></div>
-      <div><label>Birth Date*:</label><TextBox id={"bDay"} tbName={'birthDay'} tbType={'date'} /></div>
-      <div><label>City: </label><Combo/></div> 
-      {/* combobox: list all cities in the vicinity of Durham Region */}
-      <div><label>Street Address:</label><TextBox/></div>
-      <div><label>Postal Code:</label><TextBox/></div>
-      <div><label>Phone:</label><TextBox/></div>
-      <div><label>Email Address:</label><TextBox/></div>
-      <div><label>Emergency Contact Person:</label><TextBox/></div>
-      <div><label>Relation to Emergency Contact Person:</label><TextBox/></div>
-      <div><label>Emergency Contact #:</label><TextBox/></div>
-      <div></div>
+        <div>
+          <div><label className="EditProfileLabel">First Name*:</label><TextBox /></div>
+          <div><label className="EditProfileLabel">Last Name*:</label><TextBox /></div>
+          <div><label className="EditProfileLabel">Preferred Name:</label><TextBox /></div>
+          <div><label className="EditProfileLabel">Birth Date*:</label><TextBox className={"comboBirthDate"} id={"bDay"} tbName={'birthDay'} tbType={'date'} /></div>
+        </div>
+        <div>
+          <div><label className="EditProfileLabel">City: </label><Combo className="comboboxReg"/></div>
+          {/* combobox: list all cities in the vicinity of Durham Region */}
+          <div><label className="EditProfileLabel">Street Address:</label><TextBox /></div>
+          <div><label className="EditProfileLabel">Postal Code:</label><TextBox /></div>
+          <div><label className="EditProfileLabel">Phone:</label><TextBox /></div>
+        </div>
+        <div>
+          <div><label className="EditProfileLabel">Email Address:</label><TextBox /></div>
+          <div><label className="EditProfileLabel">Emergency Contact:</label><TextBox /></div>
+          <div><label className="EditProfileLabel">Relation:</label><TextBox /></div>
+          <div><label className="EditProfileLabel">Emergency Contact #:</label><TextBox /></div>
+        </div>
+
+
+        {/* </Fieldset> */}
+
+      </div>
       <div>
         <button>Register</button>
       </div>
-      
-      {/* </Fieldset> */}
-      </form>
-    </div>
-    
+    </>
+
   );
 }
 
