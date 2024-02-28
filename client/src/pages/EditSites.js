@@ -3,7 +3,7 @@ import { SitesButtons } from '../components/SitesButtons'
 import { ReturnToStaffMenu } from '../components/ReturnToStaffMenuBtn'
 import { Fieldset } from '../components/Fieldset'
 import TextBox from '../components/Textbox'
-import { SearchBar } from '../components/SearchBar'
+import { SearchBar } from '../components/SearchProfile'
 export const EditSites = () => {
   return (
     <div className='wrapper'>

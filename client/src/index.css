@@ -12,10 +12,20 @@ body {
   background-color: lightsteelblue;
 }
 
-
 .wrapper{
-  
-  width: 50vw;
+
+  width: 100vw;
+  justify-content: center;
+  align-items: center;
+  /* background: grey; */
+  text-align: center;
+  margin: auto;
+}
+
+.wrapper-registration{
+  display: flex;
+  flex-wrap: wrap;
+  width: 100vw;
   justify-content: center;
   align-items: center;
   /* background: grey; */
@@ -43,6 +53,22 @@ body {
   color:  #c14649;
 }
 
+.EditProfileLabel{
+  width: 11vw;
+  /* display: flex; */
+  font-size: 1vw;
+  font-weight: bold;
+  line-height: 2;
+  color:  #c14649;
+  overflow: hidden;
+  white-space: nowrap;
+  text-align: right;
+  margin-right: 10px;
+}
+.comboboxReg{
+  width: 12vw;;
+}
+
 .button1 {
   background-color: lightseagreen;
   color: white;
@@ -62,6 +88,13 @@ body {
   cursor: pointer;
   font-size: 20px;
   font-weight: bold;
+}
+
+.registration-buttons{
+  display: flex;
+  justify-content: flex-end;
+  gap: 50px;
+  margin-right: 120px;
 }
 input{
   border-radius: 20px;

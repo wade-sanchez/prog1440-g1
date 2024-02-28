@@ -11,7 +11,7 @@ import { StaffMenu } from './pages/StaffMenu';
 import { EditSites } from './pages/EditSites';
 import { AddSites } from './pages/AddSites';
 import { RemoveSites } from './pages/Removesites';
-import { EditEContact } from './pages/EditEContact';
+import EditProfile from './pages/EditProfile';
 // import { Reports } from './pages/Reports';
 import { GroupEvent } from './pages/GroupEvent';
 import { SiteSelect } from './pages/SiteSelect';
@@ -33,7 +33,7 @@ function App() {
         <Route path='editsites' element={<EditSites/>} />
         <Route path='removesites' element={<RemoveSites/>} />
         <Route path='register' element={<Register/>} />
-        <Route path='editecontact' element={<EditEContact/>} />
+        <Route path='editprofile' element={<EditProfile/>} />
         {/* <Route path='reports' element={<Reports/>} /> */}
         <Route path='groupevent' element={<GroupEvent/>}/>
       </Routes>

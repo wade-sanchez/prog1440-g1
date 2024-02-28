@@ -11,14 +11,6 @@ export const StaffMenu = () => {
   const navigateToEditProfile = () => {
     navigate('/EditProfile');
   }
-    
-  const navigateToEditAddress = () => {
-    navigate('/EditAddress');
-  }
-
-  const navigateToEditEContact = () => {
-    navigate('/EditEContact');
-  }
 
   // const navigateToReports = () => {
   //   navigate('/Reports');

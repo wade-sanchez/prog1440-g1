@@ -1,7 +1,7 @@
 //import Combobox from "react-widgets/Combobox";
 //import { Combobox } from "react-widgets";
 import data from "./DummyList";
-import siteData from "./SiteList";
+// import siteData from "./SiteList";
 //import siteData from "./SiteList";
 import { useState } from "react";
 
@@ -26,7 +26,7 @@ import { useState } from "react";
 
 // export default ACombobox
 
-export default function Combo(){
+export default function Combo({className}){
     const [selected, setSelected] = useState(null);
     let changeChoice = (e) => {
         setSelected(e.target.value)
@@ -38,7 +38,7 @@ export default function Combo(){
             <>
                 {/* {selected} */}
                 {/* <br/> */}
-                <select onChange={changeChoice}>
+                <select className={className} onChange={changeChoice}>
                     <option value="Select Option!">
                         Select Option
                     </option>

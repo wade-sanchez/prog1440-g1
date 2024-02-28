@@ -7,47 +7,56 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import TextBox from '../components/Textbox';
 import Combo from '../components/ComboBox';
 import { ReturnToStaffMenu } from '../components/ReturnToStaffMenuBtn';
-import { Fieldset } from '../components/Fieldset';
-import { SearchBar } from '../components/SearchBar';
+// import { Fieldset } from '../components/Fieldset';
+import { SearchBar } from '../components/SearchProfile';
 //import city from '../components/CityList';
 //import { useNavigate } from 'react-router-dom';
 
 function EditProfile() {
   return (
-    <div className="wrapper">
+    <>
+    <h1>Edit Profile</h1>
+    <div className="wrapper-registration">
       <div>
-        <h1 className='heading'>Edit Youth Profile</h1>
+        <h1 className='heading'>Search for a profile:</h1>
+        <SearchBar/>
       </div>
-      <Fieldset>
+      {/* <Fieldset> */}
       {/* <div>
       <TextBox tbType="text" placeholder="Search for entry to edit..." tbName="search"></TextBox>
       </div>
     <button type="submit"><i class="fa fa-search">Search</i></button> */}
-    <SearchBar /> 
-    {/* next step: alert - entry found or not found */}
-      <div ><label className="label1">First Name*:</label><div><TextBox/></div></div>
-      <div ><label className="label1">Last Name*:</label><div><TextBox/></div></div>
-      <div ><label className="label1">Preferred Name:</label><div><TextBox/></div></div>
-      <div ><label className="label1">Birth Date*:</label><div><TextBox id={"bDay"} tbName={'birthDay'} tbType={'date'} /></div></div>
-      <div ><label className="label1">City</label><div><Combo/></div></div> 
-      {/* combobox: list all cities in the vicinity of Durham Region */}
-      <div ><label className="label1">Street Address:</label><div><TextBox/></div></div>
-      <div ><label className="label1">Postal Code:</label><div><TextBox/></div></div>
-      <div ><label className="label1">Phone:</label><div><TextBox/></div></div>
-      <div><label className="label1"> Email Address:</label><div><TextBox/></div></div>
-      <div ><label className="label1">Emergency Contact Person:</label><div><TextBox/></div></div>
-      <div ><label className="label1"> Relation to Emergency Contact Person:</label><div><TextBox/></div></div>
-      <div ><label className="label1">Emergency Contact #:</label><div><TextBox/></div></div>
-      <div ></div>
-      <div >
-        <br/>
-        <button className="button1">Edit Youth Profile</button>
-      </div>
-      <br/>
-      <ReturnToStaffMenu className="button1"/>
-      </Fieldset>
-    </div>
     
+    {/* next step: alert - entry found or not found */}
+      <br/>
+      <div >
+      {/* <div ><h1 className='heading'>Profile:</h1></div> */}
+
+      <div><label className="EditProfileLabel">Preferred Name:</label><TextBox/></div>
+      <div ><label className="EditProfileLabel">City: </label><Combo className="comboboxReg"/></div>
+      <div ><label className="EditProfileLabel">Street Address:</label><TextBox/></div> 
+      </div>
+      <div >
+      
+      {/* combobox: list all cities in the vicinity of Durham Region */}
+      
+      <div ><label className="EditProfileLabel">Postal Code:</label><TextBox/></div>
+      <div ><label className="EditProfileLabel">Phone:</label><TextBox/></div>
+      <div><label className="EditProfileLabel"> Email Address:</label><TextBox/></div>
+      </div>
+      <div className='EContact'>
+      <div ><label className="EditProfileLabel">Emergency Contact:</label><TextBox/></div>
+      <div ><label className="EditProfileLabel"> Relation:</label><TextBox/></div>
+      <div ><label className="EditProfileLabel">Emergency Contact #:</label><TextBox/></div>
+      </div>
+      
+      {/* </Fieldset> */}
+    </div>
+    <div className='registration-buttons'>
+      <button className="button1">Edit Youth Profile</button>
+      <ReturnToStaffMenu className="button1"/>
+    </div>
+    </>
   );
 }
 

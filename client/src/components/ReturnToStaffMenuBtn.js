@@ -9,9 +9,7 @@ export const ReturnToStaffMenu = ({className}) => {
         }
   return (
     <>
-        <div>
             <button className={className} onClick={navigateToStaffMenu}>Return to Staff Menu</button>
-        </div>
     </>
   )
 }
