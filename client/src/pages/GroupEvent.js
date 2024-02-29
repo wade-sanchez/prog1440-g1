@@ -20,12 +20,12 @@ export const GroupEvent = () => {
     <div className='wrapper-registration'>
         
         <div>
-        <div><label className="EditProfileLabel">Site:</label><Combo></Combo></div>
-        <div><label className="EditProfileLabel">Program:</label><Combo></Combo></div>
-        <div><label className="EditProfileLabel">Date:</label><TextBox tbType={'date'}/></div>
+        <div><label className="EditProfileLabel">Site:</label><Combo className="comboboxReg"></Combo></div>
+        <div><label className="EditProfileLabel">Program:</label><Combo className="comboboxReg"></Combo></div>
+        <div><label className="EditProfileLabel">Date:</label><TextBox className="comboboxReg" tbType={'date'}/></div>
         </div>
         <div>   
-        <div><label className="EditProfileLabel">City:</label><Combo></Combo></div>
+        <div><label className="EditProfileLabel">City:</label><Combo className="comboboxReg"></Combo></div>
         <div><label className="EditProfileLabel">Event Name:</label><TextBox tbType={'text'}/></div>
         <div><label className="EditProfileLabel">Description:</label><textarea>asdasdsad</textarea></div>
         </div>

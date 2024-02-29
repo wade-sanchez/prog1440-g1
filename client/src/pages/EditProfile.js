@@ -15,10 +15,10 @@ import { SearchBar } from '../components/SearchProfile';
 function EditProfile() {
   return (
     <>
-    <h1>Edit Profile</h1>
+    <h1 className='heading'>Edit Profile</h1>
     <div className="wrapper-registration">
       <div>
-        <h1>Search for a profile:</h1>
+        <h3 className='small-heading'>Search for a profile:</h3>
         <SearchBar/>
       </div>
       {/* <Fieldset> */}

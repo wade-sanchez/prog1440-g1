@@ -16,7 +16,7 @@ export const SearchBar = ({className, btnText}) => {
     <TextBox className="comboBirthDate" tbType="date" placeholder="Search for entry to edit..." tbName="search"></TextBox>
     <br/>
     <div>
-    <button type="submit"><i class="fa fa-search">Search</i></button>
+    <button className='small-button1' type="submit">Search</button>
     </div>
     </>
   )

@@ -11,7 +11,7 @@ function Register() {
   return (
     <>
       <div>
-        <h1>Clarington Youth Centre Registration</h1>
+        <h1 className='heading'>Clarington Youth Centre Registration</h1>
       </div>
       <div className="wrapper-registration">
 
@@ -40,8 +40,8 @@ function Register() {
         {/* </Fieldset> */}
 
       </div>
-      <div>
-        <button>Register</button>
+      <div className="registration-buttons">
+        <button className='button1'>Register</button>
       </div>
     </>
 

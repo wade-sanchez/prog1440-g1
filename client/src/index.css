@@ -1,3 +1,5 @@
+
+
 * {
   background-color: lightskyblue;
 }
@@ -84,12 +86,11 @@ div.wrapper-button{
   margin-right: 10px;
 }
 .comboboxReg{
-  width: 24vw;;
+  width: 13vw;;
 }
 
-/* change when viewport is laptop */
 .comboBirthDate{
-  width: 25vw;
+  width: 13vw;
 }
 
 .button1 {
@@ -102,6 +103,19 @@ div.wrapper-button{
   font-size: 20px;
   font-weight: bold;
 } 
+
+.small-button1 {
+  margin-top: 10px;
+  background-color: lightseagreen;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  padding: 10px 20px;
+  cursor: pointer;
+  font-size: 15px;
+  font-weight: bold;
+} 
+
 .button2 {
   background-color: lightcoral;
   color: white;
@@ -117,6 +131,7 @@ div.wrapper-button{
   display: flex;
   justify-content: center;
   gap: 50px;
+  margin: 50px;
   /* margin-right: 120px; */
 }
 
@@ -148,6 +163,15 @@ code {
   font-weight: bold;
   text-align: center;
   margin-top: 50px;
+  color: #c14649;
+}
+
+.small-heading{
+  /* margin-bottom: 30px; */
+  font-size: 1.5em;
+  font-weight: bold;
+  text-align: center;
+  /* margin-top: 50px; */
   color: #c14649;
 }
 body{
@@ -227,3 +251,21 @@ input#bDay.{
   border-radius: 5px;
   margin: auto;
 }
+
+
+
+
+/* tablets */
+@media only screen and (max-width: 1400px) {
+  .comboboxReg{
+    width: 17vw !important;
+  }
+
+  .comboBirthDate{
+    width: 17vw !important;
+  }
+  
+
+}
+
+
