@@ -1,5 +1,3 @@
-
-
 * {
   background-color: lightskyblue;
 }
@@ -248,7 +246,7 @@ h3.h3YouthLogin{
   margin-bottom:0%;
 }
 
-input#bDay.{
+input#bDay{
   /* color: red; */
   text-align: center;
 }
