@@ -8,9 +8,7 @@ import YouthLogin from './pages/YouthLogin';
 import Register from './pages/Register';
 import { StaffLogin } from './pages/StaffLogin';
 import { StaffMenu } from './pages/StaffMenu';
-import { EditSites } from './pages/EditSites';
 import { AddSites } from './pages/AddSites';
-import { RemoveSites } from './pages/Removesites';
 import EditProfile from './pages/EditProfile';
 // import { Reports } from './pages/Reports';
 import { GroupEvent } from './pages/GroupEvent';
@@ -30,8 +28,8 @@ function App() {
         <Route path='stafflogin' element={<StaffLogin />} />
         <Route path='staffmenu' element={<StaffMenu/>} />
         <Route path='addsites' element={<AddSites/>} />
-        <Route path='editsites' element={<EditSites/>} />
-        <Route path='removesites' element={<RemoveSites/>} />
+        {/* <Route path='editsites' element={<EditSites/>} />
+        <Route path='removesites' element={<RemoveSites/>} /> */}
         <Route path='register' element={<Register/>} />
         <Route path='editprofile' element={<EditProfile/>} />
         {/* <Route path='reports' element={<Reports/>} /> */}

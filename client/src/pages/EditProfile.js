@@ -32,22 +32,22 @@ function EditProfile() {
       <div >
       {/* <div ><h1 className='heading'>Profile:</h1></div> */}
 
-      <div><label className="EditProfileLabel">Preferred Name:</label><TextBox/></div>
-      <div ><label className="EditProfileLabel">City: </label><Combo className="comboboxReg"/></div>
-      <div ><label className="EditProfileLabel">Street Address:</label><TextBox/></div> 
+      <div className='spacing'><label className="EditProfileLabel">Preferred Name:</label><TextBox/></div>
+      <div className='spacing'><label className="EditProfileLabel">City: </label><Combo className="comboboxReg"/></div>
+      <div className='spacing'><label className="EditProfileLabel">Street Address:</label><TextBox/></div> 
       </div>
       <div >
       
       {/* combobox: list all cities in the vicinity of Durham Region */}
       
-      <div ><label className="EditProfileLabel">Postal Code:</label><TextBox/></div>
-      <div ><label className="EditProfileLabel">Phone:</label><TextBox/></div>
-      <div><label className="EditProfileLabel"> Email Address:</label><TextBox/></div>
+      <div className='spacing'><label className="EditProfileLabel">Postal Code:</label><TextBox/></div>
+      <div className='spacing'><label className="EditProfileLabel">Phone:</label><TextBox/></div>
+      <div className='spacing'><label className="EditProfileLabel"> Email Address:</label><TextBox/></div>
       </div>
       <div className='EContact'>
-      <div ><label className="EditProfileLabel">Emergency Contact:</label><TextBox/></div>
-      <div ><label className="EditProfileLabel"> Relation:</label><TextBox/></div>
-      <div ><label className="EditProfileLabel">Emergency Contact #:</label><TextBox/></div>
+      <div className='spacing'><label className="EditProfileLabel">Emergency Contact:</label><TextBox/></div>
+      <div className='spacing'><label className="EditProfileLabel"> Relation:</label><TextBox/></div>
+      <div className='spacing'><label className="EditProfileLabel">Emergency Contact #:</label><TextBox/></div>
       </div>
       
       {/* </Fieldset> */}

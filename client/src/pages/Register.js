@@ -17,23 +17,23 @@ function Register() {
 
         {/* <Fieldset> */}
         <div>
-          <div><label className="EditProfileLabel">First Name*:</label><TextBox /></div>
-          <div><label className="EditProfileLabel">Last Name*:</label><TextBox /></div>
-          <div><label className="EditProfileLabel">Preferred Name:</label><TextBox /></div>
-          <div><label className="EditProfileLabel">Birth Date*:</label><TextBox className={"comboBirthDate"} id={"bDay"} tbName={'birthDay'} tbType={'date'} /></div>
+          <div className='spacing'><label className="EditProfileLabel">First Name*:</label><TextBox /></div>
+          <div className='spacing'><label className="EditProfileLabel">Last Name*:</label><TextBox /></div>
+          <div className='spacing'><label className="EditProfileLabel">Preferred Name:</label><TextBox /></div>
+          <div className='spacing'><label className="EditProfileLabel">Birth Date*:</label><TextBox className={"comboBirthDate"} id={"bDay"} tbName={'birthDay'} tbType={'date'} /></div>
         </div>
         <div>
-          <div><label className="EditProfileLabel">City: </label><Combo className="comboboxReg"/></div>
+          <div className='spacing'><label className="EditProfileLabel">City: </label><Combo className="comboboxReg"/></div>
           {/* combobox: list all cities in the vicinity of Durham Region */}
-          <div><label className="EditProfileLabel">Street Address:</label><TextBox /></div>
-          <div><label className="EditProfileLabel">Postal Code:</label><TextBox /></div>
-          <div><label className="EditProfileLabel">Phone:</label><TextBox /></div>
+          <div className='spacing'><label className="EditProfileLabel">Street Address:</label><TextBox /></div>
+          <div className='spacing'><label className="EditProfileLabel">Postal Code:</label><TextBox /></div>
+          <div className='spacing'><label className="EditProfileLabel">Phone:</label><TextBox /></div>
         </div>
         <div>
-          <div><label className="EditProfileLabel">Email Address:</label><TextBox /></div>
-          <div><label className="EditProfileLabel">Emergency Contact:</label><TextBox /></div>
-          <div><label className="EditProfileLabel">Relation:</label><TextBox /></div>
-          <div><label className="EditProfileLabel">Emergency Contact #:</label><TextBox /></div>
+          <div className='spacing'><label className="EditProfileLabel">Email Address:</label><TextBox /></div>
+          <div className='spacing'><label className="EditProfileLabel">Emergency Contact:</label><TextBox /></div>
+          <div className='spacing'><label className="EditProfileLabel">Relation:</label><TextBox /></div>
+          <div className='spacing'><label className="EditProfileLabel">Emergency Contact #:</label><TextBox /></div>
         </div>
 
 

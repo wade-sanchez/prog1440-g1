@@ -12,7 +12,7 @@ export const AddSites = () => {
   return (
     <>
         <div><h1 className="heading">Add Sites</h1></div>
-        <Fieldset>
+        {/* <Fieldset> */}
         <div>
            <SitesButtons className="button2" btnText="Test"/>
         </div>
@@ -29,7 +29,7 @@ export const AddSites = () => {
         {/* connect with backend - then to sites table in mysql */}
         <br/> <br/>
         <ReturnToStaffMenu className="button1"/>
-        </Fieldset>
+        {/* </Fieldset> */}
     </>
   )
 }

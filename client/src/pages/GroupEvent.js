@@ -20,26 +20,26 @@ export const GroupEvent = () => {
     <div className='wrapper-registration'>
         
         <div>
-        <div><label className="EditProfileLabel">Site:</label><Combo className="comboboxReg"></Combo></div>
-        <div><label className="EditProfileLabel">Program:</label><Combo className="comboboxReg"></Combo></div>
-        <div><label className="EditProfileLabel">Date:</label><TextBox className="comboboxReg" tbType={'date'}/></div>
+        <div className='spacing'><label className="EditProfileLabel">Site:</label><Combo className="comboboxReg"></Combo></div>
+        <div className='spacing'><label className="EditProfileLabel">Program:</label><Combo className="comboboxReg"></Combo></div>
+        <div className='spacing'><label className="EditProfileLabel">Date:</label><TextBox className="comboboxReg" tbType={'date'}/></div>
         </div>
         <div>   
-        <div><label className="EditProfileLabel">City:</label><Combo className="comboboxReg"></Combo></div>
-        <div><label className="EditProfileLabel">Event Name:</label><TextBox tbType={'text'}/></div>
-        <div><label className="EditProfileLabel">Description:</label><textarea>asdasdsad</textarea></div>
+        <div className='spacing'><label className="EditProfileLabel">City:</label><Combo className="comboboxReg"></Combo></div>
+        <div className='spacing'><label className="EditProfileLabel">Event Name:</label><TextBox tbType={'text'}/></div>
+        <div className='spacing'><label className="EditProfileLabel">Description:</label><textarea>asdasdsad</textarea></div>
         </div>
         <div>
-        <div><label className="EditProfileLabel">Attendance Count:</label><TextBox tbType={'number'}/></div>
-        <div><label className="EditProfileLabel">Volunteer Count:</label><TextBox tbType={'number'}/></div>
-        <div><label className="EditProfileLabel">Total Volunteer Hours:</label><TextBox tbType={'number'}/></div>
+        <div className='spacing'><label className="EditProfileLabel">Attendance Count:</label><TextBox tbType={'number'}/></div>
+        <div className='spacing'><label className="EditProfileLabel">Volunteer Count:</label><TextBox tbType={'number'}/></div>
+        <div className='spacing'><label className="EditProfileLabel">Total Volunteer Hours:</label><TextBox tbType={'number'}/></div>
         </div>
         
         
     </div>
     <div className="registration-buttons">
       <div>
-        <button  className= "button1"onClick={regGroupEvent}>Register Group Event</button>
+        <button className= "button1" onClick={regGroupEvent}>Register Group Event</button>
       </div>
         <div><ReturnToStaffMenu className="button1"></ReturnToStaffMenu></div>
         {/* add bottom spacing */}

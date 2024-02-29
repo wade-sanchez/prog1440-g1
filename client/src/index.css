@@ -29,7 +29,7 @@ body {
   flex-wrap: wrap;
   width: 100vw;
   justify-content: space-evenly;
-  align-items: center;
+  align-items: baseline;
   /* background: grey; */
   text-align: center;
   margin: auto;
@@ -84,6 +84,8 @@ div.wrapper-button{
   white-space: nowrap;
   text-align: right;
   margin-right: 10px;
+  -ms-transform: translateY(0%);
+  transform: translateY(15%);
 }
 .comboboxReg{
   width: 13vw;;
@@ -91,6 +93,10 @@ div.wrapper-button{
 
 .comboBirthDate{
   width: 13vw;
+}
+
+.spacing{
+  margin-top: 10px;
 }
 
 .button1 {
@@ -223,6 +229,7 @@ div.divYouthLogin{
   /* justify-content: center !important; */
   /* align-items: center !important; */
   text-align: center !important;
+  margin-top: 5px;
   /* width: 20% !important; */
 }
 
