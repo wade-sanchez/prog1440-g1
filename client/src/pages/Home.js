@@ -1,38 +1,47 @@
-import React from 'react'
-import '../index'
+import React from 'react';
 import { useNavigate } from 'react-router-dom';
-
-//import { Fieldset } from '../components/Fieldset';
-
+import './home.css';
 export const Home = () => {
     const navigate = useNavigate();
 
     const navigateToSiteSelect = () => {
-    navigate('/SiteSelect');
+        navigate('/SiteSelect');
     }
 
     const navigateToStaffLogin = () => {
-      navigate('/StaffLogin');
+        navigate('/StaffLogin');
     }
 
     const navigateToRegister = () => {
-    navigate('/Register');
     }
-  return (
-    <div className="wrapper">
-      <h1>
-        Welcome to the Clarington Youth Centre!
-      </h1>
-      <button class="btnHome" onClick={navigateToSiteSelect}>
-        Start Youth Sign-In System
-      </button>
-      {/* Hard Coded Button^ */}
-      <button class="btnHome" onClick={navigateToRegister}>
-        Register
-      </button>
-      <button class="btnHome" onClick={navigateToStaffLogin}>
-        Staff Login
-      </button>
-    </div>
-  )
+   
+    return (
+    
+        <div className='image'>
+          <div className='box-container'>
+            <h1 >
+                Welcome to the Clarington Youth Centre!
+            </h1>
+              <div >
+                <div>
+                    <button className="button1" onClick={navigateToSiteSelect}>
+                         Youth Sign-In System
+                    </button>
+                </div>
+                <div>
+                    <button className="button1" onClick={navigateToRegister}>
+                       New User Registration
+                    </button>
+                </div>
+                <div>
+                    <button className="button1" onClick={navigateToStaffLogin}>
+                        Staff Sign-in System
+                    </button>
+                </div>
+              </div>
+            </div>
+        </div>
+   
+    )
 }
+

@@ -3,6 +3,8 @@ import React from "react";
 import { useNavigate } from "react-router-dom";
 import Combo from "../components/ComboBox";
 import TextBox from "../components/Textbox";
+import './home.css'
+import './youthlogin.css'
 
 const YouthLogin = () => {
     const navigate = useNavigate();
@@ -32,60 +34,58 @@ const YouthLogin = () => {
     
     // TESTING BUTTON TO GET VALUES FROM TEXT BOXES
     return(
-     
-        <div className="wrapper">
-            <h1>Youth Sign-In Page</h1>
-            <div className="divYouthLogin">
-                {/* <div className="divYouthLoginInner"> */}
-                    {/* <label class="lblYouthLogin">First Name: </label> */}
-                {/* </div> */}
-                {/* <input type="text" /> */}
-                <TextBox tbName={'fNameTB'} tbType={'text'} placeholder={'First Name'} />
-            </div>
-            <div className="divYouthLogin"> 
-                {/* <div className="divYouthLoginInner"> */}
-                    {/* <label class="lblYouthLogin">Last Name: </label> */}
-                {/* </div> */}
-                {/* <input type="text" /> */}
-                {/* HardCoded TextBox^ */}
-                <TextBox tbName={'lNameTB'} tbType={'text'} placeholder={'Last Name'}/>
-                {/* Component TextBox^ */}
-            </div>
-            <div className="divYouthLogin">
-                {/* <div className="divYouthLoginInner"> */}
-                {/* <label class="lblYouthLogin">Birth Day: </label> */}
-                {/* </div> */}
-                {/* <input type="text" /> */}
-                {/* HardCoded TextBox^ */}
-                <TextBox id={"bDay"} tbName={'birthDay'} tbType={'text'} placeholder={'Birth Date'} onFocus={(e) => e.target.type='date'}/>
-                {/* Component TextBox^ */}
-            </div>
-            <br/>
-            <div>
-                <label>Purpose of Visit: </label>
-                {/* <input type="text" /> */}
-                {/* HardCoded TextBox^ */}
-                <Combo />
-                {/* Component TextBox^ */}
-            </div>
-            <br/>
-            <div class="btnYouthLogin">
-                <button onClick={signIn}>Sign In</button>
-            </div>
-            <div class="btnYouthLogin">
-                <button onClick={navigateHome}>Return to Home Page</button>
-            </div>
-            <br/>
-            <div>
-                <h3 className="h3YouthLogin">Don't have an account?</h3>
-                <h3 className="h3YouthLogin">First time attending program?</h3>
-            </div>
-            <div class="btnYouthLogin">
-                <button  onClick={navigateRegister}>Register Here</button>
-            </div>
-        </div>
-    //    Put Validation, check both combobox for valid site+event, then proceed to sign in
-    //    autofill side+event in sign in form (show or not show?)
+       <div className="image2">
+        <div className="form-box">
+            <form className="signup-form" >
+              <h1>Youth Sign-In Page</h1>
+              <label>
+              <b> First Name:</b> 
+                <input
+                  type="text"
+                  name="firstName"
+                
+                />
+              </label>
+              <label>
+              <b>  Last Name:</b> 
+                <input
+                  type="text"
+                  name="lastName"
+                  
+                />
+              </label>
+              <label>
+              <b> Date of Birth:</b> 
+                <input
+                  type="date"
+                  name="dateOfBirth"
+                 
+                />
+              </label>
+              <label>
+              <b> Purpose of Visit: </b> 
+          <select
+            name="purposeOfVisit"
+            >
+            <option value="Visitor">Visitor</option>
+            <option value="Camp Counselor">Camp Counselor</option>
+            <option value="Volunteer">Volunteer</option>
+            <option value="Staff">Staff</option>
+          </select>
+        </label> 
+        <div className="space">
+              <button type="submit">Sign In</button>
+              </div>
+                <>
+                  <h3>Don't have an account? First time attending program</h3>
+                  <button onClick={navigateRegister}>Register Here</button>
+                </>
+             
+            </form>
+     //Put Validation, check both combobox for valid site+event, then proceed to sign in
+    //autofill side+event in sign in form (show or not show?)
+    </div>
+    </div>
     )
 }
 

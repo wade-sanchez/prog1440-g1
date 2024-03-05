@@ -21,8 +21,9 @@ export const StaffMenu = () => {
   }
 
   const generateReport = () => {
-    alert("Generate Report as .csv file");
+    // alert("Generate Report as .csv file");
     // insert report stuff
+    navigate('/Reports');
   }
   return (
     <div className='wrapper'>

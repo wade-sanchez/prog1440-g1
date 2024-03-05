@@ -1,7 +1,6 @@
-* {
-  background-color: lightskyblue;
+/* *{
+  background: lightblue;
 }
-
 body {
   margin: 0;
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
@@ -10,7 +9,35 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   background-color: lightsteelblue;
+
+} */
+
+.home-container{
+  text-align: center;
+  margin-top: 50px;
 }
+
+
+.button-container {
+  display: block;
+  justify-content: center;
+  gap: 50px;
+  align-items: center;
+  flex-direction: row;
+
+}
+
+.button1 {
+  color: white;
+  padding: 10px 20px;
+  font-size: 16px;
+  margin-bottom: 10px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  background-color:  #52078f;
+  transition: background-color 0.3s;
+} 
 
 .wrapper{
 
@@ -20,6 +47,7 @@ body {
   /* background: grey; */
   text-align: center;
   margin: auto;
+  height: 200vw;
 }
 
 .wrapper-registration{
@@ -44,8 +72,9 @@ div.wrapper-button{
 
 .input-box {
   width: 100%;
-  height: 10px;
+  height: 30px;
   margin: 30px 0;
+  
 
 }
 
@@ -97,16 +126,6 @@ div.wrapper-button{
   margin-top: 10px;
 }
 
-.button1 {
-  background-color: lightseagreen;
-  color: white;
-  border: none;
-  border-radius: 5px;
-  padding: 10px 20px;
-  cursor: pointer;
-  font-size: 20px;
-  font-weight: bold;
-} 
 
 .small-button1 {
   margin-top: 10px;
