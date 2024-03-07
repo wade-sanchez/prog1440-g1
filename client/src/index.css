@@ -38,7 +38,9 @@ body {
   background-color:  #52078f;
   transition: background-color 0.3s;
 } 
-
+.button1:hover {
+  background-color: #3033ec;
+}
 .wrapper{
 
   width: 100vw;

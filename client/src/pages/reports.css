@@ -58,7 +58,7 @@
   .label-spacing {
     margin-right: 70px;
   }
-  .button1 {
+  .button {
     color: white;
     padding: 10px 20px;
     font-size: 16px;
@@ -70,7 +70,7 @@
     transition: background-color 0.3s;
     margin-right: 15px;
   } 
-  .button1:hover {
+  .button:hover {
     background-color: #2eb435;
   }
   

@@ -56,10 +56,10 @@ export const Reports = () => {
           <label className='space'>To: </label><input type="date"/>
         </div>
           <div>
-            <button id='btnReports' className='button1'>Fiscal Year</button>
-            <button id='btnReports' className='button1'>Calendar Year</button>
-            <button id='btnReports' className='button1'>Decrease Date by 1 Year</button>
-            <button id='btnReports' className='button1'>Increase Date by 1 Year</button>
+            <button id='btnReports' className='button'>Fiscal Year</button>
+            <button id='btnReports' className='button'>Calendar Year</button>
+            <button id='btnReports' className='button'>Decrease Date by 1 Year</button>
+            <button id='btnReports' className='button'>Increase Date by 1 Year</button>
           </div>
         <div> 
           <h2>Age Groups:</h2>
@@ -74,15 +74,15 @@ export const Reports = () => {
         {inputList}
         </div>
         <div>
-        <button id='btnReports' className='button1' onClick={onAddBtnClick}>
+        <button id='btnReports' className='button' onClick={onAddBtnClick}>
           Add another age grouping
         </button>
-        <button id='btnReports' className='button1' onClick={generateReport}>Generate Report</button>
+        <button id='btnReports' className='button' onClick={generateReport}>Generate Report</button>
       </div>
         </div>
           <div className='wrapper-registration'>
       {inputTable}
-      
+
       {/* <ReportTable/> */}
       </div>
       </>
