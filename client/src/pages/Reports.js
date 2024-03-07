@@ -38,82 +38,53 @@ export const Reports = () => {
   
   
   return (
-    <div className="image10">
-      <div className='inner-wrapper'></div>
-      <div className='wrapper-1'>
-      <div className='block-box'>
-      <h1>Reports and Analytics</h1>
-      <div>
-        <div>
-          <div className='inner-wrapper'>
-          <label className='label-spacing'>Pick Site: </label>
-          <Combo/>
-          </div>
 
-          <div className='inner-wrapper'>
-          <label className='label-spacing'>Pick Program: </label>
+  <>
+     <div className='wrapper1'>
+      <h1> Reports and Analytics :</h1>
+        <div className='labelr'>
+          <span>Pick Site: </span>
+          <Combo className='label-spacing'/> 
+          <span>Pick Program: </span>
           <Combo/>
-          </div>
         </div>
-        
-        <div>
-        <div className='inner-wrapper'>
-          <label className='label-spacing'>Pick Date Range: </label>
+         <div>
+          <label className='labeld'>Pick Date Range: </label>
         </div> 
-        <div className='inner-wrapper'>
-          <label className='label-spacing'>From:</label><input type="date"/>
+        <div className='labels'>
+          <label className='space'>From: </label><input type="date" className='label-spacing'/>
+          <label className='space'>To: </label><input type="date"/>
         </div>
-        <div className='inner-wrapper'>
-          <label className='label-spacing'>To:</label><input type="date"/>
-        </div>
-        </div>
-
-        <div className='inner-wrapper'>
-          <div className='inner-wrapper'>
+          <div>
             <button id='btnReports' className='button1'>Fiscal Year</button>
-            <div className='button-spacing'/>
             <button id='btnReports' className='button1'>Calendar Year</button>
-          </div>
-
-          <div className='inner-wrapper'>
             <button id='btnReports' className='button1'>Decrease Date by 1 Year</button>
-            <div className='button-spacing'/>
             <button id='btnReports' className='button1'>Increase Date by 1 Year</button>
           </div>
-        </div>
-        </div>
-        
-        <div>
-        <div>
-        <div className='smaller-heading'>Age Groups:</div>
+        <div> 
+          <h2>Age Groups:</h2>
         <div>Select the Age Range of the Clients you with to report on.</div>
         <div>You can enter multiple groups such as 12 to 15, 16 to 25,</div>
         <div>by using "Add another Age Grouping"</div>
         </div>
-        <label className='label-spacing'>From: </label>
-        <div className='inner-wrapper'>
-        <input type="number"/>
-        </div>
-        <div className='inner-wrapper'>
-        <label className='label-spacing'>To:</label><input type="number"/>
+        <div className='labels'>
+        <label className='space'>From: </label>
+        <input type="number" className='label-spacing'/>
+        <label className='space'>To:</label><input type="number"/>
         {inputList}
         </div>
         <div>
         <button id='btnReports' className='button1' onClick={onAddBtnClick}>
           Add another age grouping
         </button>
-        </div>
-        <div>
         <button id='btnReports' className='button1' onClick={generateReport}>Generate Report</button>
       </div>
         </div>
-      </div>
-      </div>
-      
-      <div className='wrapper-registration'>
+          <div className='wrapper-registration'>
       {inputTable}
+      
       {/* <ReportTable/> */}
       </div>
-    </div>
+      </>
   )
 }

@@ -1,83 +1,88 @@
-.image10 {
-    position: relative;
-    height:92vh;
-    overflow: hidden;
-    background-color: darkgray;
-}
-
-/* .image10::before {
-    content: "";
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 130%;
-    background-image: url('https://englishteaching101.com/wp-content/uploads/2018/09/school-kids-running-in-elementary-school-hallway-PNMWJ3X-scaled.jpg');
-    background-size: cover;
-    background-position: 20% 60%;
-    opacity: 0.6;
-    z-index: -1;
-} */
-
-.wrapper-1 {
-    display:flex;
-    width: 100vw;
-    justify-content: space-around;
-    text-align: left;
-    /* flex-wrap: wrap; */
-    /* flex-flow: column wrap; */
-    align-items: baseline;
-    margin-right: 100px;
-}
-
-.block-box{
-    margin-left: 100px;
-    margin-bottom: 60px;
-    height:40vw;
-    /* color: #3c00a0; */
-    position: relative;
-    /* background: #d5e6fa; */
-    padding: 50px 60px 70px;
-    border-radius: 10px;
-    opacity: 1;
-}
-
-.inner-wrapper{
-    display:inline-flex;
-    justify-content: center !important;
-    margin-top: 10px;
-}
-
-div.inner-wrapper + div.inner-wrapper{
-    margin-left: 10px;
-    align-items: center;
-}
-
-.center-items{
+.wrapper1 {
     display: flex;
-    justify-content: center;
-    align-items: center;
-    text-align: center;
-}
-
-.center-text{
-    text-align: center;
-}
-
-.label-spacing{
-    margin-right: 10px;
-}
-
-.button-spacing{
-    margin-right: 10px;
-}
-
-.smaller-heading{
+    flex-direction: column;
+    align-items: left;
+    justify-content: left;
+    width: 100%;
+    padding: 20px;
+    box-sizing: border-box;
+    text-align: left;
+  }
+  .wrapper1 h1{
     font-size: 30px;
+    margin-bottom: 30px;
+    color: #0848d3;
+    position: relative;
+    text-decoration: underline;
+    font-weight: bold;
+    }
+  .wrapper1 h2{
+    font-size: 30px;
+    margin-bottom: 10px;
+    color: #0848d3;
+    position: relative;
+    text-decoration: underline;
+    font-weight: bold;
+    margin-top: 30px;
+  }
+  
+    .labelr {
+    float: left;
+    margin-right: 20px;
+    font-size: 20px;
+    font-weight: bold; 
+    color: #0848d3;
+    margin-bottom: 20px;
+  }
+   .labeld {
+    float: left;
+    margin-right: 20px;
+    font-size: 20px;
+    font-weight: bold; 
+    color: #0848d3;
+    margin-bottom: 10px;
+    text-decoration: underline;
+  }
+  .labels {
+    float:left;
+    margin-right: 20px;
+    font-size: 16px;
+    margin-bottom:20px ;
+    color: black;
+    font-weight: bold;
+    margin-left: 30px;
 }
-
-#btnReports{
-    display:inline-flex;
-    justify-content: center !important;
-    margin-top: 10px;
+.space {
+    margin-right: 10px;
 }
+  .label-spacing {
+    margin-right: 70px;
+  }
+  .button1 {
+    color: white;
+    padding: 10px 20px;
+    font-size: 16px;
+    margin-bottom: 10px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    background-color:  #0831b9;
+    transition: background-color 0.3s;
+    margin-right: 15px;
+  } 
+  .button1:hover {
+    background-color: #2eb435;
+  }
+  
+  .wrapper-registration {
+    display: flex;
+    justify-content: left;
+    align-items: left;
+    width: 100%;
+    padding: 20px;
+    box-sizing: border-box;
+  }
+  
+  .redXImage {
+    cursor: pointer;
+  }
