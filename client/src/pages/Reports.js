@@ -1,11 +1,14 @@
 //reports, show different reports
 import React, {useState} from 'react'
+import { useNavigate } from 'react-router-dom';
 // import ReactDOM from "react-dom"
 import Combo from '../components/ComboBox'
 import { ReportTable } from '../components/ReportTable';
+import './reports.css'
 
 
 export const Reports = () => {
+  const navigate = useNavigate();
   const [inputList, setInputList] = useState([]);
   const [inputTable, setInputTable] = useState([]);
   const removeAgeGroup = () => {
@@ -24,69 +27,93 @@ export const Reports = () => {
       
     ));
   };
+
+ 
   const generateReport = event => {
-    setInputTable(inputTable.concat(
-    <table>
-      <tr>
-        <th>First Name</th>
-        <th>Last Name</th>
-      </tr>
-      <tr>
-        <td>Wade</td>
-        <td>Sanchez</td>
-      </tr>
-    </table>
-    ));
+    // setInputTable(inputTable.concat(
+    //   <ReportTable/>
+    // ));
+    navigate('/ReportsTable')
   }
   
   
   return (
-    <>
-      <h1>Reports</h1>
+    <div className="image10">
+      <div className='inner-wrapper'></div>
+      <div className='wrapper-1'>
+      <div className='block-box'>
+      <h1>Reports and Analytics</h1>
       <div>
         <div>
-          <label>Pick Site: </label>
+          <div className='inner-wrapper'>
+          <label className='label-spacing'>Pick Site: </label>
           <Combo/>
-          <label>Pick Program: </label>
+          </div>
+
+          <div className='inner-wrapper'>
+          <label className='label-spacing'>Pick Program: </label>
           <Combo/>
+          </div>
         </div>
         
         <div>
-          <label>Pick Date Range: </label>
-          <label>From:</label><input type="date"/>
-          <label>To:</label><input type="date"/>
+        <div className='inner-wrapper'>
+          <label className='label-spacing'>Pick Date Range: </label>
+        </div> 
+        <div className='inner-wrapper'>
+          <label className='label-spacing'>From:</label><input type="date"/>
+        </div>
+        <div className='inner-wrapper'>
+          <label className='label-spacing'>To:</label><input type="date"/>
+        </div>
         </div>
 
-        <div className='wrapper-registration'>
-          <div>
-            <button>Fiscal Year</button>
-            <button>Calendar Year</button>
+        <div className='inner-wrapper'>
+          <div className='inner-wrapper'>
+            <button id='btnReports' className='button1'>Fiscal Year</button>
+            <div className='button-spacing'/>
+            <button id='btnReports' className='button1'>Calendar Year</button>
           </div>
-        
-          <div>
-            <button>Decrease Date by 1 Year</button>
-            <button>Increase Date by 1 Year</button>
+
+          <div className='inner-wrapper'>
+            <button id='btnReports' className='button1'>Decrease Date by 1 Year</button>
+            <div className='button-spacing'/>
+            <button id='btnReports' className='button1'>Increase Date by 1 Year</button>
           </div>
         </div>
+        </div>
         
-        <div>Age Groups:</div>
+        <div>
+        <div>
+        <div className='smaller-heading'>Age Groups:</div>
         <div>Select the Age Range of the Clients you with to report on.</div>
-        <div>You can enter multiple groups such as 12 to 15, 16 to 25, by using "Add another Age Grouping"</div>
-        <label>From: </label><input type="number"/> <label>To:</label><input type="number"/>
+        <div>You can enter multiple groups such as 12 to 15, 16 to 25,</div>
+        <div>by using "Add another Age Grouping"</div>
+        </div>
+        <label className='label-spacing'>From: </label>
+        <div className='inner-wrapper'>
+        <input type="number"/>
+        </div>
+        <div className='inner-wrapper'>
+        <label className='label-spacing'>To:</label><input type="number"/>
         {inputList}
-      </div>
-      <div>
-        <button onClick={onAddBtnClick}>
+        </div>
+        <div>
+        <button id='btnReports' className='button1' onClick={onAddBtnClick}>
           Add another age grouping
         </button>
+        </div>
+        <div>
+        <button id='btnReports' className='button1' onClick={generateReport}>Generate Report</button>
       </div>
-      <div>
-        <button onClick={generateReport}>Generate Report</button>
+        </div>
       </div>
+      </div>
+      
       <div className='wrapper-registration'>
       {inputTable}
-      <ReportTable/>
+      {/* <ReportTable/> */}
       </div>
-    </>
+    </div>
   )
 }

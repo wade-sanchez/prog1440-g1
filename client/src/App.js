@@ -13,6 +13,7 @@ import EditProfile from './pages/EditProfile';
 import { Reports } from './pages/Reports';
 import { GroupEvent } from './pages/GroupEvent';
 import { SiteSelect } from './pages/SiteSelect';
+import { ReportsTable } from './pages/ReportsTable';
 
 function App() {
   
@@ -20,7 +21,7 @@ function App() {
   return (
     <div className="App">
       <Navbar/>
-      <br/>
+      {/* <br/> */}
       <Routes>
         <Route path='/' element={<Home />} />
         <Route path='siteselect' element={<SiteSelect />} />
@@ -34,6 +35,7 @@ function App() {
         <Route path='editprofile' element={<EditProfile/>} />
         <Route path='reports' element={<Reports/>} />
         <Route path='groupevent' element={<GroupEvent/>}/>
+        <Route path='reportstable' element={<ReportsTable/>}/>
       </Routes>
     </div>
     
