@@ -8,7 +8,8 @@
     box-sizing: border-box;
     text-align: left;
     background-color: #dee6fa;
-    height: 100vw;
+    height:100vh;
+    overflow:hidden ;
   }
   .wrapper1 h1{
     font-size: 30px;
@@ -87,7 +88,7 @@
     justify-content: left;
     align-items: left;
     width: 100%;
-    padding: 20px;
+    /* padding: 20px; */
     box-sizing: border-box;
   }
   
