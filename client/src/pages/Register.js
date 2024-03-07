@@ -10,6 +10,7 @@ import './register.css'
 function Register() {
   return (
     <>
+    <div className='image3'>
     <div className='register'>
      <div className="registration-form">
       <h1 className="text-center my-4">Clarington Youth Centre Registration</h1>
@@ -61,6 +62,7 @@ function Register() {
       <div className="registration-buttons">
         <button className='button1'>Register</button>
       </div>
+    </div>
     </div>
     </div>
     </>

@@ -63,9 +63,11 @@ export const Reports = () => {
           </div>
         <div> 
           <h2>Age Groups:</h2>
+          <div className='para'>
         <div>Select the Age Range of the Clients you with to report on.</div>
         <div>You can enter multiple groups such as 12 to 15, 16 to 25,</div>
         <div>by using "Add another Age Grouping"</div>
+        </div>
         </div>
         <div className='labels'>
         <label className='space'>From: </label>
