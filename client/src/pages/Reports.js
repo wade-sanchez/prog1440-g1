@@ -18,9 +18,9 @@ export const Reports = () => {
   const onAddBtnClick = event => {
     setInputList(inputList.concat(
     <div id="newAgeGroup">
-    <label>From:</label>
-    <input type="number"/>
-    <label>To:</label>
+    <label  className='space'>From:</label>
+    <input type="number" className='label-spacing'/>
+    <label  className='space'>To:</label>
     <input type="number"/>
     <img alt="xImage" src="redXImage.png" width="25" height="25" onClick={removeAgeGroup}></img>
     </div>

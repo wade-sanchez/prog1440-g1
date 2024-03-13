@@ -8,7 +8,7 @@
     box-sizing: border-box;
     text-align: left;
     background-color: #dee6fa;
-    height:100vh;
+    height:auto;
     overflow:hidden ;
   }
   .wrapper1 h1{
