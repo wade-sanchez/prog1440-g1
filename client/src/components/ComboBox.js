@@ -1,10 +1,13 @@
 //import Combobox from "react-widgets/Combobox";
 //import { Combobox } from "react-widgets";
-import data from "./DummyList";
+// import data from "./DummyList";
 // import siteData from "./SiteList";
 //import siteData from "./SiteList";
-import { useState } from "react";
-
+import { useState, useEffect } from "react";
+import { Component } from "react";
+import YouthLogin from "../pages/YouthLogin";
+import { SiteSelect } from "../pages/SiteSelect";
+// import classnames from 'classnames'
 
 // const ACombobox = () => {
 //     return (
@@ -27,13 +30,32 @@ import { useState } from "react";
 // export default ACombobox
 
 export default function Combo({className}){
-    const [selected, setSelected] = useState(null);
+    const [selected, setSelected] = useState('');
     let changeChoice = (e) => {
         setSelected(e.target.value)
     }
-    const selectData = () => {
+    const aClassName = (e) => {
+        className(e.target.value);
+    };
+    const[siteData, setSiteData] = useState([])
+    useEffect(() => {
+        var link1 = 'http://localhost:3001/'
+        var link2 = link1+className
+        // console.log(className)
+        fetch(link2)
+        .then(res => res.json())
+        .then(siteData => setSiteData(siteData))
+        .catch(err => console.log(err));
+    }, [])
+    const selectProgram= () => {
+        return(
+    siteData.map(siteData => 
+        (<option key={siteData.id} value={siteData.id}>{siteData.Program}</option>))
+    )}
         
-    }
+    
+
+    
         return(
             <>
                 {/* {selected} */}
@@ -42,9 +64,9 @@ export default function Combo({className}){
                     <option value="Select Option!">
                         Select Option
                     </option>
-                    {data.map((data) => <option key={data.id} value={data.id}>{data.Program}</option>)}
+                    {selectProgram()}
                        {/* edit when backend is ready */}
-                </select>
+                </select>   
             </>
         );
 }
