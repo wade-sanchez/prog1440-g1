@@ -2,23 +2,27 @@
 
 
 //import './App.css';
-import 'bootstrap/dist/css/bootstrap.min.css';
+// import 'bootstrap/dist/css/bootstrap.min.css';
 //import data from './components/DummyList.js';
 import TextBox from '../components/Textbox';
 import Combo from '../components/ComboBox';
 import { ReturnToStaffMenu } from '../components/ReturnToStaffMenuBtn';
 // import { Fieldset } from '../components/Fieldset';
 import { SearchBar } from '../components/SearchProfile';
+import '../components/style.css'
+// import { useNavigate } from 'react-router-dom'
 //import city from '../components/CityList';
 //import { useNavigate } from 'react-router-dom';
 
 function EditProfile() {
+  
+
   return (
     <>
-    <h1 className='heading'>Edit Profile</h1>
-    <div className="wrapper-registration">
+    <h1 className='headings'>Edit Profile</h1>
+    <div className="wrappers">
       <div>
-        <h3 className='small-heading'>Search for a profile:</h3>
+        <h3 className='label'>Search for a profile:</h3>
         <SearchBar/>
       </div>
       {/* <Fieldset> */}
@@ -29,32 +33,20 @@ function EditProfile() {
     
     {/* next step: alert - entry found or not found */}
       <br/>
-      <div >
-      {/* <div ><h1 className='heading'>Profile:</h1></div> */}
-
-      <div className='spacing'><label className="EditProfileLabel">Preferred Name:</label><TextBox/></div>
-      <div className='spacing'><label className="EditProfileLabel">City: </label><Combo className="comboboxReg"/></div>
-      <div className='spacing'><label className="EditProfileLabel">Street Address:</label><TextBox/></div> 
-      </div>
-      <div >
-      
-      {/* combobox: list all cities in the vicinity of Durham Region */}
-      
-      <div className='spacing'><label className="EditProfileLabel">Postal Code:</label><TextBox/></div>
-      <div className='spacing'><label className="EditProfileLabel">Phone:</label><TextBox/></div>
-      <div className='spacing'><label className="EditProfileLabel"> Email Address:</label><TextBox/></div>
-      </div>
-      <div className='EContact'>
-      <div className='spacing'><label className="EditProfileLabel">Emergency Contact:</label><TextBox/></div>
-      <div className='spacing'><label className="EditProfileLabel"> Relation:</label><TextBox/></div>
-      <div className='spacing'><label className="EditProfileLabel">Emergency Contact #:</label><TextBox/></div>
-      </div>
-      
-      {/* </Fieldset> */}
-    </div>
+      <div className='spacing'><label className="label">Preferred Name:</label><TextBox className="input-field"/></div>
+      <div className='spacing'><label className="label">City: </label><Combo className="input-field"/></div>
+      <div className='spacing'><label className="label">Street Address:</label><TextBox className="input-field"/></div> 
+      <div className='spacing'><label className="label">Postal Code:</label><TextBox className="input-field"/></div>
+      <div className='spacing'><label className="label">Phone:</label><TextBox className="input-field"/></div>
+      <div className='spacing'><label className="label"> Email Address:</label><TextBox className="input-field"/></div>
+      <div className='spacing'><label className="label">Emergency Contact:</label><TextBox className="input-field"/></div>
+      <div className='spacing'><label className="label"> Relation:</label><TextBox className="input-field"/></div>
+      <div className='spacing'><label className="label">Emergency Contact #:</label><TextBox className="input-field"/></div>
+    
     <div className='registration-buttons'>
-      <button className="button1">Edit Youth Profile</button>
-      <ReturnToStaffMenu className="button1"/>
+      <button className="buttons">Edit Youth Profile</button>
+      <ReturnToStaffMenu className="buttons"/>
+    </div>
     </div>
     </>
   );

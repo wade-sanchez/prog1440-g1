@@ -1,39 +1,53 @@
 //import Container from 'react-bootstrap/Container';
 import React from 'react';
-import Nav from 'react-bootstrap/Nav';
-import Navbar from 'react-bootstrap/Navbar';
+// import Nav from 'react-bootstrap/Nav';
+// import Navbar from 'react-bootstrap/Navbar';
 import { Link } from 'react-router-dom';
-import Container from 'react-bootstrap/Container';
+// import Container from 'react-bootstrap/Container';
 import './styles.css'
 //import { Home } from '../../pages/Home';
+import { useState } from 'react';
+import Logo from '../../Assets/logo.png';
+import Menu from '../../Assets/menu.jpg';
 
-const header = () => {
-  return (
-    <>
-    <div>
-      <Navbar bg="dark" data-bs-theme="dark">
-          <Container className='container'><Navbar.Brand className='me-auto' as={ Link } to='/'>JHS Durham - Clarington Youth Centres</Navbar.Brand>
-          <Nav className="me-auto">
-            <Nav.Link className='linkTest' as={ Link } to='/'>Home</Nav.Link>
-            <Nav.Link className='linkTest' as={ Link } to='SiteSelect'>Login</Nav.Link>
-            <Nav.Link className='linkTest' as={ Link } to='Register'>Registration</Nav.Link>
-            <Nav.Link className='linkTest' as={ Link } to='StaffLogin'>Staff Login</Nav.Link>
-            {/* <Nav.Link as={ Link } href="#">Exit</Nav.Link> */}
-          </Nav>
-          </Container>
-      </Navbar>
-      </div>
-      {/* <div>
-      <Routes>
-            <Route exact path='/' component='Home' />
-            <Route render={function () {
-              return <p>Not found</p>
-            }} />
-      </Routes>
-      </div> */}
-    </>
-  );
+
+const Header = () => {
+
+  const [showMenu, setShowMenu] = useState(false)
+
+   return (
+
+
+        <nav className="navbar">
+
+          <Link to='/'>
+              <img className="MainLogo" src={Logo}  alt="Logo"/> 
+          </Link> 
+
+        <div className="desktopMenu">
+
+        <Link activeClass='active' to='/' spy={true}  className="DekstopMenuListItem"  >Home</Link>
+        <Link activeClass='active' to='SiteSelect' spy={true}  className="DekstopMenuListItem" >Login</Link>
+        <Link activeClass='active' to='Register' spy={true}  className="DekstopMenuListItem" >Registration</Link>
+        <Link activeClass='active' to='StaffLogin' spy={true}  className="DekstopMenuListItem" >Staff Login</Link>
+
+
+        </div>
+
+
+
+        <img className="mobMenuLogo" src={Menu} alt="Logo" onClick={()=> setShowMenu(!showMenu)} />
+                <div className="navMenu" style={{display:showMenu? 'flex' : 'none'}}>
+
+                    <Link activeClass='active' to='/'  className="DekstopMenuListItem" onClick={()=> setShowMenu(false)} >Home</Link>
+                    <Link activeClass='active' to='SiteSelect'  className="DekstopMenuListItem" onClick={()=> setShowMenu(false)} >Login</Link>
+                    <Link activeClass='active' to='Register' className="DekstopMenuListItem" onClick={()=> setShowMenu(false)} >Registration</Link>
+                    <Link activeClass='active' to='StaffLogin' className="DekstopMenuListItem" onClick={()=> setShowMenu(false)} >Staff login</Link>
+                </div>
+
+      </nav>
+
+   );
 }
 
-
-export default header;
+export default Header;

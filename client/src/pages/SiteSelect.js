@@ -1,4 +1,4 @@
-import React from 'react'
+import React, {useState} from 'react'
 import '../index'
 // import BlueButton from '../components/Button';
 import './home.css';
@@ -8,13 +8,20 @@ import YouthLogin from './YouthLogin';
 
 //import { Fieldset } from '../components/Fieldset';
 
-export const SiteSelect = () => {
+export const SiteSelect = (props) => {
     const navigate = useNavigate();
-
     const navigateToSignIn = () => {
     navigate('/YouthLogin');
-
   }
+    const [program, setProgram] = useState({
+        name: 'programs'
+    });
+    const className = (name) => {
+      setProgram({
+        name
+      });
+    }
+    
   return (
       
     <div className='image'>
@@ -24,11 +31,11 @@ export const SiteSelect = () => {
         <div>
           <div>
             <label class="lblHome" for="siteSelect"><b> Site Selection: </b></label>
-            <Combo dataType="data" id="siteSelect"/>
+            <Combo className="sites" dataType="data" id="siteSelect"/>
           </div>
           <div>
             <label class="lblHome" for="programSelect"> <b>Program Selection:</b> </label>
-            <Combo dataType="siteData" id="programSelect"> </Combo>
+            <Combo name="programs" className="programs" dataType="siteData" id="programSelect"> </Combo>
           </div>
             <br/>
             {/* <BlueButton onClick={navigateToSignIn} btnText={'Go to Sign-In'}/> */}

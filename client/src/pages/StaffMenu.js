@@ -1,5 +1,6 @@
 import React from 'react'
 import { useNavigate } from 'react-router-dom';
+import '../components/style.css'
 
 export const StaffMenu = () => {
   const navigate = useNavigate();
@@ -26,19 +27,19 @@ export const StaffMenu = () => {
     navigate('/Reports');
   }
   return (
-    <div className='wrapper'>
-    <div><h1 className='heading'>CYC Staff Menu</h1></div>
+    <div className='wrappers'>
+    <div><h1 className='headings'>CYC Staff Menu</h1></div>
      <div className="staffMenuButtons" >
-        <button className="button2" onClick={navigateToGroupEvent}>Enter Group Event Count</button>
+        <button className="buttons" onClick={navigateToGroupEvent}>Enter Group Event Count</button>
     </div>
     <div className="staffMenuButtons">
-        <button className="button2" onClick={navigateToAddSites}>Add/Edit Sites</button>
+        <button className="buttons" onClick={navigateToAddSites}>Add/Edit Sites</button>
     </div>
     <div className="staffMenuButtons">
-        <button className="button2" onClick={navigateToEditProfile}>Edit Youth Profile</button>
+        <button className="buttons" onClick={navigateToEditProfile}>Edit Youth Profile</button>
     </div>
     <div className="staffMenuButtons">
-        <button className="button2" onClick={generateReport}>Generate Report</button>
+        <button className="buttons" onClick={generateReport}>Generate Report</button>
     </div>
     </div>
   )

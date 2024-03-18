@@ -16,33 +16,34 @@ export const GroupEvent = () => {
   }
   return (
     <>
-    <h1 className='heading'>Group Event Registration</h1>
-    <div className='wrapper-registration'>
+    <h1 id="GroupEvent" className='headings'>Group Event Registration</h1>
+    <div className='wrappers'>
         
         <div>
-        <div className='spacing'><label className="EditProfileLabel">Site:</label><Combo className="comboboxReg"></Combo></div>
-        <div className='spacing'><label className="EditProfileLabel">Program:</label><Combo className="comboboxReg"></Combo></div>
-        <div className='spacing'><label className="EditProfileLabel">Date:</label><TextBox className="comboboxReg" tbType={'date'}/></div>
+        <div className='spacing'><label className="label">Site:</label><Combo className="input-field"></Combo></div>
+        <div className='spacing'><label className="label">Program:</label><Combo className="input-field"></Combo></div>
+        <div className='spacing'><label className="label">Date:</label><TextBox className="input-field" tbType={'date'}/></div>
         </div>
         <div>   
-        <div className='spacing'><label className="EditProfileLabel">City:</label><Combo className="comboboxReg"></Combo></div>
-        <div className='spacing'><label className="EditProfileLabel">Event Name:</label><TextBox tbType={'text'}/></div>
-        <div className='spacing'><label className="EditProfileLabel">Description:</label><textarea>asdasdsad</textarea></div>
+        <div className='spacing'><label className="label">City:</label><Combo className="input-field"></Combo></div>
+        <div className='spacing'><label className="label">Event Name:</label><TextBox className="input-field" tbType={'text'}/></div>
+        <div className='spacing'><label className="label">Description:</label><textarea className="input-field">asdasdsad</textarea></div>
         </div>
         <div>
-        <div className='spacing'><label className="EditProfileLabel">Attendance Count:</label><TextBox tbType={'number'}/></div>
-        <div className='spacing'><label className="EditProfileLabel">Volunteer Count:</label><TextBox tbType={'number'}/></div>
-        <div className='spacing'><label className="EditProfileLabel">Total Volunteer Hours:</label><TextBox tbType={'number'}/></div>
+        <div className='spacing'><label className="label">Attendance Count:</label><TextBox className="input-field" tbType={'number'}/></div>
+        <div className='spacing'><label className="label">Volunteer Count:</label><TextBox className="input-field" tbType={'number'}/></div>
+        <div className='spacing'><label className="label">Total Volunteer Hours:</label><TextBox className="input-field" tbType={'number'}/></div>
         </div>
-        
+        <div>
+        <div className="registration-buttons">
+        <button className= "buttons" onClick={regGroupEvent}>Register Group Event</button>
+        <ReturnToStaffMenu className="buttons"></ReturnToStaffMenu>
+        </div>
+        {/* add bottom spacing */}
         
     </div>
-    <div className="registration-buttons">
-      <div>
-        <button className= "button1" onClick={regGroupEvent}>Register Group Event</button>
-      </div>
-        <div><ReturnToStaffMenu className="button1"></ReturnToStaffMenu></div>
-        {/* add bottom spacing */}
+    
+      
     </div>
     </>
   )
