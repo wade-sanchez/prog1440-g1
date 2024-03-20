@@ -27,7 +27,7 @@ export const AddSites = () => {
 
   return (
     <>
-        <h1 className="heading">Sites and programes</h1>
+        <h1 className="heading">Sites And Programes</h1>
         {/* <Fieldset> */}
 
         <h2 class='sites-heading'>Available sites :-</h2>

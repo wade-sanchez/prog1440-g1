@@ -110,11 +110,12 @@ const register_form = async (e)=>{
         <label htmlFor="relation">Relation:</label>
         <input type="text" id="relation" name="relation" onChange ={e => setRealtion(e.target.value)} required />
         <br />
+        </form>
         <div className="registration-buttons">
         <button className='button1' type="submit">Register</button>
       </div>
 
-      </form>
+      
     </div>
     </div>
     </div>
