@@ -1,7 +1,7 @@
 //import './App.css';
-import Navbar from './components/NavBar';
+import Header from './components/NavBar/index';
 import { Home } from './pages/Home';
-import 'bootstrap/dist/css/bootstrap.min.css';
+// import 'bootstrap/dist/css/bootstrap.min.css';
 //import data from './components/DummyList.js';
 import { Route, Routes} from "react-router-dom";
 import YouthLogin from './pages/YouthLogin';
@@ -14,16 +14,17 @@ import { Reports } from './pages/Reports';
 import { GroupEvent } from './pages/GroupEvent';
 import { SiteSelect } from './pages/SiteSelect';
 import { ReportsTable } from './pages/ReportsTable';
+import {AddPrograms} from './pages/AddPrograms';
 
 function App() {
   
 
   return (
     <div className="App">
-      <Navbar/>
+      <Header/>
       {/* <br/> */}
       <Routes>
-        <Route path='/' element={<Home />} />
+        <Route path='/' element={<StaffLogin />} />
         <Route path='siteselect' element={<SiteSelect />} />
         <Route path='youthlogin' element={<YouthLogin/>} />
         <Route path='stafflogin' element={<StaffLogin />} />
@@ -36,6 +37,7 @@ function App() {
         <Route path='reports' element={<Reports/>} />
         <Route path='groupevent' element={<GroupEvent/>}/>
         <Route path='reportstable' element={<ReportsTable/>}/>
+        <Route path='addprograms' element={<AddPrograms/>}/>
       </Routes>
     </div>
     

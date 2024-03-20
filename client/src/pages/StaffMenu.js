@@ -21,6 +21,10 @@ export const StaffMenu = () => {
     navigate('/GroupEvent');
   }
 
+  const navigateToSiteSelect = () => {
+    navigate('/SiteSelect');
+  }
+
   const generateReport = () => {
     // alert("Generate Report as .csv file");
     // insert report stuff
@@ -29,6 +33,9 @@ export const StaffMenu = () => {
   return (
     <div className='wrappers'>
     <div><h1 className='headings'>CYC Staff Menu</h1></div>
+    <div className="staffMenuButtons" >
+        <button className="buttons" onClick={navigateToSiteSelect}>Youth Attendees Sign In</button>
+    </div>
      <div className="staffMenuButtons" >
         <button className="buttons" onClick={navigateToGroupEvent}>Enter Group Event Count</button>
     </div>
@@ -40,6 +47,9 @@ export const StaffMenu = () => {
     </div>
     <div className="staffMenuButtons">
         <button className="buttons" onClick={generateReport}>Generate Report</button>
+    </div>
+    <div className="staffMenuButtons">
+        <button className="buttons" onClick={navigateToSiteSelect}>Logout</button>
     </div>
     </div>
   )

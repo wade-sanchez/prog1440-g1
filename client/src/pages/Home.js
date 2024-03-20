@@ -13,6 +13,7 @@ export const Home = () => {
     }
 
     const navigateToRegister = () => {
+        navigate('/Register')
     }
    
     return (
@@ -28,11 +29,11 @@ export const Home = () => {
                          Youth Sign-In System
                     </button>
                 </div>
-                <div>
+                {/* <div>
                     <button className="button1" onClick={navigateToRegister}>
                        New User Registration
                     </button>
-                </div>
+                </div> */}
                 <div>
                     <button className="button1" onClick={navigateToStaffLogin}>
                         Staff Sign-in System

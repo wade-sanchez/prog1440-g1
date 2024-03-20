@@ -22,30 +22,26 @@ export const SearchBar = ({className, btnText}) => {
           });
           console.log(response.data)
           setMessage(response.data.message)
+          console.log(firstName)
         }
         catch(error){
           console.log(error)
         }
     }
 
-
-
-
-
-
   return (
     <>
     <form onSubmit={register_count}>
     <div className='spacing'>
-    <label className='label'>First Name*:</label>
+    <label className='label' >First Name*:</label>
     <TextBox className="input-field" tbType="text" onChange ={e => setFirstName(e.target.value)} placeholder="Search for entry to edit..." tbName="search"></TextBox>
     </div>
     <div className='spacing'>
-    <label className='label'>Last Name*: </label>
+    <label className='label' >Last Name*: </label>
     <TextBox className="input-field" tbType="text" onChange ={e => setLastName(e.target.value)} placeholder="Search for entry to edit..." tbName="search"></TextBox>
     </div>
     <div className='spacing'>
-    <label className='label'>Birth Date*: </label>
+    <label className='label' >Birth Date*: </label>
     <TextBox className="input-field" tbType="date" onChange ={e => setBirthDate(e.target.value)} placeholder="Search for entry to edit..." tbName="search"></TextBox>
     </div>
     <div className='spacing'>

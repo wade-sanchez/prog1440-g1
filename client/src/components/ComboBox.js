@@ -52,10 +52,6 @@ export default function Combo({className}){
     siteData.map(siteData => 
         (<option key={siteData.id} value={siteData.id}>{siteData.Program}</option>))
     )}
-        
-    
-
-    
         return(
             <>
                 {/* {selected} */}

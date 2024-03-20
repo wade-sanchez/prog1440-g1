@@ -17,7 +17,7 @@ export const StaffLogin = () => {
         navigate('/');
       }; 
     const navigateToStaffMenu = () => {
-    navigate('/StaffMenu');
+    navigate('/SiteSelect');
     }
    const loginButton = () => {
         /*printData(); */
