@@ -4,12 +4,21 @@ import { FaCircleUser } from "react-icons/fa6";
 import { RiLockPasswordFill } from "react-icons/ri";
 import './home.css'
 import './StaffLogin.css'
+import Axios from 'axios';
 import { useState } from 'react';
-import Axios from 'axios'
-export const StaffLogin = () => {
+export const StaffLoginForMenu = () => {
     const navigate = useNavigate();
+    // const printData = () => {
+    //     let userName=document.getElementsByName('staffUserName');
+    //     let password=document.getElementsByName('staffPassword');
+    //     alert("Username:\n " + userName[0].value + "\nPassword: " + password[0].value);
+    // }
+    // const navigateHome = () => {
+    //     // 👇️ navigate to /
+    //     navigate('/');
+    //   }; 
     const navigateToStaffMenu = () => {
-    navigate('/SiteSelect');
+    navigate('/StaffMenu');
     }
    const loginButton = () => {
         /*printData(); */
@@ -35,7 +44,7 @@ export const StaffLogin = () => {
         }
         else{
             setloginstatus(response.data[0].name)
-            window.location.href = '/SiteSelect'               //successfull login 
+            window.location.href = '/StaffMenu'               //successfull login 
         }
   
         } catch (error) {
@@ -57,10 +66,11 @@ export const StaffLogin = () => {
     };
 
 
+
   return (
     <>
     <div className='image1'>
-    <form onSubmit={loginAsStaff} className='box-container'>
+    <div  className='box-container'>
        <h1> Clarington Youth Centres Staff Login </h1>
        <div>
        <div className="input-field">
@@ -73,10 +83,9 @@ export const StaffLogin = () => {
        </div>
        </div>
         <div className='wrapper-button'>
-             <button className="button1" type="submit">Login</button>
+             <button className="button1" onClick={loginAsStaff}>Login</button>
         </div>
-        <p className='error_message'>{message}</p>
-    </form>
+    </div>
     </div>
     </>
   )

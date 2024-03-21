@@ -59,7 +59,7 @@ const register_form = async (e)=>{
 }
   return (
     <>
-     
+    <div className='homepage'>
     <h1 className='headings'>Edit Profile</h1>
     <div className="wrappers">
       <div>
@@ -91,7 +91,7 @@ const register_form = async (e)=>{
     </div>
     </form>
     </div>
-   
+    </div>
     </>
   );
 }

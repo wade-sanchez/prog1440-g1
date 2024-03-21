@@ -5,13 +5,14 @@ import './home.css';
 import Combo from '../components/ComboBox';
 import { useNavigate, Route, Routes } from 'react-router-dom';
 import YouthLogin from './YouthLogin';
+import { Home } from './Home';
 
 //import { Fieldset } from '../components/Fieldset';
 
 export const SiteSelect = (props) => {
     const navigate = useNavigate();
     const navigateToSignIn = () => {
-    navigate('/YouthLogin');
+    navigate('/Home');
   }
     const [program, setProgram] = useState({
         name: 'programs'
@@ -43,7 +44,7 @@ export const SiteSelect = (props) => {
             <button class="button1" onClick={navigateToSignIn}>Go to Sign-In</button>
             {/* Hard Coded Button^ */}
             <Routes>
-                <Route path='youthlogin' element={<YouthLogin/>} />
+                <Route path='home' element={<Home/>} />
             </Routes>
         </div>
       </div>

@@ -3,6 +3,7 @@ import { ReturnToStaffMenu } from '../components/ReturnToStaffMenuBtn';
 
 // import sites from './SitesList';
 import './AddSites.css';
+import '../components/style.css'
 
 export const AddPrograms = () => {
 
@@ -43,6 +44,7 @@ export const AddPrograms = () => {
 
   return (
     <>
+        <div className='homepage'>
         <h1 className="heading">Sites and programes</h1>
         {/* <Fieldset> */}
 
@@ -110,6 +112,7 @@ export const AddPrograms = () => {
         <br/> 
         <ReturnToStaffMenu className="button1"/>
         {/* </Fieldset> */}
+        </div>
     </>
   )
 

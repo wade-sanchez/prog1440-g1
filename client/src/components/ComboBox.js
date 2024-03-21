@@ -29,8 +29,9 @@ import { SiteSelect } from "../pages/SiteSelect";
 
 // export default ACombobox
 
-export default function Combo({className}){
+export default function Combo({className, onChange}){
     const [selected, setSelected] = useState('');
+    const selectedValue=selected;
     let changeChoice = (e) => {
         setSelected(e.target.value)
     }
@@ -56,7 +57,7 @@ export default function Combo({className}){
             <>
                 {/* {selected} */}
                 {/* <br/> */}
-                <select className={className} onChange={changeChoice}>
+                <select className={className} onChange={onChange}>
                     <option value="Select Option!">
                         Select Option
                     </option>

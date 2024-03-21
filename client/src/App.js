@@ -15,6 +15,7 @@ import { GroupEvent } from './pages/GroupEvent';
 import { SiteSelect } from './pages/SiteSelect';
 import { ReportsTable } from './pages/ReportsTable';
 import {AddPrograms} from './pages/AddPrograms';
+import { StaffLoginForMenu } from './pages/StaffLoginForMenu';
 
 function App() {
   
@@ -25,10 +26,12 @@ function App() {
       {/* <br/> */}
       <Routes>
         <Route path='/' element={<StaffLogin />} />
+        <Route path='home' element={<Home/>} />
         <Route path='siteselect' element={<SiteSelect />} />
         <Route path='youthlogin' element={<YouthLogin/>} />
         <Route path='stafflogin' element={<StaffLogin />} />
         <Route path='staffmenu' element={<StaffMenu/>} />
+        <Route path='staffloginformenu' element={<StaffLoginForMenu/>} />
         <Route path='addsites' element={<AddSites/>} />
         {/* <Route path='editsites' element={<EditSites/>} />
         <Route path='removesites' element={<RemoveSites/>} /> */}

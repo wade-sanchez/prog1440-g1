@@ -4,17 +4,17 @@ import './home.css';
 export const Home = () => {
     const navigate = useNavigate();
 
-    const navigateToSiteSelect = () => {
-        navigate('/SiteSelect');
+    const navigateToYouthLogin = () => {
+        navigate('/YouthLogin');
     }
 
     const navigateToStaffLogin = () => {
-        navigate('/StaffLogin');
+        navigate('/StaffLoginForMenu');
     }
 
-    const navigateToRegister = () => {
-        navigate('/Register')
-    }
+    // const navigateToRegister = () => {
+    //     navigate('/Register')
+    // }
    
     return (
     
@@ -25,7 +25,7 @@ export const Home = () => {
             </h1>
               <div >
                 <div>
-                    <button className="button1" onClick={navigateToSiteSelect}>
+                    <button className="button1" onClick={navigateToYouthLogin}>
                          Youth Sign-In System
                     </button>
                 </div>

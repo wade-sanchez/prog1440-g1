@@ -25,10 +25,10 @@ const Header = () => {
 
         <div className="desktopMenu">
 
-        <Link activeClass='active' to='/' spy={true}  className="DekstopMenuListItem"  >Home</Link>
+        {/* <Link activeClass='active' to='/' spy={true}  className="DekstopMenuListItem"  >Home</Link>
         <Link activeClass='active' to='SiteSelect' spy={true}  className="DekstopMenuListItem" >Login</Link>
         <Link activeClass='active' to='Register' spy={true}  className="DekstopMenuListItem" >Registration</Link>
-        <Link activeClass='active' to='StaffLogin' spy={true}  className="DekstopMenuListItem" >Staff Login</Link>
+        <Link activeClass='active' to='StaffLogin' spy={true}  className="DekstopMenuListItem" >Staff Login</Link> */}
 
 
         </div>

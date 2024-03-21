@@ -82,30 +82,29 @@ app.post('/api/youthRegister',(req, res) => {
       });
   });
 
-
-app.post('/api/stafflogin', (req, res) => {
-        const { email, password } = req.body;
-        // const query = "SELECT (name) FROM staffdata WHERE emailId = ? AND password = ?";
-        //i don't have a copy of the correct table so use the one below for now
-        const query = "SELECT AdminName, Password FROM configsetting WHERE AdminName = ? AND Password = ?";
-        db.query(query, [email, password],(err, result) => {
-          if (err) {
-            //console.error(err);
-            res.send({err:err})
-            // res.status(500)
-            // res.json({ message: 'Internal server error' });
-            // return;
-          }
-      
-          if (result.length > 0) {
-            res.send(result);
-            // res.json({ message: 'Login successful' });
-          } else {
-            // res.status(401).json({ message: 'Invalid email or password' });
-            res.send({message:'wrong combination'})
-          }
-        });
-      });
+  app.post('/api/stafflogin', (req, res) => {
+    const { email, password } = req.body;
+    // const query = "SELECT (name) FROM staffdata WHERE emailId = ? AND password = ?";
+    const query = "SELECT AdminName FROM configsetting WHERE AdminName = ? AND Password = ?";
+    
+    db.query(query, [email, password],(err, result) => {
+      if (err) {
+        //console.error(err);
+        res.send({err:err})
+        // res.status(500)
+        // res.json({ message: 'Internal server error' });
+        // return;
+      }
+  
+      if (result.length > 0) {
+        res.send(result);
+        // res.json({ message: 'Login successful' });
+      } else {
+        // res.status(401).json({ message: 'Invalid email or password' });
+        res.send({message:'wrong combination'})
+      }
+    });
+  });
 
 app.get('/sites', (req, res) => {
     const sql = "SELECT SiteID as id, Name as Program from sites;";
@@ -163,6 +162,36 @@ app.post('/editProfile',(req,res) => {
         res.send({message:'Account not found ! Please enter correct info'})
       }
     })
+
+
+app.post('/api/groupRegister',(req, res) => {
+      const {SiteName, ProgramName, nowDate, City, Name, Description,
+        AttendanceCount, VolunteerCount, VolunteerHrs} = req.body;
+        //const siteSQL = `SELECT SiteID from sites where Name='${SiteName}'`
+        //const programSQL = `Select ProgramID from programs where Name='${ProgramName}'`
+        const queryString = `INSERT INTO massevent ( SiteID, ProgramID, Date, CityName, Name, Description, AttendanceCount, VolunteeerCount, VolunteerHrs) VALUES ( '${SiteName}', '${ProgramName}', '${nowDate}', '${City}', '${Name}', '${Description}',
+        '${AttendanceCount}', '${VolunteerCount}', '${VolunteerHrs}')`;
+    
+        // db.getConnection((err , connection) =>{
+        //   if(err){
+        //       console.error('Error connecting:', err)
+        //       res.status(500).json( {error: 'Error connecting to the database'})
+        //       return; 
+        //   }
+    
+        db.query(queryString,[SiteName, ProgramName, nowDate, City, Name, Description,
+          AttendanceCount, VolunteerCount, VolunteerHrs],
+                          (err, result) => {
+    
+                          if(err){
+                              console.log(err);
+                              // res.send({err:err})
+    
+                          }
+                          //console.log("account registered successfully",result)
+                          res.send({message:"Group Event Registered"})
+          });
+      });    
 
 
 app.get('/programs', (req,res) => {

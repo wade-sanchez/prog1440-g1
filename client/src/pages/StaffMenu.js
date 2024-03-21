@@ -31,11 +31,12 @@ export const StaffMenu = () => {
     navigate('/Reports');
   }
   return (
+    <div className='homepage'>
     <div className='wrappers'>
     <div><h1 className='headings'>CYC Staff Menu</h1></div>
-    <div className="staffMenuButtons" >
+    {/* <div className="staffMenuButtons" >
         <button className="buttons" onClick={navigateToSiteSelect}>Youth Attendees Sign In</button>
-    </div>
+    </div> */}
      <div className="staffMenuButtons" >
         <button className="buttons" onClick={navigateToGroupEvent}>Enter Group Event Count</button>
     </div>
@@ -52,5 +53,7 @@ export const StaffMenu = () => {
         <button className="buttons" onClick={navigateToSiteSelect}>Logout</button>
     </div>
     </div>
+    </div>
+    
   )
 }
