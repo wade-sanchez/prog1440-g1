@@ -20,7 +20,7 @@ const Header = () => {
         <nav className="navbar">
 
           <Link to='/'>
-              <img className="MainLogo" src={Logo}  alt="Logo"/> 
+              <img className="MainLogo" src={Logo}  alt="Logo"/>  
           </Link> 
 
         <div className="desktopMenu">

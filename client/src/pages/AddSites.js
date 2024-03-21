@@ -43,7 +43,7 @@ export const AddSites = () => {
             {list.map( site => (
                 <li key={site.id}>
                     {site.id}. {site.name} 
-                    <button className='button1 small' onClick={ ()=>handleRemoveItem(site.id)}>Delete</button> <button className='button1 small'>Edit</button>
+                   <button className='button1 small' onClick={ ()=>handleRemoveItem(site.id)}>Delete</button> <button className='button1 small'>Edit</button>
                     <hr/>
                 </li>
             ))
@@ -56,7 +56,7 @@ export const AddSites = () => {
         </section>
         
       
-        <button className="button2" onClick={()=>setShowButton(!showButton)}>Add New Site</button>
+        <button className="button1" onClick={()=>setShowButton(!showButton)}>Add New Site</button>
 
         <div class='new-site' style={{display:showButton? 'flex' : 'none'}}>
        

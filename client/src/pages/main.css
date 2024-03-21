@@ -19,7 +19,7 @@
 .homepage{
     height: 89vh;
     padding-top: 100px;
-    background-image: url('./Images/background.png');
+    background-image: url('https://t4.ftcdn.net/jpg/00/02/46/51/240_F_2465144_gK4nBg4RKmAg3RSyUV1OPZaSy0skGm.jpg');
     background-repeat: no-repeat;
     background-size: cover;
 }
@@ -74,9 +74,9 @@ label.label{
     background-color: #45a049;
 }
 
-/*@media screen and (max-width: 600px) {
+@media screen and (max-width: 600px) {
     .wrapper {
         width: 100%;
         margin: 20px;
     }
-}*/
+}

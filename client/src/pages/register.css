@@ -1,3 +1,9 @@
+/*body {
+    font-family: 'Arial', sans-serif;
+    background: linear-gradient(to right, #ffefba, #ffffff);
+    margin: 0;
+    padding: 0;
+} */
 .image3 {
   position: relative;
   height: auto;
@@ -17,78 +23,3 @@
   opacity: 0.6;
   z-index: -1;
 }
-/*.register {
-  background-color: #ece4f3;
-}*/
-
-
-.registration-form {
-  border: 1px solid #ccc;
-  padding: 20px;
-  margin: 0 auto;
-  width: 50%;
-  max-width: 800px;
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-  background: #d5e6fa;
-}
-.registration-form h1{
-  font-size: 30px;
-  margin-bottom: 80px;
-  color: #031f2c;
-  position: relative;
-}
- 
- .registration-form h1::after{
-  content: '';
-  width: 30px;
-  height: 4px;
-  border-radius: 3px;
-  background: #3c00a0;
-  position: absolute;
-  bottom: -12px;
-  left: 50%;
-  transform: translateX(-50%);
-}
-
-.registration-form form {
-  flex-wrap: wrap;
-  margin: 0;
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-  align-items: center;
-  margin-bottom: 1rem;
-}
-
-.registration-form label {
-  display: block;
-  flex-basis: 30%;
-  width: 100%;
-  margin-bottom: 10px;
-  font-weight: bold;
-  color:  #3c00a0;
-}
-
-.registration-form input[type="text"],
-.registration-form input[type="date"],
-.registration-form input[type="tel"],
-.registration-form input[type="email"] {
-  width: 100%;
-  padding: 8px;
-  flex-basis: 60%;
-  margin-bottom: 10px;
-  border: 1px solid #ccc;
-  border-radius: 4px;
-  box-sizing: border-box;
-}
-
-.registration-form input[type="submit"] {
-  background-color: #4CAF50;
-  color: white;
-  border: none;
-  padding: 10px 20px;
-  border-radius: 4px;
-  cursor: pointer;
-  margin-top: 10px;
-}
-
