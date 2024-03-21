@@ -9,6 +9,7 @@ import Combo from '../components/ComboBox';
 import './register.css'
 import { useState } from 'react';
 import Axios from 'axios';
+import '../components/style.css'
 
 function Register() {
 

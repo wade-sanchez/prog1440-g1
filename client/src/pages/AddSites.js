@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import { ReturnToStaffMenu } from '../components/ReturnToStaffMenuBtn';
 import '../components/style.css'
+
 import './AddSites.css';
 
 export const AddSites = () => {
@@ -27,7 +28,7 @@ export const AddSites = () => {
 
   return (
     <>
-        <div className='homepage'>
+      <div className='homepage'>
         <h1 className="heading">Sites and programes</h1>
         {/* <Fieldset> */}
 
@@ -44,7 +45,7 @@ export const AddSites = () => {
             {list.map( site => (
                 <li key={site.id}>
                     {site.id}. {site.name} 
-                  <button className='button1 small' onClick={ ()=>handleRemoveItem(site.id)}>Delete</button> <button className='button1 small'>Edit</button>
+                    <button className='button1 small' onClick={ ()=>handleRemoveItem(site.id)}>Delete</button> <button className='button1 small'>Edit</button>
                     <hr/>
                 </li>
             ))

@@ -1,9 +1,9 @@
-body {
+/*body {
     font-family: 'Arial', sans-serif;
     background: linear-gradient(to right, #ffefba, #ffffff);
     margin: 0;
     padding: 0;
-}
+} */
 
 
 .wrappers {
@@ -17,7 +17,7 @@ body {
 }
 
 .homepage{
-    height: 89vh;
+    height: auto;
     padding-top: 100px;
     background-image: url('https://static.vecteezy.com/system/resources/previews/026/587/657/original/blue-gradient-abstract-background-empty-room-vector.jpg');
     background-repeat: no-repeat;
@@ -41,7 +41,7 @@ h1, h3{
 .label {
     display: block;
     margin-bottom: 5px;
-    color: #2940c7;
+    color: #7100b3;
     font-weight: bold;
 }
 
@@ -71,7 +71,7 @@ label.label{
 
 .buttons {
     width: 100%;
-    background-color: #2940c7 ;
+    background-color: #7100b3 ;
     color: white;
     padding: 14px 20px;
     margin: 8px 0;
@@ -81,12 +81,12 @@ label.label{
 }
 
 .button:hover {
-    background-color: #4bdd77;
+    background-color: #45a049;
 }
 
-/* @media screen and (max-width: 600px) {
+@media screen and (max-width: 600px) {
     .wrapper {
         width: 100%;
         margin: 20px;
     }
-} */
+}

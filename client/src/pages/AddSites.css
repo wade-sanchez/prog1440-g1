@@ -1,10 +1,28 @@
-.sites-heading{
+
+.heading{
+    font-size: 30px;
+    margin-bottom: 80px;
+    color: #3c00a0;
+    position: relative;
+  }
+   
+   .heading h1::after{
+    content: '';
+    width: 30px;
+    height: 4px;
+    border-radius: 3px;
+    background: #3c00a0;
+    position: absolute;
+    bottom: -12px;
+    left: 50%;
+    transform: translateX(-50%);
+  }
+  .sites-heading{
     margin:2rem 0.5rem;
     text-align: left;
     font-size: 1.5rem;
     font-weight:bolder;
-}
-
+} 
 
 ul.Datalist{
 
