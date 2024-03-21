@@ -113,7 +113,7 @@ const YouthLogin = () => {
         </label>
 
         <div className="space">
-              <button type="submit">Sign In</button>
+              <button className="button1" type="submit">Sign In</button>
               
               
               </div>
@@ -121,7 +121,7 @@ const YouthLogin = () => {
               <br/>
                 
                   <h3>Don't have an account? First time attending program</h3>
-                  <button type='submit' onClick={navigateRegister}>Register Here</button>
+                  <button  className="button1" type='submit' onClick={navigateRegister}>Register Here</button>
                   {/* <button onClick={navigateRegister}>Register Here</button> */}
              
             </form>

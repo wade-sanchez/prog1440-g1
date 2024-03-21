@@ -31,6 +31,7 @@ export const StaffMenu = () => {
     navigate('/Reports');
   }
   return (
+    <div>
     <div className='wrappers'>
     <div><h1 className='headings'>CYC Staff Menu</h1></div>
     <div className="staffMenuButtons" >
@@ -50,6 +51,7 @@ export const StaffMenu = () => {
     </div>
     <div className="staffMenuButtons">
         <button className="buttons" onClick={navigateToSiteSelect}>Logout</button>
+    </div>
     </div>
     </div>
   )

@@ -22,6 +22,7 @@ const Header = () => {
           <Link to='/'>
               <img className="MainLogo" src={Logo}  alt="Logo"/>  
           </Link> 
+          
 
         <div className="desktopMenu">
 

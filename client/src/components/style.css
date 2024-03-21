@@ -17,9 +17,9 @@
 }
 
 .homepage{
-    height: 89vh;
+    height: auto;
     padding-top: 100px;
-    background-image: url('./Images/background.png');
+    background-image: url('https://static.vecteezy.com/system/resources/previews/026/587/657/original/blue-gradient-abstract-background-empty-room-vector.jpg');
     background-repeat: no-repeat;
     background-size: cover;
 }
@@ -70,8 +70,8 @@ label.label{
     cursor: pointer;
 }
 
-.button:hover {
-    background-color: #45a049;
+.buttons:hover {
+    background-color: #4bdd77;
 }
 
 /*@media screen and (max-width: 600px) {

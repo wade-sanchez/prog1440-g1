@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import { ReturnToStaffMenu } from '../components/ReturnToStaffMenuBtn';
+import '../components/style.css'
 
 import './AddSites.css';
 
@@ -27,6 +28,7 @@ export const AddSites = () => {
 
   return (
     <>
+      <div className='homepage'>
         <h1 className="heading">Sites And Programes</h1>
         {/* <Fieldset> */}
 
@@ -79,6 +81,7 @@ export const AddSites = () => {
         <br/> 
         <ReturnToStaffMenu className="button1"/>
         {/* </Fieldset> */}
+        </div>
     </>
   )
 

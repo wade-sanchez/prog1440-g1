@@ -16,6 +16,7 @@ export const GroupEvent = () => {
   }
   return (
     <>
+    <div className='homepage'>
     <h1 id="GroupEvent" className='headings'>Group Event Registration</h1>
     <div className='wrappers'>
         
@@ -41,9 +42,8 @@ export const GroupEvent = () => {
         </div>
         {/* add bottom spacing */}
         
-    </div>
-    
-      
+        </div>
+      </div>
     </div>
     </>
   )
