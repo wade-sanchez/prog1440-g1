@@ -31,7 +31,7 @@ export const StaffMenu = () => {
     navigate('/Reports');
   }
   return (
-    <div>
+    <div className='homepage'>
     <div className='wrappers'>
     <div><h1 className='headings'>CYC Staff Menu</h1></div>
     <div className="staffMenuButtons" >
