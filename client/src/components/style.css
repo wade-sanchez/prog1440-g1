@@ -71,7 +71,7 @@ label.label{
 
 .buttons {
     width: 100%;
-    background-color: #7100b3 ;
+    background-color: #2940c7 ;
     color: white;
     padding: 14px 20px;
     margin: 8px 0;
@@ -80,8 +80,8 @@ label.label{
     cursor: pointer;
 }
 
-.button:hover {
-    background-color: #45a049;
+.buttons:hover {
+    background-color: #45a049 !important;
 }
 
 @media screen and (max-width: 600px) {
