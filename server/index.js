@@ -106,15 +106,6 @@ app.post('/api/youthRegister',(req, res) => {
     });
   });
 
-app.get('/sites', (req, res) => {
-    const sql = "SELECT SiteID as id, Name as Program from sites;";
-    db.query(sql, (err, data) => {
-        if (err) return res.json(err);
-        return res.json(data);
-
-    })
-})
-
 app.post('/searchProfile', (req, res) => {
   const {firstName, lastName, birthDate} = req.body;
   const query = "Select FirstName, LastName, BirthDate from profile where FirstName=? AND LastName=? AND BirthDate=?;";
@@ -194,6 +185,15 @@ app.post('/api/groupRegister',(req, res) => {
       });    
 
 
+app.get('/sites', (req, res) => {
+    const sql = "SELECT SiteID as id, Name as Program from sites;";
+    db.query(sql, (err, data) => {
+        if (err) return res.json(err);
+        return res.json(data);
+
+    })
+})
+
 app.get('/programs', (req,res) => {
     const {firstName,lastName, birthDate} = req.body
     const sql = "SELECT ProgramID as id, Name as Program from programs;";
@@ -201,9 +201,18 @@ app.get('/programs', (req,res) => {
         if (err) return res.json(err);
         return res.json(data);
 
-    })
+    }) 
+})
 
-    
+app.post('/programss',(req,res) => {
+    const {selectedSite} = req.body
+    const sql = `Select ProgramID as id from sitejoinprogram where SiteID='${selectedSite}';`;
+    db.query(sql, (err, data) => {
+      if (err) return res.json(err);
+      console.log(data);
+      return res.json(data);
+      
+  })
 })
 
 app.get('/', (req, res, next) => {
