@@ -1,4 +1,4 @@
-import React, {useState} from 'react'
+import React, {useState, useEffect} from 'react'
 import '../index'
 // import BlueButton from '../components/Button';
 import './home.css';
@@ -6,6 +6,7 @@ import Combo from '../components/ComboBox';
 import { useNavigate, Route, Routes } from 'react-router-dom';
 import YouthLogin from './YouthLogin';
 import { Home } from './Home';
+import Axios from 'axios';
 
 //import { Fieldset } from '../components/Fieldset';
 
@@ -14,15 +15,68 @@ export const SiteSelect = (props) => {
     const navigateToSignIn = () => {
     navigate('/Home');
   }
-    const [program, setProgram] = useState({
-        name: 'programs'
-    });
-    const className = (name) => {
-      setProgram({
-        name
-      });
+
+    const[siteData, setSiteData] = useState([]);
+    const[selectedSite, setSelectedSite] = useState([]);
+    const[programData, setProgramData] = useState([]);
+    useEffect(() => {
+        var link1 = 'http://localhost:3001/sites'
+        // var link2 = link1+className
+        // console.log(className)
+        fetch(link1)
+        .then(res1 => res1.json())
+        .then(siteData => setSiteData(siteData))
+        .catch(err1 => console.log(err1));
+
+        var link2 = 'http://localhost:3001/programs'
+        // var link2 = link1+className
+        // console.log(className)
+        fetch(link2)
+        .then(res2 => res2.json())
+        .then(programData => setProgramData(programData))
+        .catch(err2 => console.log(err2));
+    }, [])
+    // console.log(programData)
+
+
+    const selectSite= () => {
+        return(
+    siteData.map(siteData => 
+        (<option key={siteData.id} value={siteData.id}>{siteData.Program}</option>))
+    )}
+    const selectProgram= () => {
+      return(
+        filteredProg.map(filteredProg => 
+          (<option key={filteredProg.Program} value={filteredProg.Program}>{filteredProg.Program}</option>))
+  )}
+  const [filteredProg, setFilteredProg] = useState(programData);
+  const selectP = async (e)=>{
+
+    e.preventDefault();
+    try {
+      const response = await Axios.post("http://localhost:3001/programss", {
+          selectedSite: selectedSite
+        });
+        //const object = array.find(obj => obj.id === 3);
+        const progVar = response.data;
+        console.log(progVar)
+        // setProgramData => response.data;
+       // setProgramData(programData => programData.filter((progVar)=> programData.id != progVar.id ))
+        //console.log(programData)
+        setFilteredProg(programData.filter(function(cItem) {
+          return progVar.find(function(aItem) {
+            return cItem.id === aItem.id
+          })
+        }))
+        console.log(filteredProg)
+      }
+    catch(error){
+      console.error("Error:", error);  
+
     }
-    
+  }
+
+    //print sites only associated with program
   return (
       
     <div className='image'>
@@ -32,13 +86,16 @@ export const SiteSelect = (props) => {
         <div>
           <div>
             <label class="lblHome" for="siteSelect"><b> Site Selection: </b></label>
-            <Combo className="sites" dataType="data" id="siteSelect"/>
+            {/* <Combo className="sites" dataType="data" id="siteSelect" value={selectProgram()} ></Combo> */}
+            <select className="sites" dataType="data" id="siteSelect" onClick={selectP} onChange ={e => setSelectedSite(e.target.value)}><option>Select option:</option>{selectSite()}</select>
           </div>
           <div>
             <label class="lblHome" for="programSelect"> <b>Program Selection:</b> </label>
-            <Combo name="programs" className="programs" dataType="siteData" id="programSelect"> </Combo>
+            {/* <Combo name="programs" className="programs" dataType="siteData" id="programSelect"> </Combo> */}
+            <select className="sites" dataType="data" onClick={selectP} id="programSelect"><option id="a">Select option:</option>{selectProgram()}</select>
           </div>
             <br/>
+            
             {/* <BlueButton onClick={navigateToSignIn} btnText={'Go to Sign-In'}/> */}
             {/* Component Button^ */}
             <button class="button1" onClick={navigateToSignIn}>Go to Sign-In</button>

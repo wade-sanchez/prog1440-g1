@@ -29,7 +29,7 @@ import { SiteSelect } from "../pages/SiteSelect";
 
 // export default ACombobox
 
-export default function Combo({className, onChange}){
+export default function Combo({className, onChange, value, onClick}){
     const [selected, setSelected] = useState('');
     const selectedValue=selected;
     let changeChoice = (e) => {
@@ -38,30 +38,30 @@ export default function Combo({className, onChange}){
     const aClassName = (e) => {
         className(e.target.value);
     };
-    const[siteData, setSiteData] = useState([])
-    useEffect(() => {
-        var link1 = 'http://localhost:3001/'
-        var link2 = link1+className
-        // console.log(className)
-        fetch(link2)
-        .then(res => res.json())
-        .then(siteData => setSiteData(siteData))
-        .catch(err => console.log(err));
-    }, [])
-    const selectProgram= () => {
-        return(
-    siteData.map(siteData => 
-        (<option key={siteData.id} value={siteData.id}>{siteData.Program}</option>))
-    )}
+    // const[siteData, setSiteData] = useState([])
+    // useEffect(() => {
+    //     var link1 = 'http://localhost:3001/'
+    //     var link2 = link1+className
+    //     // console.log(className)
+    //     fetch(link2)
+    //     .then(res => res.json())
+    //     .then(siteData => setSiteData(siteData))
+    //     .catch(err => console.log(err));
+    // }, [])
+    // const selectProgram= () => {
+    //     return(
+    // siteData.map(siteData => 
+    //     (<option key={siteData.id} value={siteData.id}>{siteData.Program}</option>))
+    // )}
         return(
             <>
                 {/* {selected} */}
                 {/* <br/> */}
-                <select className={className} onChange={onChange}>
-                    <option value="Select Option!">
+                <select className={className} onChange={onChange} onClick={onClick} value={value}>
+                    <option>
                         Select Option
                     </option>
-                    {selectProgram()}
+                    {/* {selectProgram()} */}
                        {/* edit when backend is ready */}
                 </select>   
             </>
