@@ -17,12 +17,14 @@ export const SiteSelect = (props) => {
   }
 
     const[siteData, setSiteData] = useState([]);
-    const[selectedSite, setSelectedSite] = useState([]);
     const[programData, setProgramData] = useState([]);
+    const[selectedSite, setSelectedSite] = useState([]);
+    const[selectedProgram, setSelectedProgram] = useState([]);
     useEffect(() => {
         var link1 = 'http://localhost:3001/sites'
         // var link2 = link1+className
         // console.log(className)
+        
         fetch(link1)
         .then(res1 => res1.json())
         .then(siteData => setSiteData(siteData))
@@ -35,26 +37,42 @@ export const SiteSelect = (props) => {
         .then(res2 => res2.json())
         .then(programData => setProgramData(programData))
         .catch(err2 => console.log(err2));
+
+        
     }, [])
     // console.log(programData)
-
+    //console.log(sessionStorage.getItem("siteName"));
 
     const selectSite= () => {
+      var siteName = sessionStorage.getItem("siteName")
+      //initialize session storate
+      siteName=selectedSite;
+      //update session storage
+      sessionStorage.setItem("siteName", siteName);
+
         return(
     siteData.map(siteData => 
         (<option key={siteData.id} value={siteData.id}>{siteData.Program}</option>))
     )}
+
     const selectProgram= () => {
+      var progName = sessionStorage.getItem("progName");
+      //initialize session storate
+          progName=selectedProgram;
+        //update session storage
+        sessionStorage.setItem("progName", progName);
       return(
         filteredProg.map(filteredProg => 
-          (<option key={filteredProg.Program} value={filteredProg.Program}>{filteredProg.Program}</option>))
+          (<option key={filteredProg.id} value={filteredProg.id}>{filteredProg.Program}</option>))
   )}
+
+  //print sites only associated with program
   const [filteredProg, setFilteredProg] = useState(programData);
   const selectP = async (e)=>{
 
     e.preventDefault();
     try {
-      const response = await Axios.post("http://localhost:3001/programss", {
+      const response = await Axios.post("http://localhost:3001/PostPrograms", {
           selectedSite: selectedSite
         });
         //const object = array.find(obj => obj.id === 3);
@@ -75,8 +93,10 @@ export const SiteSelect = (props) => {
 
     }
   }
-
-    //print sites only associated with program
+  //check session data if stored
+  console.log(sessionStorage.getItem("siteName"))
+  console.log(sessionStorage.getItem("progName"))
+    
   return (
       
     <div className='image'>
@@ -92,7 +112,7 @@ export const SiteSelect = (props) => {
           <div>
             <label class="lblHome" for="programSelect"> <b>Program Selection:</b> </label>
             {/* <Combo name="programs" className="programs" dataType="siteData" id="programSelect"> </Combo> */}
-            <select className="sites" dataType="data" onClick={selectP} id="programSelect"><option id="a">Select option:</option>{selectProgram()}</select>
+            <select className="sites" dataType="data" onClick={selectP} onChange ={e => setSelectedProgram(e.target.value)} id="programSelect"><option id="a">Select option:</option>{selectProgram()}</select>
           </div>
             <br/>
             

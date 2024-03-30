@@ -11,8 +11,9 @@ import '../components/style.css'
 // import { useNavigate } from 'react-router-dom'
 //import city from '../components/CityList';
 //import { useNavigate } from 'react-router-dom';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import Axios from 'axios'
+import { ReportTable } from '../components/ReportTable';
 
 const EditProfile = () => {
   const [firstName, setFirstName] = useState('');
@@ -28,6 +29,15 @@ const EditProfile = () => {
   const[relativeName, setRelativeName] = useState('');
   const [relation, setRelation] = useState('');
 
+
+  const[data, setData] =useState([])
+    useEffect(() => {
+        fetch('http://localhost:3001/api/GetProfileTable')
+        .then(res => res.json())
+        .then(data => setData(data))
+        .then(console.log(data))
+        .catch(err => console.log(err));
+    }, [])
 
 
 const register_form = async (e)=>{
@@ -59,6 +69,32 @@ const register_form = async (e)=>{
 }
   return (
     <>
+    <div>
+            <h1>SITE NAME HERE</h1>
+            <table>
+                <thead>
+                    <th>First Name</th>
+                    <th>Last Name</th>
+                    <th>Birth Date</th>
+                </thead>
+                <tbody>
+                    {data.map((d, i)=> (
+                        <tr key={i}>
+                            <td>{d.FirstName}</td>
+                            <td>{d.LastName}</td>
+                            <td>{d.BirthDate}</td>
+                        </tr>
+                    ))}
+
+                </tbody>
+            </table>
+        </div>
+
+
+
+
+
+
     <div className='homepage'>
     <h1 className='headings'>Edit Profile</h1>
     <div className="wrappers">

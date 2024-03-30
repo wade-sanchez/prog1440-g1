@@ -18,7 +18,6 @@ import {AddPrograms} from './pages/AddPrograms';
 import { StaffLoginForMenu } from './pages/StaffLoginForMenu';
 
 function App() {
-  
 
   return (
     <div className="App">

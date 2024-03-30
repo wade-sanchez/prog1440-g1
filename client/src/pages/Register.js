@@ -52,8 +52,7 @@ const register_form = async (e)=>{
         window.location.href = '/'       
     }
     catch(error){
-      console.error("Error:", error);  
-
+      console.error("Error:", error);
     }
 };    
 

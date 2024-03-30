@@ -24,33 +24,90 @@ const db = mysql.createPool({
 });
 
 app.post('/api/youthLogin',(req, res)=>{
-      const {firstName, lastName, birthDate,purpose} = req.body;
-      const query = "SELECT * FROM profile WHERE FirstName = ? AND LastName = ? AND BirthDate = ?";
+      const {firstName, lastName, birthDate, selectedPurposes, site, program} = req.body;
+      let firstTime = 1;
+      let visitIDArray =[]
+      const profileIDValue = 'SELECT ProfileID FROM profile WHERE FirstName=? AND LastName=? AND BirthDate=?';
+      //const date = "SELECT CURDATE()"
+      const testValue = "";
+      //console.log(birthDate)
+      //const purposeArray = str.split(',')
+      //check profileID
+      //purposes 
+      //first time
+      const purposeInsert = (item) => {
+        db.query(`Insert into visitpurpose(vPurposeVisitID, vPurposeReasonID) values(${VisitIDValue}, ${item})`, (error,result_5) => {
+          //console.log(result_5)
+        })
+      }
 
-      db.query(query, [firstName, lastName, birthDate,purpose],(err, result_1) => {
+
+
+      //QUERY 1: Check if the account exists!
+      db.query(profileIDValue,[firstName, lastName, birthDate],(err, result_1) => {
         if (err) {
+          console.log(err)
           res.send({err:err})
         }
-    
-        if (result_1.length > 0) {
-          console.log("record found");
-          db.query('INSERT INTO youth_visit(name,purposes) VALUES (?,?)',[firstName,purpose],(error,result_2)=>{
-            if(error){
-              console.log(error);
-              res.send({err:error})   
-            } 
-            console.log("Visiters info added successfully",result_2)
-            res.send({message:"Count Added"})
-
-          }); 
           
-         } 
+        //console.log("Selected Purposes: " + selectedPurposes)
+        if (result_1.length > 0) {
+          //console.log("record found");
+          console.log('Account found!')
+          //Query 2: Check if First Time - Check Length of result_2. If greater than or equal to one = not the first time visiting
+          var profileIDValue = Object.values(result_1[0]);
+          db.query(`SELECT visit_ProfileID from visits where visit_ProfileID=${profileIDValue}`, (error, result_2) => {
+            //console.log(result_2)
+            //console.log(result_2.length)
+            if (result_2.length >= 1){
+              firstTime=0
+            }
+            //console.log(firstTime)
+            //Query 3: Insert Records to the Visit Table
+            db.query(`INSERT INTO visits(visit_SiteID, visit_ProgramID, visit_ProfileID, DateLogged, FirstTime) VALUES (${site},${program},${profileIDValue}, CURDATE(), ${firstTime})`, (error,result_3)=>{
+              if(error){
+                console.log(error);
+                // res.send({err:error})   
+              }
+              else{
+                console.log("Visit Entry Successfully Inserted in Visits Table!")
+              }
+              //Query 4: Insert the Purposes into the visitpurpose table
+              //Each purpose should be inserted in respective rows! (MultiSelect Problem)
+              console.log("Purposes:" +selectedPurposes)
+              const visitID = `Select VisitID from visits where visit_SiteID=${site} AND visit_ProgramID=${program} and visit_ProfileID=${profileIDValue} AND datelogged=CURDATE()`;
+              db.query(visitID, (error,result_4) =>{
+                var len = result_4.length-1
+                VisitIDValue=Object.values(result_4[len])
+                console.log("Length: "+ len)
+                console.log("Visit ID: " + VisitIDValue)
+                selectedPurposes.forEach(purposeInsert);
+                res.send({message:'Logged Successfully!'})
+                //Check if the reason for visit is exactly the same. If same = don't allow entry, else = allow entry
+              })
+            
+            });
+          })
+        }
+        //send Error message if account not found
         else {
-         
           res.send({message:'Account not found ! Please enter correct info'})
         }
+
       });
-    });
+    })
+        
+        //     for (const element of selectedPurposes) {
+        //       const newItem = element;
+        //       const purposeQuery = `Insert into visitpurpose(vPurposeVisitID, vPurposeReason) values(${newItem}, ${testValue})`;
+        //     }
+        //     console.log("Visiters info added successfully",result_2)
+        //     res.send({message:"Count Added"})
+
+        //   }); 
+          
+        //  } 
+        
 
 
 app.post('/api/youthRegister',(req, res) => {
@@ -85,7 +142,7 @@ app.post('/api/youthRegister',(req, res) => {
   app.post('/api/stafflogin', (req, res) => {
     const { email, password } = req.body;
     // const query = "SELECT (name) FROM staffdata WHERE emailId = ? AND password = ?";
-    const query = "SELECT AdminName FROM configsetting WHERE AdminName = ? AND Password = ?";
+    const query = "SELECT AdminUserName FROM configsetting WHERE AdminUserName = ? AND Password = ?";
     
     db.query(query, [email, password],(err, result) => {
       if (err) {
@@ -106,6 +163,7 @@ app.post('/api/youthRegister',(req, res) => {
     });
   });
 
+  //shreyansh task update using his files
 app.post('/searchProfile', (req, res) => {
   const {firstName, lastName, birthDate} = req.body;
   const query = "Select FirstName, LastName, BirthDate from profile where FirstName=? AND LastName=? AND BirthDate=?;";
@@ -132,6 +190,24 @@ app.post('/searchProfile', (req, res) => {
 
 })
 
+app.get('/api/GetProfileTable',(req,res) => {
+  const sql = 'SELECT FirstName, LastName, BirthDate from profile'
+  db.query(sql, (err, data) => {
+    if (err) return res.json(err);
+    // db.query(``,(error1,data1) => {
+      //why is the date Data being converted to 1996-02-13T05:00:00.000Z format when being passed to EXPRESS JS
+    console.log(Object.values(data))
+    // })
+    return res.json(data);
+    
+  })
+})
+
+
+
+
+
+//shreyansh task, update using his files
 app.post('/editProfile',(req,res) => {
   const { firstName, lastName, birthDate, prefferedName, city, streetAddress, postalCode, contact, email, emergContact, relativeName,relation} = req.body;
     console.log(firstName, lastName, birthDate)
@@ -160,7 +236,7 @@ app.post('/api/groupRegister',(req, res) => {
         AttendanceCount, VolunteerCount, VolunteerHrs} = req.body;
         //const siteSQL = `SELECT SiteID from sites where Name='${SiteName}'`
         //const programSQL = `Select ProgramID from programs where Name='${ProgramName}'`
-        const queryString = `INSERT INTO massevent ( SiteID, ProgramID, Date, CityName, Name, Description, AttendanceCount, VolunteeerCount, VolunteerHrs) VALUES ( '${SiteName}', '${ProgramName}', '${nowDate}', '${City}', '${Name}', '${Description}',
+        const queryString = `INSERT INTO massevent ( mass_SiteID, mass_ProgramID, mass_Date, mass_CityName, mass_Name, mass_Description, mass_AttendanceCount, mass_VolunteeerCount, mass_VolunteerHrs) VALUES ( '${SiteName}', '${ProgramName}', '${nowDate}', '${City}', '${Name}', '${Description}',
         '${AttendanceCount}', '${VolunteerCount}', '${VolunteerHrs}')`;
     
         // db.getConnection((err , connection) =>{
@@ -186,7 +262,7 @@ app.post('/api/groupRegister',(req, res) => {
 
 
 app.get('/sites', (req, res) => {
-    const sql = "SELECT SiteID as id, Name as Program from sites;";
+    const sql = "SELECT siteID as id, site_Name as Program from sites where site_Active=1;";
     db.query(sql, (err, data) => {
         if (err) return res.json(err);
         return res.json(data);
@@ -196,7 +272,7 @@ app.get('/sites', (req, res) => {
 
 app.get('/programs', (req,res) => {
     const {firstName,lastName, birthDate} = req.body
-    const sql = "SELECT ProgramID as id, Name as Program from programs;";
+    const sql = "SELECT ProgramID as id, Name as Program from programs where program_Active=1;";
     db.query(sql, (err, data) => {
         if (err) return res.json(err);
         return res.json(data);
@@ -204,7 +280,7 @@ app.get('/programs', (req,res) => {
     }) 
 })
 
-app.post('/programss',(req,res) => {
+app.post('/PostPrograms',(req,res) => {
     const {selectedSite} = req.body
     const sql = `Select ProgramID as id from sitejoinprogram where SiteID='${selectedSite}';`;
     db.query(sql, (err, data) => {
@@ -212,6 +288,16 @@ app.post('/programss',(req,res) => {
       console.log(data);
       return res.json(data);
       
+  })
+})
+
+app.post('/ReasonForVisit',(req,res) => {
+  const {program} = req.body
+  const sql = `SELECT ShortTitle as label, CAST(purposeID as char(1)) as value from purposeforvisit where purpose_Active=1 AND purpose_ProgramID=${program};`;
+  db.query(sql, (err, data) => {
+    if (err) return res.json(err);
+    //console.log(data);
+    return res.json(data);
   })
 })
 

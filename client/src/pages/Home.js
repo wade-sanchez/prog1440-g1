@@ -15,7 +15,7 @@ export const Home = () => {
     // const navigateToRegister = () => {
     //     navigate('/Register')
     // }
-   
+    console.log(sessionStorage.getItem("siteName"))
     return (
     
         <div className='image'>
