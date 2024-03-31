@@ -19,7 +19,7 @@ app.use(cors())
 const db = mysql.createPool({
     host: "localhost", 
     user: "root",
-    password: "UnixLover123@",
+    password: "Preeti@555",
     database: "claringtonsignin"
 });
 
@@ -142,33 +142,24 @@ app.post('/api/youthRegister',(req, res) => {
   app.post('/api/stafflogin', (req, res) => {
     const { email, password } = req.body;
     // const query = "SELECT (name) FROM staffdata WHERE emailId = ? AND password = ?";
-    //const query = `SELECT AdminUserName FROM configsetting WHERE AdminUserName = ? AND Password = aes_encrypt(?, '${result1}')`;
-    const getKey = "Select * from keytable";
-    const passDecrypt = `SELECT CAST(aes_decrypt(Password, 'key') as CHAR) FROM configsetting where AdminUserName = ${email} `;
-    let key
-    db.query(getKey, (err1, result1) => {
-        key = Object.values(result1[0])
-        //console.log(key)
-        db.query(`SELECT AdminUserName, AdminName FROM configsetting WHERE AdminUserName = '${email}' AND Password = aes_encrypt('${password}', '${key}')`, (err, result2) => {
-          //console.log(err)
-          if (err) {
-            //console.error(err);
-            res.send({err:err})
-            // res.status(500)
-            // res.json({ message: 'Internal server error' });
-            // return;
-          }
-      
-          if (result2.length > 0) {
-            
-            res.send(result2);
-            // res.json({ message: 'Login successful' });
-          } else {
-            // res.status(401).json({ message: 'Invalid email or password' });
-            res.send({message:'Invalid Login Details! Please Try Again!'})
-          }
-          });
-          
+    const query = "SELECT AdminUserName FROM configsetting WHERE AdminUserName = ? AND Password = ?";
+    
+    db.query(query, [email, password],(err, result) => {
+      if (err) {
+        //console.error(err);
+        res.send({err:err})
+        // res.status(500)
+        // res.json({ message: 'Internal server error' });
+        // return;
+      }
+  
+      if (result.length > 0) {
+        res.send(result);
+        // res.json({ message: 'Login successful' });
+      } else {
+        // res.status(401).json({ message: 'Invalid email or password' });
+        res.send({message:'wrong combination'})
+      }
     });
   });
 
