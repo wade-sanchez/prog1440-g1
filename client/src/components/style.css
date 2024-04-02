@@ -84,6 +84,10 @@ label.label{
     background-color: #45a049 !important;
 }
 
+HeaderCell {
+    text-align: center;
+}
+
 @media screen and (max-width: 600px) {
     .wrapper {
         width: 100%;

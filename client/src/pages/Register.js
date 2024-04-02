@@ -81,16 +81,16 @@ const register_form = async (e)=>{
         <label className='label'>Street Address:</label><TextBox className="input-field" tbType={'text'} onChange ={e => setStreetAddress(e.target.value)} required/>
         </div>
         <div className='spacing'>
-        <label className='label'>Postal Code:</label><TextBox className="input-field" tbType={'text'} onChange ={e => setPostalCode(e.target.value)} required/>
+        <label className='label'>Postal Code:</label><TextBox className="input-field" tbType={'text'} maxlength="6" onChange ={e => setPostalCode(e.target.value)} required/>
         </div>
         <div className='spacing'>
-        <label className='label'>Phone:</label><TextBox className="input-field" tbType={'text'} onChange ={e => setContact(e.target.value)} required/>
+        <label className='label'>Phone:</label><TextBox className="input-field" tbType={'text'} maxlength="10" onChange ={e => setContact(e.target.value)} required/>
         </div>
         <div className='spacing'>
         <label className='label'>Email Address:</label><TextBox className="input-field" tbType={'text'} onChange ={e => setEmail(e.target.value)} required/>
         </div>
         <div className='spacing'>
-        <label className='label'>Emergency Contact:</label><TextBox className="input-field" tbType={'text'} onChange ={e => setEmergContact(e.target.value)} required/>
+        <label className='label'>Emergency Contact:</label><TextBox className="input-field" tbType={'text'} onChange ={e => setEmergContact(e.target.value)} maxlength="10" required/>
         </div>
         <div className='spacing'>
         <label className='label'>Relative's Name</label><TextBox className="input-field" tbType={'text'} onChange ={e => setRelativeName(e.target.value)} required/>

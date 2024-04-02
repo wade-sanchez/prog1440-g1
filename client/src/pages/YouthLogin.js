@@ -20,7 +20,7 @@ const YouthLogin = () => {
     }
     useEffect(()=>{
       getPurpose()
-    },[])
+    })
     const navigateRegister = () => {
         navigate('/Register');
     }

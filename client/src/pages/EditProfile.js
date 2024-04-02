@@ -13,7 +13,8 @@ import '../components/style.css'
 //import { useNavigate } from 'react-router-dom';
 import { useState, useEffect } from 'react';
 import Axios from 'axios'
-import { ReportTable } from '../components/ReportTable';
+import { Table, Header, HeaderRow, HeaderCell, Body, Row, Cell } from '@table-library/react-table-library/table';
+import { usePagination } from '@table-library/react-table-library/pagination';
 
 const EditProfile = () => {
   const [firstName, setFirstName] = useState('');
@@ -28,6 +29,8 @@ const EditProfile = () => {
   const [emergContact, setEmergContact] = useState('');
   const[relativeName, setRelativeName] = useState('');
   const [relation, setRelation] = useState('');
+  // const [site, setSite] = useState('');
+  // const [siteN, setSiteN] = useState('');
 
 
   const[data, setData] =useState([])
@@ -37,8 +40,32 @@ const EditProfile = () => {
         .then(data => setData(data))
         .then(console.log(data))
         .catch(err => console.log(err));
+        // getSite();
     }, [])
 
+
+    // const getSite = async ()=>{
+    //   //console.log(SearchBar.firstName)
+    //   setSite(sessionStorage.getItem("siteName"))
+    //   //console.log(site)
+    //   //console.log(sessionStorage.getItem("siteName"))
+    //     //e.preventDefault();
+    //     try {
+    //       const response = await Axios.post("http://localhost:3001/getsitename", {
+    //         site: "4"
+    //         });
+    //         setSiteN(response.data)
+    //         console.log(response.data)
+    //         //setSite(response)
+    //         //return response
+            
+    //         //return response  
+    //     }
+    //     catch(error){
+    //       console.error("Error:", error);  
+    
+    //     }
+    //   }
 
 const register_form = async (e)=>{
   console.log(SearchBar.firstName)
@@ -60,6 +87,7 @@ const register_form = async (e)=>{
 
         });
         console.log(response)
+        
         window.location.href = '/'       
     }
     catch(error){
@@ -67,40 +95,137 @@ const register_form = async (e)=>{
 
     }
 }
+const tableData = {nodes: data}
+//set number of pages, number of items per page in the table
+const pagination = usePagination(data, {
+    state: {
+      page:0,
+      size:5,
+    },
+    onChange: onPaginationChange,
+});
+
+  function onPaginationChange(action, state){
+    console.log(action,state);
+  }
+  function hideEdit() {
+    var x = document.getElementById("editpage");
+    var y = document.getElementById("editTable");
+    var z = document.getElementById("title");
+    var a = document.getElementById("pagination");
+    if (x.style.display === "none") {
+        x.style.display = null;
+      }
+    else {
+      x.style.display = "none";
+    }
+
+    if (y.style.display === "none") {
+      y.style.display = null;
+    }
+    else {
+    y.style.display = "none";
+    }
+
+    if (z.style.display === "none") {
+      z.style.display = null;
+    }
+    else {
+    z.style.display = "none";
+    }
+
+    if (a.style.display === "none") {
+      a.style.display = null;
+    }
+    else {
+    a.style.display = "none";
+    }
+
+  }
+
+  // function hideTable() {
+  //   var x = document.getElementById("editTable");
+  //   if (x.style.display === "none") {
+  //       x.style.display = null;
+  //     }
+  //   else {
+  //     x.style.display = "none";
+  //   }
+
+
+  // }
+
   return (
     <>
     <div>
-            <h1>SITE NAME HERE</h1>
-            <table>
-                <thead>
-                    <th>First Name</th>
-                    <th>Last Name</th>
-                    <th>Birth Date</th>
-                </thead>
-                <tbody>
-                    {data.map((d, i)=> (
-                        <tr key={i}>
-                            <td>{d.FirstName}</td>
-                            <td>{d.LastName}</td>
-                            <td>{d.BirthDate}</td>
-                        </tr>
+            {/* <h1>Site: {siteN}</h1> */}
+            {/* <button onClick={getSite}>Click me</button> */}
+            <h1 id="title" className='headings'>Edit Profile</h1>
+            <Table id="editTable" data={tableData} pagination={pagination}>
+        {(tableList) => (
+            <>
+            <Header>
+                <HeaderRow>
+                    <HeaderCell>FName</HeaderCell>
+                    <HeaderCell>LName</HeaderCell>
+                    <HeaderCell>BDate</HeaderCell>
+                    <HeaderCell>Phone</HeaderCell>
+                    <HeaderCell>EmergContact</HeaderCell>
+                    <HeaderCell></HeaderCell>
+                </HeaderRow>
+            </Header>
+            <Body>
+            {tableList.map((item) => (
+                        <Row key={item.ProfileID} item={item}>
+                            <Cell>{item.FirstName}</Cell>
+                            <Cell>{item.LastName}</Cell>
+                            <Cell>{item.BirthDate.substring(0,10)}</Cell>
+                            <Cell>{item.Phone}</Cell>
+                            <Cell>{item.EmergContactName}</Cell>
+                            <Cell><button style={{width:"50%"}} className="buttons" onClick={hideEdit}>Edit</button></Cell>
+                        </Row>
                     ))}
+            </Body>
+            </>
+        )}
+        
+    </Table>
 
-                </tbody>
-            </table>
-        </div>
+     <div>
+        {/* <span>
+         Total Pages: {pagination.state.getTotalPages(tableData.nodes)}
+       </span> */}
+       <span id="pagination">
+          Page:{' '}
+         {pagination.state.getPages(tableData.nodes).map((_, index) => (
+            <button
+              key={index}
+              type="button"
+             style={{
+               fontWeight:
+                 pagination.state.page === index
+                   ? 'bold'
+                   : 'normal',
+             }}
+             onClick={() => pagination.fns.onSetPage(index)}>
+                {index+1}
+            </button>
+          ))}
+        </span>
+      </div>
+    </div>
 
 
 
 
 
 
-    <div className='homepage'>
+    <div id="editpage" style={{display:'none'}} className='homepage'>
     <h1 className='headings'>Edit Profile</h1>
     <div className="wrappers">
       <div>
         <h3 className='label'>Search for a profile:</h3>
-        <SearchBar firstName={firstName} lastName={lastName} birthDate={birthDate}/>
+        {/* <SearchBar firstName={firstName} lastName={lastName} birthDate={birthDate}/> */}
       </div>
       {/* <Fieldset> */}
       {/* <div>
@@ -111,19 +236,25 @@ const register_form = async (e)=>{
     {/* next step: alert - entry found or not found */}
       <br/>
       <form onSubmit={register_form}>
+      <div className='spacing'><label className="label">First Name:</label><TextBox className="input-field" onChange ={e => setFirstName(e.target.value)}/></div>
+      <div className='spacing'><label className="label">Last Name:</label><TextBox className="input-field" onChange ={e => setLastName(e.target.value)}/></div>
+      <div className='spacing'><label className="label">Birth Date:</label><TextBox className="input-field" tbType="date" onChange ={e => setBirthDate(e.target.value)}/></div>
       <div className='spacing'><label className="label">Preferred Name:</label><TextBox className="input-field" onChange ={e => setPrefferedName(e.target.value)}/></div>
       <div className='spacing'><label className="label">City: </label><TextBox className="input-field" onChange ={e => setCity(e.target.value)}/></div>
       <div className='spacing'><label className="label">Street Address:</label><TextBox className="input-field" onChange ={e => setStreetAddress(e.target.value)}/></div> 
       <div className='spacing'><label className="label">Postal Code:</label><TextBox className="input-field" onChange ={e => setPostalCode(e.target.value)}/></div>
       <div className='spacing'><label className="label">Phone:</label><TextBox className="input-field" onChange ={e => setContact(e.target.value)}/></div>
-      <div className='spacing'><label className="label"> Email Address:</label><TextBox className="input-field" onChange ={e => setEmail(e.target.value)}/></div>
+      <div className='spacing'><label className="label">Email Address:</label><TextBox className="input-field" onChange ={e => setEmail(e.target.value)}/></div>
       <div className='spacing'><label className="label">Emergency Contact:</label><TextBox className="input-field" onChange ={e => setRelativeName(e.target.value)}/></div>
-      <div className='spacing'><label className="label"> Relation:</label><TextBox className="input-field" onChange ={e => setRelation(e.target.value)}/></div>
+      <div className='spacing'><label className="label">Relation:</label><TextBox className="input-field" onChange ={e => setRelation(e.target.value)}/></div>
       <div className='spacing'><label className="label">Emergency Contact #:</label><TextBox className="input-field" onChange ={e => setEmergContact(e.target.value)}/></div>
     
     <div className='registration-buttons'>
       <button type="submit" className="buttons">Edit Youth Profile</button>
       <ReturnToStaffMenu className="buttons"/>
+    </div>
+    <div className='registration-buttons'>
+      <button style={{width:"50%"}} type="button" onClick={hideEdit} className="buttons">Return to Table</button>
     </div>
     </form>
     </div>

@@ -115,7 +115,9 @@ app.post('/api/youthRegister',(req, res) => {
     postalCode, contact, email, emergContact, relativeName, relation} = req.body;
 
 
-    const queryString = 'INSERT INTO profile ( FirstName, LastName, PreferredName, BirthDate, CityName, StreetAddress, PostalCode , Phone, EmailAddress, EmergContact, EmergName, EmergRelation) VALUES ( ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)';
+    const queryString = `INSERT INTO profile ( FirstName, LastName, PreferredName, BirthDate, CityName, StreetAddress, PostalCode , Phone, EmailAddress,
+      EmergNumber,EmergContactName, EmergRelation, AddressUpdateDate, EmergContactDate, DateCreated)
+      VALUES ( ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, CURDATE(), CURDATE(), CURDATE())`;
 
     // db.getConnection((err , connection) =>{
     //   if(err){
@@ -200,12 +202,12 @@ app.post('/searchProfile', (req, res) => {
 })
 
 app.get('/api/GetProfileTable',(req,res) => {
-  const sql = 'SELECT FirstName, LastName, BirthDate from profile'
+  const sql = 'SELECT ProfileID, FirstName, LastName, BirthDate, Phone, EmergContactName from profile'
   db.query(sql, (err, data) => {
     if (err) return res.json(err);
     // db.query(``,(error1,data1) => {
       //why is the date Data being converted to 1996-02-13T05:00:00.000Z format when being passed to EXPRESS JS
-    console.log(Object.values(data))
+    //console.log(Object.values(data))
     // })
     return res.json(data);
     
@@ -278,6 +280,17 @@ app.get('/sites', (req, res) => {
 
     })
 })
+//get Site name for Edit Profile or anywhere that site name needs to be shown
+// app.post('/getsitename', (req, res) => {
+//   const {site} = req.body
+//   const sql = "SELECT site_Name from sites where siteID=?";
+//   db.query(sql, [site], (err, data) => {
+//       if (err) return res.json(err);
+//       console.log(data)
+//       return res.json(Object.values(data[0]));
+
+//   })
+// })
 
 app.get('/programs', (req,res) => {
     const {firstName,lastName, birthDate} = req.body
@@ -294,7 +307,7 @@ app.post('/PostPrograms',(req,res) => {
     const sql = `Select ProgramID as id from sitejoinprogram where SiteID='${selectedSite}';`;
     db.query(sql, (err, data) => {
       if (err) return res.json(err);
-      console.log(data);
+      //console.log(data);
       return res.json(data);
       
   })

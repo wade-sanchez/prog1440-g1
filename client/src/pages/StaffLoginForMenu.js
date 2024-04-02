@@ -8,6 +8,7 @@ import Axios from 'axios';
 import { useState } from 'react';
 
 export const StaffLoginForMenu = () => {
+    
     const navigate = useNavigate();
     // const printData = () => {
     //     let userName=document.getElementsByName('staffUserName');
@@ -91,6 +92,7 @@ export const StaffLoginForMenu = () => {
         <div className='wrapper-button'>
              <button className="button1" onClick={loginAsStaff}>Login</button>
         </div>
+        <p className='error_message'>{loginstatus}</p>
     </div>
     </div>
     </>
