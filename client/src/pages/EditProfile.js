@@ -29,9 +29,11 @@ const EditProfile = () => {
   const [emergContact, setEmergContact] = useState('');
   const[relativeName, setRelativeName] = useState('');
   const [relation, setRelation] = useState('');
-  // const [site, setSite] = useState('');
-  // const [siteN, setSiteN] = useState('');
-
+  const [searchFName, setFNameSearch] = useState('');
+  const [searchLName, setLNameSearch] = useState('');
+  
+  
+  // console.log(tableData.nodes)
 
   const[data, setData] =useState([])
     useEffect(() => {
@@ -95,7 +97,11 @@ const register_form = async (e)=>{
 
     }
 }
+
+//vanilla data for React Table Component
 const tableData = {nodes: data}
+
+
 //set number of pages, number of items per page in the table
 const pagination = usePagination(data, {
     state: {
@@ -105,6 +111,8 @@ const pagination = usePagination(data, {
     onChange: onPaginationChange,
 });
 
+
+
   function onPaginationChange(action, state){
     console.log(action,state);
   }
@@ -113,36 +121,31 @@ const pagination = usePagination(data, {
     var y = document.getElementById("editTable");
     var z = document.getElementById("title");
     var a = document.getElementById("pagination");
-    if (x.style.display === "none") {
-        x.style.display = null;
-      }
-    else {
+    var b = document.getElementById("search");
+    
+      x.style.display === "none" ?
+        x.style.display = null :
       x.style.display = "none";
-    }
 
-    if (y.style.display === "none") {
-      y.style.display = null;
-    }
-    else {
+    y.style.display === "none" ?
+      y.style.display = null :
     y.style.display = "none";
-    }
 
-    if (z.style.display === "none") {
-      z.style.display = null;
-    }
-    else {
+    z.style.display === "none" ?
+      z.style.display = null :
     z.style.display = "none";
-    }
 
-    if (a.style.display === "none") {
-      a.style.display = null;
-    }
-    else {
+    a.style.display === "none" ?
+      a.style.display = null :
     a.style.display = "none";
-    }
+
+    b.style.display === "none" ?
+      b.style.display = null :
+    b.style.display = "none";
+    
 
   }
-
+  
   // function hideTable() {
   //   var x = document.getElementById("editTable");
   //   if (x.style.display === "none") {
@@ -151,26 +154,68 @@ const pagination = usePagination(data, {
   //   else {
   //     x.style.display = "none";
   //   }
-
-
+  
+  //console.log(document.getElementById("searchFName").value)
   // }
+  const handleFNameSearch = (event) => {
+      setFNameSearch(event.target.value);
+  };
 
+  const handleLNameSearch = (event) => {
+    setLNameSearch(event.target.value);
+};
+
+  
+
+  //Data for search Data
+  //no input = show all entries in table
+
+  //if textbox for first name populated = pass to first name
+  //if textbox for last name populated = pass to last name
+  
+  const searchData = {
+    nodes: tableData.nodes.filter((item) =>{
+      // console.log(searchFName.toLowerCase());
+      // console.log(searchLName.toLowerCase())
+      if (
+        `${item.FirstName.toLowerCase()}`.includes(searchFName.toLowerCase()) 
+        && `${item.LastName.toLowerCase()}`.includes(searchLName.toLowerCase())
+      ) return true
+      return false
+    }
+        
+    ),
+  };
+
+  
   return (
     <>
     <div>
-            {/* <h1>Site: {siteN}</h1> */}
-            {/* <button onClick={getSite}>Click me</button> */}
-            <h1 id="title" className='headings'>Edit Profile</h1>
-            <Table id="editTable" data={tableData} pagination={pagination}>
+      <h1 id="title" className='headings'>Edit Profile</h1>
+      <div id="search">
+        <div style={{textAlign:"left", paddingLeft:"25px", paddingTop:"25px", paddingBottom:"10px"}}>
+          <label className='label2' htmlFor="searchFName">
+            Search by First Name:
+          </label>
+          <input id="searchFName" type="text" onChange={handleFNameSearch}/>
+        </div>
+        <div style={{textAlign:"left", paddingLeft:"25px", paddingBottom:"25px"}}>
+          <label className='label2' htmlFor="searchLName">
+            Search by Last Name:
+          </label>
+          <input id="searchLName" type="text" onChange={handleLNameSearch} />
+        </div>
+      </div>
+            <Table id="editTable" data={searchData} pagination={pagination}>
         {(tableList) => (
             <>
             <Header>
                 <HeaderRow>
-                    <HeaderCell>FName</HeaderCell>
-                    <HeaderCell>LName</HeaderCell>
-                    <HeaderCell>BDate</HeaderCell>
-                    <HeaderCell>Phone</HeaderCell>
-                    <HeaderCell>EmergContact</HeaderCell>
+                    <HeaderCell style={{textAlign:"center"}}>First Name</HeaderCell>
+                    <HeaderCell style={{textAlign:"center"}}>Last Name</HeaderCell>
+                    <HeaderCell style={{textAlign:"center"}}>Birthday</HeaderCell>
+                    <HeaderCell style={{textAlign:"center"}}>Phone</HeaderCell>
+                    <HeaderCell style={{textAlign:"center"}}>EmergContact</HeaderCell>
                     <HeaderCell></HeaderCell>
                 </HeaderRow>
             </Header>

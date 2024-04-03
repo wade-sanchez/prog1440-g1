@@ -247,7 +247,7 @@ app.post('/api/groupRegister',(req, res) => {
         AttendanceCount, VolunteerCount, VolunteerHrs} = req.body;
         //const siteSQL = `SELECT SiteID from sites where Name='${SiteName}'`
         //const programSQL = `Select ProgramID from programs where Name='${ProgramName}'`
-        const queryString = `INSERT INTO massevent ( mass_SiteID, mass_ProgramID, mass_Date, mass_CityName, mass_Name, mass_Description, mass_AttendanceCount, mass_VolunteeerCount, mass_VolunteerHrs) VALUES ( '${SiteName}', '${ProgramName}', '${nowDate}', '${City}', '${Name}', '${Description}',
+        const queryString = `INSERT INTO massevent ( mass_SiteID, mass_ProgramID, mass_Date, mass_City, mass_Name, mass_Description, mass_AttendanceCount, mass_VolunteeerCount, mass_VolunteerHrs) VALUES ( '${SiteName}', '${ProgramName}', '${nowDate}', '${City}', '${Name}', '${Description}',
         '${AttendanceCount}', '${VolunteerCount}', '${VolunteerHrs}')`;
     
         // db.getConnection((err , connection) =>{

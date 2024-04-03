@@ -49,7 +49,7 @@ const register_form = async (e)=>{
 
         });
         console.log(response)
-        window.location.href = '/'       
+        window.location.href = '/YouthLogin'       
     }
     catch(error){
       console.error("Error:", error);

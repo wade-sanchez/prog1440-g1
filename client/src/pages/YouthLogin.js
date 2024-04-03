@@ -20,7 +20,6 @@ const YouthLogin = () => {
     }
     useEffect(()=>{
       getPurpose()
-      
     }, [])
     const navigateRegister = () => {
         navigate('/Register');
@@ -134,7 +133,7 @@ const YouthLogin = () => {
               <label>
               <b> Purpose of Visit: </b>
           {/* <select onClick={getPurpose}><option>{purposeOptions}</option></select> */}
-          <Select className="multiSelect" onChange={handleChange} required placeholder="Select Purpose of Visit" isMulti="true" options={purpose}/>
+          <Select className="multiSelect" onChange={handleChange} required onMenuOpen={getPurpose} placeholder="Select Purpose of Visit" isMulti="true" options={purpose}/>
           {/* <select
             name="purposeOfVisit"
             onChange ={e => setPurpose(e.target.value)}
