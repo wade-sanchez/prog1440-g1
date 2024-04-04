@@ -1,22 +1,13 @@
-// same as register, but search for the entry first if it exists!
-//import './App.css';
-// import 'bootstrap/dist/css/bootstrap.min.css';
-//import data from './components/DummyList.js';
 import TextBox from '../components/Textbox';
-import Combo from '../components/ComboBox';
 import { ReturnToStaffMenu } from '../components/ReturnToStaffMenuBtn';
-// import { Fieldset } from '../components/Fieldset';
-import {SearchBar, firstName, lastName, birthDate} from '../components/SearchProfile';
 import '../components/style.css'
-// import { useNavigate } from 'react-router-dom'
-//import city from '../components/CityList';
-//import { useNavigate } from 'react-router-dom';
 import { useState, useEffect } from 'react';
 import Axios from 'axios'
 import { Table, Header, HeaderRow, HeaderCell, Body, Row, Cell } from '@table-library/react-table-library/table';
 import { usePagination } from '@table-library/react-table-library/pagination';
 
 const EditProfile = () => {
+  const [profileID, setProfileID] = useState('');
   const [firstName, setFirstName] = useState('');
   const [lastName, setLastName] = useState('');
   const [prefferedName, setPrefferedName] = useState('');
@@ -32,6 +23,27 @@ const EditProfile = () => {
   const [searchFName, setFNameSearch] = useState('');
   const [searchLName, setLNameSearch] = useState('');
   
+  const handleSearch = (data) => {
+    // Update state with retrieved data
+      // console.log("Item: " + data) //check if data was cleared
+      const timestamp = data[profileID-1].BirthDate;
+      const datepart = timestamp.split('T')[0];
+      console.log(datepart)
+      console.log(data)
+      setFirstName(data[profileID-1].FirstName)
+      setLastName(data[profileID-1].LastName)
+      setPrefferedName(data[profileID-1].PreferredName);
+      setBirthDate(datepart)
+      setCity(data[profileID-1].CityName);
+      setStreetAddress(data[profileID-1].StreetAddress);
+      setPostalCode(data[profileID-1].PostalCode);
+      setContact(data[profileID-1].Phone);
+      setEmail(data[profileID-1].EmailAddress);
+      setEmergContact(data[profileID-1].EmergNumber);
+      setRelativeName(data[profileID-1].EmergContactName);
+      setRelation(data[profileID-1].EmergRelation);
+  };
+
   
   // console.log(tableData.nodes)
 
@@ -44,7 +56,7 @@ const EditProfile = () => {
         .catch(err => console.log(err));
         // getSite();
     }, [])
-
+//console.log(data)
 
     // const getSite = async ()=>{
     //   //console.log(SearchBar.firstName)
@@ -70,11 +82,11 @@ const EditProfile = () => {
     //   }
 
 const register_form = async (e)=>{
-  console.log(SearchBar.firstName)
+
     e.preventDefault();
     try {
       const response = await Axios.post("http://localhost:3001/editProfile", {
-          firstName: SearchBar.firstName,
+          firstName: firstName,
           lastName : lastName,
           prefferedName : prefferedName,
           birthDate: birthDate,
@@ -85,12 +97,12 @@ const register_form = async (e)=>{
           email: email,
           emergContact: emergContact,
           relativeName : relativeName,
-          relation: relation
-
+          relation: relation,
+          profileID: profileID
         });
         console.log(response)
         
-        window.location.href = '/'       
+        window.location.href = '/EditProfile'  
     }
     catch(error){
       console.error("Error:", error);  
@@ -116,12 +128,15 @@ const pagination = usePagination(data, {
   function onPaginationChange(action, state){
     console.log(action,state);
   }
+
   function hideEdit() {
+    if(profileID>0){
     var x = document.getElementById("editpage");
     var y = document.getElementById("editTable");
     var z = document.getElementById("title");
     var a = document.getElementById("pagination");
     var b = document.getElementById("search");
+    handleSearch(data)
     
       x.style.display === "none" ?
         x.style.display = null :
@@ -143,7 +158,53 @@ const pagination = usePagination(data, {
       b.style.display = null :
     b.style.display = "none";
     
+  }
+  else{
+    alert("Please click the row you want to edit first!")
+  }
+  }
 
+console.log(profileID)
+  function goBack() {
+   
+    var x = document.getElementById("editpage");
+    var y = document.getElementById("editTable");
+    var z = document.getElementById("title");
+    var a = document.getElementById("pagination");
+    var b = document.getElementById("search");
+    setFirstName('');
+      setLastName('');
+      setPrefferedName('');
+      setBirthDate('');
+      setCity('');
+      setStreetAddress('');
+      setPostalCode('');
+      setContact('');
+      setEmail('');
+      setEmergContact('');
+      setRelativeName('');
+      setRelation('');
+      setProfileID('');
+      x.style.display === "none" ?
+        x.style.display = null :
+      x.style.display = "none";
+
+    y.style.display === "none" ?
+      y.style.display = null :
+    y.style.display = "none";
+
+    z.style.display === "none" ?
+      z.style.display = null :
+    z.style.display = "none";
+
+    a.style.display === "none" ?
+      a.style.display = null :
+    a.style.display = "none";
+
+    b.style.display === "none" ?
+      b.style.display = null :
+    b.style.display = "none";
+  
   }
   
   // function hideTable() {
@@ -221,13 +282,14 @@ const pagination = usePagination(data, {
             </Header>
             <Body>
             {tableList.map((item) => (
-                        <Row key={item.ProfileID} item={item}>
+                        
+                        <Row id="row-id" key={item.ProfileID} item={item} onClick={(item) => setProfileID(item.ProfileID)}> 
                             <Cell>{item.FirstName}</Cell>
                             <Cell>{item.LastName}</Cell>
                             <Cell>{item.BirthDate.substring(0,10)}</Cell>
                             <Cell>{item.Phone}</Cell>
                             <Cell>{item.EmergContactName}</Cell>
-                            <Cell><button style={{width:"50%"}} className="buttons" onClick={hideEdit}>Edit</button></Cell>
+                            <Cell><div ><button style={{width:"50%", padding:0}} className="buttons" onClick={hideEdit}>Edit</button></div></Cell>
                         </Row>
                     ))}
             </Body>
@@ -235,12 +297,12 @@ const pagination = usePagination(data, {
         )}
         
     </Table>
-
+    <div id="pagination">
      <div>
         {/* <span>
          Total Pages: {pagination.state.getTotalPages(tableData.nodes)}
        </span> */}
-       <span id="pagination">
+       <span>
           Page:{' '}
          {pagination.state.getPages(tableData.nodes).map((_, index) => (
             <button
@@ -258,6 +320,9 @@ const pagination = usePagination(data, {
           ))}
         </span>
       </div>
+      <ReturnToStaffMenu style={{padding:7, width:"20%"}} className="buttons"/>
+      </div>
+      
     </div>
 
 
@@ -281,25 +346,25 @@ const pagination = usePagination(data, {
     {/* next step: alert - entry found or not found */}
       <br/>
       <form onSubmit={register_form}>
-      <div className='spacing'><label className="label">First Name:</label><TextBox className="input-field" onChange ={e => setFirstName(e.target.value)}/></div>
-      <div className='spacing'><label className="label">Last Name:</label><TextBox className="input-field" onChange ={e => setLastName(e.target.value)}/></div>
-      <div className='spacing'><label className="label">Birth Date:</label><TextBox className="input-field" tbType="date" onChange ={e => setBirthDate(e.target.value)}/></div>
-      <div className='spacing'><label className="label">Preferred Name:</label><TextBox className="input-field" onChange ={e => setPrefferedName(e.target.value)}/></div>
-      <div className='spacing'><label className="label">City: </label><TextBox className="input-field" onChange ={e => setCity(e.target.value)}/></div>
-      <div className='spacing'><label className="label">Street Address:</label><TextBox className="input-field" onChange ={e => setStreetAddress(e.target.value)}/></div> 
-      <div className='spacing'><label className="label">Postal Code:</label><TextBox className="input-field" onChange ={e => setPostalCode(e.target.value)}/></div>
-      <div className='spacing'><label className="label">Phone:</label><TextBox className="input-field" onChange ={e => setContact(e.target.value)}/></div>
-      <div className='spacing'><label className="label">Email Address:</label><TextBox className="input-field" onChange ={e => setEmail(e.target.value)}/></div>
-      <div className='spacing'><label className="label">Emergency Contact:</label><TextBox className="input-field" onChange ={e => setRelativeName(e.target.value)}/></div>
-      <div className='spacing'><label className="label">Relation:</label><TextBox className="input-field" onChange ={e => setRelation(e.target.value)}/></div>
-      <div className='spacing'><label className="label">Emergency Contact #:</label><TextBox className="input-field" onChange ={e => setEmergContact(e.target.value)}/></div>
+      <div className='spacing'><label className="label">First Name:</label><TextBox className="input-field" value={firstName} onChange ={e => setFirstName(e.target.value)}/></div>
+      <div className='spacing'><label className="label">Last Name:</label><TextBox className="input-field" value={lastName} onChange ={e => setLastName(e.target.value)}/></div>
+      <div className='spacing'><label className="label">Birth Date:</label><TextBox className="input-field" value={birthDate} tbType="date" onChange ={e => setBirthDate(e.target.value)}/></div>
+      <div className='spacing'><label className="label">Preferred Name:</label><TextBox className="input-field" value={prefferedName} onChange ={e => setPrefferedName(e.target.value)}/></div>
+      <div className='spacing'><label className="label">City: </label><TextBox className="input-field" value={city} onChange ={e => setCity(e.target.value)}/></div>
+      <div className='spacing'><label className="label">Street Address:</label><TextBox className="input-field" value={streetAddress} onChange ={e => setStreetAddress(e.target.value)}/></div> 
+      <div className='spacing'><label className="label">Postal Code:</label><TextBox className="input-field" value={postalCode} onChange ={e => setPostalCode(e.target.value)}/></div>
+      <div className='spacing'><label className="label">Phone:</label><TextBox className="input-field" value={contact} onChange ={e => setContact(e.target.value)}/></div>
+      <div className='spacing'><label className="label">Email Address:</label><TextBox className="input-field" value={email} onChange ={e => setEmail(e.target.value)}/></div>
+      <div className='spacing'><label className="label">Emergency Contact:</label><TextBox className="input-field" value={relativeName} onChange ={e => setRelativeName(e.target.value)}/></div>
+      <div className='spacing'><label className="label">Relation:</label><TextBox className="input-field" value={relation} onChange ={e => setRelation(e.target.value)}/></div>
+      <div className='spacing'><label className="label">Emergency Contact #:</label><TextBox className="input-field" value={emergContact} onChange ={e => setEmergContact(e.target.value)}/></div>
     
     <div className='registration-buttons'>
       <button type="submit" className="buttons">Edit Youth Profile</button>
       <ReturnToStaffMenu className="buttons"/>
     </div>
     <div className='registration-buttons'>
-      <button style={{width:"50%"}} type="button" onClick={hideEdit} className="buttons">Return to Table</button>
+      <button style={{width:"50%"}} type="button" onClick={goBack} className="buttons">Return to Table</button>
     </div>
     </form>
     </div>

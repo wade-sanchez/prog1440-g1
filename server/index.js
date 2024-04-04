@@ -202,7 +202,7 @@ app.post('/searchProfile', (req, res) => {
 })
 
 app.get('/api/GetProfileTable',(req,res) => {
-  const sql = 'SELECT ProfileID, FirstName, LastName, BirthDate, Phone, EmergContactName from profile'
+  const sql = 'SELECT ProfileID, FirstName, LastName, BirthDate, PreferredName, CityName, StreetAddress, PostalCode, Phone, EmailAddress, EmergContactName, EmergNumber, EmergRelation from profile'
   db.query(sql, (err, data) => {
     if (err) return res.json(err);
     // db.query(``,(error1,data1) => {
@@ -220,25 +220,22 @@ app.get('/api/GetProfileTable',(req,res) => {
 
 //shreyansh task, update using his files
 app.post('/editProfile',(req,res) => {
-  const { firstName, lastName, birthDate, prefferedName, city, streetAddress, postalCode, contact, email, emergContact, relativeName,relation} = req.body;
-    console.log(firstName, lastName, birthDate)
-      if (result_1.length > 0) {
-        console.log("record found");
-        db.query('update profile set FirstName=?, LastName=?, BirthDate =?, PreferredName=?, CityNam?, StreetAddres?, PostalCode=?, Phone=?, EmailAddress=?, EmergContact=?, EmergName=?, EmergRelation=?) where FirstName=? AND LastName=? AND BirthDate=?',
+  const {firstName, lastName, birthDate, prefferedName, city, streetAddress, postalCode, contact, email, emergContact, relativeName,relation, profileID} = req.body;
+        db.query(`update profile set FirstName=?, LastName=?, BirthDate=?, PreferredName=?, CityName=?, StreetAddress=?, PostalCode=?, Phone=?, EmailAddress=?, EmergNumber=?, EmergContactName=?, EmergRelation=? where ProfileID='${profileID}'`,
         [firstName, lastName, birthDate, prefferedName, city, streetAddress, postalCode, contact, email, emergContact, relativeName,relation],(error,result_2)=>{
           if(error){
             console.log(error);
-            res.send({err:error})   
-          } 
+            //res.send({err:error})   
+          }
+          if(result_2){
           console.log("Profile Edited Successfully!",result_2)
           res.send({message:"Count Added"})
-
-        }); 
+          }
+          else{
+            res.send({message:'Account not found ! Please enter correct info'})
+          }
+        });  
         
-       } 
-      else {
-        res.send({message:'Account not found ! Please enter correct info'})
-      }
     })
 
 
