@@ -5,7 +5,7 @@ import Navbar from 'react-bootstrap/Navbar';
 import { Link } from 'react-router-dom';
 import './styles.css'
 //import { Home } from '../../pages/Home';
-import { useState } from 'react';
+import { useState,  useEffect } from 'react';
 import Logo from '../../Assets/logo.png';
 import Menu from '../../Assets/menu.jpg';
 
@@ -13,19 +13,30 @@ import Menu from '../../Assets/menu.jpg';
 const Header = () => {
 
   const [showMenu, setShowMenu] = useState(false)
-  //const staff = sessionStorage.getItem("StaffLogged")
+  const staff = sessionStorage.getItem("StaffLogged")
+  
+  const clearStaff = () => {
+    sessionStorage.clear()
+    // staff = null
+  }
+console.log(staff)
+  const displayStaff = () => {
+    // if (staff.length>0){
+    //   return staff
+    // }
+  }
    return (
 
 
         <nav className="navbar">
 
           <Link to='/'>
-              <img className="MainLogo" src={Logo}  alt="Logo"/>  
+              <img className="MainLogo" src={Logo} onClick={clearStaff}  alt="Logo"/>  
           </Link> 
           
-
+         
         <div className="desktopMenu">
-        {/* <label className="DesktopMenuListItem">{staff}</label> */}
+        {staff ? <p className='DesktopMenuListItem'>{"Welcome " + staff+" !"}</p> : console.log()}
         {/* <Link activeClass='active' to='/' spy={true}  className="DekstopMenuListItem"  >Home</Link>
         <Link activeClass='active' to='SiteSelect' spy={true}  className="DekstopMenuListItem" >Login</Link>
         <Link activeClass='active' to='Register' spy={true}  className="DekstopMenuListItem" >Registration</Link>
