@@ -19,18 +19,14 @@
     opacity: 0.6;
     z-index: -1;
 }
-/* .eye{
-  display: flex;
-  justify-content: flex-end;
-  position: 10px
-} */
-.input-field {
-    display: block;
+
+  .input-field {
+    display: inline-flex;
     width: 100%;
     padding: 0.5rem;
     font-size: 1rem;
     /*transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;*/
-    margin-bottom: 20px;
+   margin-bottom: 20px;
     border-radius: 5px;
   }
   
@@ -47,4 +43,13 @@
    width: 35px;
    margin-right: 10px;
    display: inline-flex;
+   margin-left: 20px;
   }
+  .eye {
+    height: 35px;
+    width: 35px;
+    margin-left: 10px;
+    display: inline-flex;
+    margin-top: 10px;
+   } 
+  

@@ -44,17 +44,18 @@ console.log(staff)
 
 
         </div>
+        
 
 
 
-        {/* <img className="mobMenuLogo" src={Menu} alt="Logo" onClick={()=> setShowMenu(!showMenu)} />
+       {/* <img className="mobMenuLogo" src={Menu} alt="Logo" onClick={()=> setShowMenu(!showMenu)} />
                 <div className="navMenu" style={{display:showMenu? 'flex' : 'none'}}>
 
                     <Link activeClass='active' to='/'  className="DekstopMenuListItem" onClick={()=> setShowMenu(false)} >Home</Link>
                     <Link activeClass='active' to='SiteSelect'  className="DekstopMenuListItem" onClick={()=> setShowMenu(false)} >Login</Link>
                     <Link activeClass='active' to='Register' className="DekstopMenuListItem" onClick={()=> setShowMenu(false)} >Registration</Link>
                     <Link activeClass='active' to='StaffLogin' className="DekstopMenuListItem" onClick={()=> setShowMenu(false)} >Staff login</Link>
-                </div> */}
+      </div> */}
 
       </nav>
 

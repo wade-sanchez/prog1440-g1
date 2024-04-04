@@ -76,8 +76,8 @@ export const StaffLogin = () => {
        <div className="input-field">
        <RiLockPasswordFill className='icon' />
         <input type= { visible ? "text" : "password"} onChange ={e => setPassword(e.target.value)} placeholder='Password' required />
-        <div onClick={() => setVisible(!visible)}>
-          {visible ? <RiEyeLine/> : <RiEyeOffLine/>}
+        <div  className="eye" onClick={() => setVisible(!visible)}>
+          {visible ? <RiEyeLine /> : <RiEyeOffLine/>}
         </div>
        </div>
        </div>
