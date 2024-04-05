@@ -62,11 +62,11 @@ export const StaffLogin = () => {
     const clearLog = () => {
       sessionStorage.removeItem("StaffLogged")
     }
-
+    // window.onload
   return (
     <>
     <div className='image1'>
-    <form onLoadStart={clearLog} onSubmit={loginAsStaff} className='box-container'>
+    <form onLoad={clearLog} onSubmit={loginAsStaff} className='box-container'>
        <h1> Clarington Youth Centres Staff Login </h1>
        <div>
        <div className="input-field">

@@ -97,6 +97,14 @@ const YouthLogin = () => {
   // console.log(sessionStorage.getItem("progName"))
   // console.log(purposeFetch)
   // console.log(optionsPurpose)
+  
+  //disable back button
+  window.history.pushState(null, null, window.location.href);
+  window.onpopstate = function () {
+  window.history.go(1);
+  };
+
+  
     return(
       
        <div className="image2">
@@ -124,7 +132,7 @@ const YouthLogin = () => {
               <label>
               <b> Date of Birth:</b> 
                 <input
-                  min="2001-01-01"
+                
                   type="date"
                   name="dateOfBirth"
                   onChange ={e => setBirthDate(e.target.value)}

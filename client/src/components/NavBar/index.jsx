@@ -16,7 +16,9 @@ const Header = () => {
   const staff = sessionStorage.getItem("StaffLogged")
   
   const clearStaff = () => {
-    sessionStorage.clear()
+    sessionStorage.removeItem("StaffLogged")
+    window.location.href = '/'
+    //this.forceupdate()
     // staff = null
   }
 console.log(staff)
@@ -36,7 +38,7 @@ console.log(staff)
           
          
         <div className="desktopMenu">
-        {staff ? <p className='DesktopMenuListItem'>{"Welcome " + staff+" !"}</p> : console.log()}
+        {staff ? <p className='DesktopMenuListItem'>{"Welcome " + staff+" !"}</p> : <p></p>}
         {/* <Link activeClass='active' to='/' spy={true}  className="DekstopMenuListItem"  >Home</Link>
         <Link activeClass='active' to='SiteSelect' spy={true}  className="DekstopMenuListItem" >Login</Link>
         <Link activeClass='active' to='Register' spy={true}  className="DekstopMenuListItem" >Registration</Link>

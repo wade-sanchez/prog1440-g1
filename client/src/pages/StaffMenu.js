@@ -22,7 +22,7 @@ export const StaffMenu = () => {
   }
 
   const navigateToSiteSelect = () => {
-    navigate('/SiteSelect');
+    navigate('/StaffLoginForMenu');
   }
 
   const generateReport = () => {
@@ -30,6 +30,12 @@ export const StaffMenu = () => {
     // insert report stuff
     navigate('/Reports');
   }
+
+    //disable back button
+    window.history.pushState(null, null, window.location.href);
+    window.onpopstate = function () {
+    window.history.go(1);
+    };
   return (
     <div className='homepage'>
     <div className='wrappers'>

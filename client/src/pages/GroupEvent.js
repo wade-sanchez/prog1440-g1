@@ -158,13 +158,13 @@ const selectP = async (e)=>{
         <div>
             <label class="lblHome" for="siteSelect"><b> Site Selection: </b></label>
             {/* <Combo className="sites" dataType="data" id="siteSelect" value={selectProgram()} ></Combo> */}
-            <select className="sites" required dataType="data" id="siteSelect" onClick={selectP} onChange ={e => setSelectedSite(e.target.value)}><option>Select option:</option>{selectSite()}</select>
+            <select className="sites" required dataType="data" id="siteSelect" onClick={selectP} onChange ={e => setSelectedSite(e.target.value)}><option value="">Select option:</option>{selectSite()}</select>
             <p style={{textAlign:'left'}} className='error_message'>{siteStatus}</p>
          </div>
           <div>
             <label class="lblHome" for="programSelect"> <b>Program Selection:</b> </label>
             {/* <Combo name="programs" className="programs" dataType="siteData" id="programSelect"> </Combo> */}
-            <select className="sites" required dataType="data" onClick={selectP} onChange ={e => setSelectedProgram(e.target.value)} id="programSelect"><option id="a">Select option:</option>{selectProgram()}</select>
+            <select className="sites" required dataType="data" onClick={selectP} onChange ={e => setSelectedProgram(e.target.value)} id="programSelect"><option id="a" value="">Select option:</option>{selectProgram()}</select>
             <p style={{textAlign:'left'}} className='error_message'>{progStatus}</p>
           </div>
         {/* <div className='spacing'><label className="label">Site:</label><Combo onChange ={e => setSiteName(e.target.value)} id="input-field" className="sites"></Combo></div>

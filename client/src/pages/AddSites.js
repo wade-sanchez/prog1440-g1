@@ -72,13 +72,12 @@ export const AddSites = () => {
     
     setSelectedPrograms(selectedOptions);
   };
-
   console.log(selectedPrograms)
 
 //creating new site and program
 const createSite = async (e)=>{
   console.log(newSiteName)
-  console.log(selectedPrograms[0].value)
+  console.log(selectedPrograms)
   try {
      const response = await Axios.post("http://localhost:3001/api/createSites",{
        newSiteName  : newSiteName,
