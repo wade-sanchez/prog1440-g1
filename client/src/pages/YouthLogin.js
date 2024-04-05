@@ -124,6 +124,7 @@ const YouthLogin = () => {
               <label>
               <b> Date of Birth:</b> 
                 <input
+                  min="2001-01-01"
                   type="date"
                   name="dateOfBirth"
                   onChange ={e => setBirthDate(e.target.value)}
@@ -153,7 +154,7 @@ const YouthLogin = () => {
               <p class='error_message'>{checkMessage()}</p>
               <br/>
                 
-                  <h3>Don't have an account? First time attending program</h3>
+                  <h3>Don't have an account? First time attending a program?</h3>
                   <button  className="button1" type='submit' onClick={navigateRegister}>Register Here</button>
                   {/* <button onClick={navigateRegister}>Register Here</button> */}
                 
