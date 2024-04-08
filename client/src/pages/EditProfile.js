@@ -360,7 +360,7 @@ console.log(profileID)
       <div className='spacing'><label className="label">Emergency Contact #:</label><TextBox className="input-field" value={emergContact} onChange ={e => setEmergContact(e.target.value)}/></div>
     
     <div className='registration-buttons'>
-      <button type="submit" className="buttons">Edit Youth Profile</button>
+      <button type="submit" className="buttons">Save Youth Profile</button>
       <ReturnToStaffMenu className="buttons"/>
     </div>
     <div className='registration-buttons'>
