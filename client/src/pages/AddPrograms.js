@@ -4,10 +4,12 @@ import '../components/style.css';
 import Axios from 'axios';
 import Newpurpose from '../components/addInputPurpose';
 import Switch from 'react-switch';
+import { useNavigate } from "react-router-dom";
 
 
 export const AddPrograms = () => {
 
+  const navigate = useNavigate();
   
   const [programsList , setProgramsList] = useState([]);
   const [showButton , setShowButton] = useState(false)
@@ -53,7 +55,6 @@ export const AddPrograms = () => {
     if (response.data.purposes.length > 0){
       setPurposeList(response.data.purposes)
     }
-    console.log(purposeList)
     }
     catch(error){
       console.log("error occured fetching purposes", error)
@@ -293,7 +294,7 @@ const toggleActivationPurpose = async (purposeId, reasonStatus,programId) => {
         </div>
         <br/>
         <div>
-         <button class='button1' onClick={() => {window.location.href = '/addsites'}}>View sites </button>
+         <button class='button1' onClick={() => {navigate('/addsites')}}>View sites </button>
         </div> 
         <ReturnToStaffMenu className="button1"/>
         

@@ -16,6 +16,7 @@ import { SiteSelect } from './pages/SiteSelect';
 import { ReportsTable } from './pages/ReportsTable';
 import {AddPrograms} from './pages/AddPrograms';
 import { StaffLoginForMenu } from './pages/StaffLoginForMenu';
+import GeneratedReports from './pages/generatedReports';
 
 function App() {
 
@@ -40,6 +41,7 @@ function App() {
         <Route path='groupevent' element={<GroupEvent/>}/>
         <Route path='reportstable' element={<ReportsTable/>}/>
         <Route path='addprograms' element={<AddPrograms/>}/>
+        <Route path='generateReports' element={<GeneratedReports/>}/>
       </Routes>
     </div>
     

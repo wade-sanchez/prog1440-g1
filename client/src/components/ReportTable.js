@@ -1,37 +1,62 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect, useState } from 'react';
+import { CSVLink } from 'react-csv';
 
-export function ReportTable() {
-    const[data, setData] =useState([])
-    useEffect(() => {
-        fetch('http://localhost:3001/visits')
-        .then(res => res.json())
-        .then(data => setData(data))
-        .catch(err => console.log(err));
-    }, [])
+export function ReportTable({data}) {
+        
+        const months = Array.from(new Set(data.map(({ month }) => month)));
+        
+        const tableData = {};
+          data.forEach(({ ShortTitle }) => {
+            tableData[ShortTitle] = {};
+            months.forEach(month => {
+              tableData[ShortTitle][month] = 0;
+            });
+          });
+        
+          data.forEach(({ ShortTitle, month, VisitCounted }) => {
+            tableData[ShortTitle][month] += VisitCounted;
+          });
 
-    return(
-        <div>
-            <h1>SITE NAME HERE</h1>
-            <table>
-                <thead>
-                    <th>Date And Time of Visit</th>
-                    <th>Site</th>
-                    <th>Program ID</th>
-                    <th>Profile ID</th>
-                </thead>
-                <tbody>
-                    {data.map((d, i)=> (
-                        <tr key={i}>
-                            <td>{d.DateTimeLog}</td>
-                            <td>{d.Name}</td>
-                            <td>{d.ProgramID}</td>
-                            <td>{d.ProfileID}</td>
-                        </tr>
+          const monthNames = months.map(month => {
+            const date = new Date(null, month - 1);
+            return date.toLocaleString('default', { month: 'short' });
+          });
+
+          const shortTitles = Array.from(new Set(data.map(({ ShortTitle }) => ShortTitle)));
+          
+          const csvData = [
+            ['', ...monthNames], // Empty cell for header
+            ...shortTitles.map(shortTitle => {
+                return [shortTitle, ...months.map(month => tableData[shortTitle][month])];
+            })
+        ];
+
+        return (
+          <>
+                    <table>
+              <thead>
+                <tr>
+                  <th>Activity</th>
+                  {monthNames.map((month, index) => (
+                    <th key={index}>{month}</th>
+                  ))}
+                </tr>
+              </thead>
+              <tbody>
+                {Object.keys(tableData).map((activity, index) => (
+                  <tr key={index}>
+                    <td>{activity}</td>
+                    {months.map((month, index) => (
+                      <td key={index}>{tableData[activity][month]}</td>
                     ))}
-
-                </tbody>
+                  </tr>
+                ))}
+              </tbody>
             </table>
-        </div>
 
-    )
+            <CSVLink data={csvData} filename={'report_table.csv'}>
+              Export table to Excel
+            </CSVLink>
+        </>
+        );
 }

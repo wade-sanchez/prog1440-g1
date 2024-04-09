@@ -9,12 +9,12 @@ app.use(express.json());
 app.use(bodyParser.json());
 app.use(cors())
 
-const db = mysql.createPool({
-    host: "localhost",
-    user: "root",
-    password: "UnixLover123@",
-    database: "claringtonsignin"
-});
+// const db = mysql.createPool({
+//     host: "localhost",
+//     user: "root",
+//     password: "UnixLover123@",
+//     database: "claringtonsignin"
+// });
 
 // const db = mysql.createPool({
 //     host: "localhost", 
@@ -23,20 +23,28 @@ const db = mysql.createPool({
 //     database: "claringtonsignin"
 // });
 
+const db = mysql.createPool({
+  host: "localhost",
+  user: "root",
+  password: "sjain28",
+  database: "claringtonsignin"
+});
+
 //generting reports 
 app.post('/api/reports', (req, res) => {
 
   try{
-    const { fromDate, toDate , fromAge , toAge } = req.body;
+    const { fromDate, toDate , fromAge , toAge, site , program } = req.body;
     console.log('From Date:', fromDate);
     console.log('To Date:', toDate);
     console.log(fromAge , toAge);
-    const site_id = 3;
-    const program_id = 2;
+    console.log(`site and progam = , ${site} and ${program}`)
+    // const site_id = 3;
+    // const program_id = 2;
   
     console.log('button was clicked');
   
-    const sql = `Select s.site_Name, v.visit_ProgramID,
+    const sql = `Select s.site_Name, pg.Name as ProgramName ,v.visit_ProgramID,
                 a.ShortTitle, vp.vPurposeReasonID, COUNT( vp.vPurposeVisitID) as 'VisitCounted',
                 month (v.DateLogged) as 'month'
                 from claringtonsignin.visitpurpose as vp
@@ -44,12 +52,13 @@ app.post('/api/reports', (req, res) => {
                 INNER JOIN claringtonsignin.sites as s ON v.visit_SiteID = s.siteID
                 INNER JOIN claringtonsignin.purposeforvisit AS a ON vp.vPurposeReasonID = a.purposeID 
                 inner join claringtonsignin.profile as p ON v.visit_ProfileID = p.ProfileID
+                inner join claringtonsignin.programs as pg ON v.visit_ProgramID = pg.ProgramID
                 where v.visit_SiteID = ? and v.visit_ProgramID = ? AND
                 p.age Between ? AND  ? and v.DateLogged Between ? AND ?
                 group by vp.vPurposeReasonID, a.ShortTitle, month(v.DateLogged)
                 ORDER BY Month, s.site_Name, a.ShortTitle;`
   
-      const uniqueSql = `Select s.site_Name, v.visit_ProgramID,
+      const uniqueSql = `Select s.site_Name, pg.Name as ProgramName ,v.visit_ProgramID,
                     a.ShortTitle, vp.vPurposeReasonID, COUNT(distinct v.visit_ProfileID) as 'VisitCounted',
                     month (v.DateLogged) as 'month'
                     from claringtonsignin.visitpurpose as vp
@@ -57,15 +66,16 @@ app.post('/api/reports', (req, res) => {
                     INNER JOIN claringtonsignin.sites as s ON v.visit_SiteID = s.siteID
                     INNER JOIN claringtonsignin.purposeforvisit AS a ON vp.vPurposeReasonID = a.purposeID 
                     inner join claringtonsignin.profile as p ON v.visit_ProfileID = p.ProfileID
+                    inner join claringtonsignin.programs as pg ON v.visit_ProgramID = pg.ProgramID
                     where v.visit_SiteID = ? and v.visit_ProgramID = ? AND
                     p.age Between ? AND  ? and v.DateLogged Between ? AND ?
                     group by vp.vPurposeReasonID, a.ShortTitle, month(v.DateLogged)
-                    ORDER BY Month, s.site_Name, a.ShortTitle;`  
-                    
+                    ORDER BY Month, s.site_Name, a.ShortTitle;`
+
     let normalData = '';
     let uniqueData= '';
   
-    db.query(sql,[site_id,program_id, fromAge, toAge, fromDate , toDate], (err, normalresults) => {
+    db.query(sql,[site,program, fromAge, toAge, fromDate , toDate], (err, normalresults) => {
       if (err) {
         console.log('Error executing SQL query: ', err);
         res.status(500).json({ error: 'Internal Server Error' });
@@ -74,7 +84,7 @@ app.post('/api/reports', (req, res) => {
         console.log('normal data fetched- ',normalresults);
         normalData = normalresults;
   
-        db.query( uniqueSql,[site_id,program_id, fromAge, toAge, fromDate , toDate], (err, uniqueResults) => {
+        db.query( uniqueSql,[site,program, fromAge, toAge, fromDate , toDate], (err, uniqueResults) => {
           if (err) {
             console.log('Error executing SQL query: ', err);
             res.status(500).json({ error: 'Internal Server Error' });
@@ -95,8 +105,38 @@ app.post('/api/reports', (req, res) => {
   catch(error){
     res.status(500).json({ error: error.message });
   }
-  });
+});
+
+// app.get('/sites', (req, res) => {
+//   const sql = "SELECT siteID as id, site_Name as Program from sites where site_Active=1;";
+//   db.query(sql, (err, data) => {
+//       if (err) return res.json(err);
+//       return res.json(data);
+
+//     })
+// })
+
+// app.get('/programs', (req,res) => {
+//   const {firstName,lastName, birthDate} = req.body
+//   const sql = "SELECT ProgramID as id, Name as Program from programs where program_Active=1;";
+//   db.query(sql, (err, data) => {
+//       if (err) return res.json(err);
+//       return res.json(data);
   
+//       }) 
+//   })
+
+  app.post('/PostPrograms',(req,res) => {
+    const {selectedSite} = req.body
+    console.log('getting program for site - ' ,selectedSite)
+    const sql = `Select ProgramID as id from sitejoinprogram where SiteID='${selectedSite}';`;
+    db.query(sql, (err, data) => {
+      if (err) {return res.json(err)};
+      console.log('data - ',data);
+      return res.json(data);
+        
+    })
+  })
   
   //--------------------add sites------------------ 
 

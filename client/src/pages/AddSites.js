@@ -5,9 +5,10 @@ import './AddSites.css';
 import Axios from 'axios';
 import Select from 'react-select';
 import Switch from 'react-switch';
-
+import { useNavigate } from "react-router-dom";
 
 export const AddSites = () => {
+  const navigate = useNavigate();
 
   const [sitesList, setSiteList] = useState([]);
   const [programList , setProgramList] = useState([]);
@@ -53,7 +54,10 @@ export const AddSites = () => {
   try{
     const response = await Axios.get(`http://localhost:3001/api/siteprograms/${id}`)
     ChangeDisplay(id)
-    setProgramList(response.data.data)
+    if (response.data.data.length > 0){
+      setProgramList(response.data.data)
+    }
+    
     console.log(response.data.data)
     //console.log(programList)
     }
@@ -292,7 +296,7 @@ const toggleActivationJoins = async (joinId, runningStatus,siteid) => {
         {/* connect with backend - then to sites table in mysql */}
         <br/>
         <div>
-          <button class='button1' onClick={() => {window.location.href = '/addprograms'}}>View Programs </button>
+          <button class='button1' onClick={() => {navigate('/addprograms')}}>View Programs </button>
         </div>
         <ReturnToStaffMenu className="button1"/>
         
