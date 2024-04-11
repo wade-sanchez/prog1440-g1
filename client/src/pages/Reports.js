@@ -21,7 +21,17 @@ export const Reports = () => {
       <input type="number" />
     </div>
   ]);
+  const [selectedYear, setSelectedYear] = useState(new Date().getFullYear().toString()); // Default to current year
 
+  const handleYearChange = (e) => {
+    setSelectedYear(e.target.value);
+  };
+
+  useEffect(() => {
+    if (!sessionStorage.getItem('StaffLogged')) {
+      navigate('/');
+    }
+  }, [navigate]);
   //axios route  
   const generateReport = async () => {
     try{ 
@@ -118,7 +128,7 @@ export const Reports = () => {
   if(!sessionStorage.getItem("StaffLogged")){
     navigate('/');
   }
-  else{
+else{
 
     return (
 
@@ -140,22 +150,43 @@ export const Reports = () => {
                   <select className="sites" dataType="data"  onChange ={e => setSelectedProgram(e.target.value)} id="programSelect"><option id="a">Select option:</option>{selectProgram()}</select>
                 </div>
               </div>
-              
-              <h3>Pick Date Range: </h3>
-              <div className='newSelection'>
-              
-            
-                <div className='labels'>
-                  <label className='space'>From: </label>
-                  <input id='from' type="date" className='label-spacing' required/>
-                  <label className='space'>To: </label>
-                  <input id ='to' type="date" className='label-spacing' required/>
-                </div>
-              </div>
+              <br/>
+              <br/>
+              <h3>Pick Date Range:</h3>
+          
+          <div className="newSelection">
+
+              <label className="lblHome">Year:</label>
+              <input dataType="data" id="yearSelect" onChange={handleYearChange}
+                value={selectedYear}
+                required />
                 
+            <br/> <br/>
+            <div className="labels">
+              <label className="lblHome">From:</label>
+              <input
+                id="from"
+                type="date"
+                className="label-spacing"
+                min={`${selectedYear}-01-01`}
+                max={`${selectedYear}-12-31`}
+                required
+              />
+              <label className="lblHome">To:</label>
+              <input 
+                id="to"
+                type="date"
+                className="label-spacing"
+                min={`${selectedYear}-01-01`}
+                max={`${selectedYear}-12-31`}
+                required
+              />
+            </div>
+          </div>
+                
+              <br/>
               <h3>Age Groups :</h3>
               <div className='newSelection'> 
-                
                 <div className='para'>
                   <div>Select the Age Range of the Clients you with to report on.</div>
                   
@@ -164,10 +195,15 @@ export const Reports = () => {
                   <div className='labels'>
                   {inputList.map((group, index) => (
                     <div key={index}>
-                      <label className='space'>From: </label>
-                      <input id={`ageFrom-${index}`}  value={fromAge} type="number"  className='label-spacing' onChange={ e => setFromAge(e.target.value) } required/>
-                      <label className='space'>To:</label>
-                      <input id={`ageTo-${index}`} type="number" value= {toAge}   className='label-spacing' onChange={ e => setToAge(e.target.value) } required/>
+                      <div>
+                        <label className="lblHome">From: </label>
+                        <input id={`ageFrom-${index}`}  value={fromAge} type="number"  className='label-spacing' onChange={ e => setFromAge(e.target.value) } required/>
+                      </div>
+                       
+                      <div>
+                        <label className="lblHome">To:</label>
+                        <input id={`ageTo-${index}`} type="number" value= {toAge}   className='label-spacing' onChange={ e => setToAge(e.target.value) } required/>
+                      </div>
                     </div>
                   ))}
                 </div>
