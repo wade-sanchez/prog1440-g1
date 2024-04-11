@@ -59,6 +59,7 @@ const GeneratedReports = () => {
           <h3>{paramtersFetched.fromDate} to {paramtersFetched.toDate}</h3>
           <h3>Age group: {paramtersFetched.age}</h3>
           <button className="buttons small "  style={{ width: '30vw' }} onClick={() => {navigate('/Reports')}}>Return to reports</button>
+          <hr/>
 
           {data.length > 0 && (
             <div className='tableview'>
@@ -67,6 +68,7 @@ const GeneratedReports = () => {
             </div>
           )}
 
+          <hr/>
           {uniqueData.length > 0 && (
             <div className='tableview'>
               <h2>Unique Visits</h2>

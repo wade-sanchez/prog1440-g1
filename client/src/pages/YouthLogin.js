@@ -10,6 +10,8 @@ import Select from 'react-select'
 
 const YouthLogin = () => {
     const navigate = useNavigate();
+    
+
     const navigateHome = () => {
         // 👇️ navigate to /
         navigate('/');
@@ -104,75 +106,79 @@ const YouthLogin = () => {
   window.history.go(1);
   };
 
+  if(!sessionStorage.getItem("StaffLogged")){
+    navigate('/');
+  }
+  else{
   
-    return(
-      
-       <div className="image2">
-        <div className="form-box">
-            <form className="signup-form" onSubmit={register_count}>
-              <h1>Youth Sign-In Page</h1>
-              <label>
-              <b> First Name:</b> 
-                <input
-                  type="text"
-                  name="firstName"
-                  onChange ={e => setFirstName(e.target.value)}
-                  required
-                />
-              </label>
-              <label>
-              <b>  Last Name:</b> 
-                <input
-                  type="text"
-                  name="lastName"
-                  onChange ={e => setLastName(e.target.value)}
-                  required
-                />
-              </label>
-              <label>
-              <b> Date of Birth:</b> 
-                <input
+      return(
+        
+        <div className="image2">
+          <div className="form-box">
+              <form className="signup-form" onSubmit={register_count}>
+                <h1>Youth Sign-In Page</h1>
+                <label>
+                <b> First Name:</b> 
+                  <input
+                    type="text"
+                    name="firstName"
+                    onChange ={e => setFirstName(e.target.value)}
+                    required
+                  />
+                </label>
+                <label>
+                <b>  Last Name:</b> 
+                  <input
+                    type="text"
+                    name="lastName"
+                    onChange ={e => setLastName(e.target.value)}
+                    required
+                  />
+                </label>
+                <label>
+                <b> Date of Birth:</b> 
+                  <input
+                  
+                    type="date"
+                    name="dateOfBirth"
+                    onChange ={e => setBirthDate(e.target.value)}
+                    required
+                  />
+                </label>
+                <label>
+                <b> Purpose of Visit: </b>
+            {/* <select onClick={getPurpose}><option>{purposeOptions}</option></select> */}
+            <Select className="multiSelect" onChange={handleChange} required onMenuOpen={getPurpose} placeholder="Select Purpose of Visit" isMulti="true" options={purpose}/>
+            {/* <select
+              name="purposeOfVisit"
+              onChange ={e => setPurpose(e.target.value)}
+              >
+              <option value="Visitor">Visitor</option>
+              <option value="Camp Counselor">Camp Counselor</option>
+              <option value="Volunteer">Volunteer</option>
+              <option value="Staff">Staff</option>
+            
+            </select> */}
+          </label>
+          <div className="space">
+                <button className="button1" type="submit">Sign In</button>
                 
-                  type="date"
-                  name="dateOfBirth"
-                  onChange ={e => setBirthDate(e.target.value)}
-                  required
-                />
-              </label>
-              <label>
-              <b> Purpose of Visit: </b>
-          {/* <select onClick={getPurpose}><option>{purposeOptions}</option></select> */}
-          <Select className="multiSelect" onChange={handleChange} required onMenuOpen={getPurpose} placeholder="Select Purpose of Visit" isMulti="true" options={purpose}/>
-          {/* <select
-            name="purposeOfVisit"
-            onChange ={e => setPurpose(e.target.value)}
-            >
-            <option value="Visitor">Visitor</option>
-            <option value="Camp Counselor">Camp Counselor</option>
-            <option value="Volunteer">Volunteer</option>
-            <option value="Staff">Staff</option>
-           
-          </select> */}
-        </label>
-        <div className="space">
-              <button className="button1" type="submit">Sign In</button>
-              
-              
-              </div>
-              <p class='error_message'>{checkMessage()}</p>
-              <br/>
                 
-                  <h3>Don't have an account? First time attending a program?</h3>
-                  <button  className="button1" type='submit' onClick={navigateRegister}>Register Here</button>
-                  {/* <button onClick={navigateRegister}>Register Here</button> */}
-                
-                 {/* {selectedPurposes && <div style={{ marginTop: 20, lineHeight: '25px' }}>
-        <div><b>SelectedPurposes: </b> {JSON.stringify(selectedPurposes, null, 2)}</div>
-        </div>} */}
-            </form>
-    </div>
-    </div>
-    )
+                </div>
+                <p class='error_message'>{checkMessage()}</p>
+                <br/>
+                  
+                    <h3>Don't have an account? First time attending a program?</h3>
+                    <button  className="button1" type='submit' onClick={navigateRegister}>Register Here</button>
+                    {/* <button onClick={navigateRegister}>Register Here</button> */}
+                  
+                  {/* {selectedPurposes && <div style={{ marginTop: 20, lineHeight: '25px' }}>
+          <div><b>SelectedPurposes: </b> {JSON.stringify(selectedPurposes, null, 2)}</div>
+          </div>} */}
+              </form>
+      </div>
+      </div>
+      )
+  }
 }
-
 export default YouthLogin;

@@ -5,6 +5,7 @@ import { useState, useEffect } from 'react';
 import Axios from 'axios'
 import { Table, Header, HeaderRow, HeaderCell, Body, Row, Cell } from '@table-library/react-table-library/table';
 import { usePagination } from '@table-library/react-table-library/pagination';
+import { useNavigate } from "react-router-dom";
 
 const EditProfile = () => {
   const [profileID, setProfileID] = useState('');
@@ -22,7 +23,35 @@ const EditProfile = () => {
   const [relation, setRelation] = useState('');
   const [searchFName, setFNameSearch] = useState('');
   const [searchLName, setLNameSearch] = useState('');
-  
+  const[data, setData] =useState([])
+  useEffect(() => {
+      fetch('http://localhost:3001/api/GetProfileTable')
+      .then(res => res.json())
+      .then(data => setData(data))
+      .then(console.log(data))
+      .catch(err => console.log(err));
+  }, [])
+
+  function onPaginationChange(action, state){
+    console.log(action,state);
+  }
+
+  const pagination = usePagination(data, {
+    state: {
+      page:0,
+      size:5,
+    },
+    onChange: onPaginationChange,
+});
+
+
+const navigate = useNavigate();
+ 
+//AUTHORIZATION
+ if(!sessionStorage.getItem("StaffLogged")){
+  navigate('/');
+  }
+  else{ 
   const handleSearch = (data) => {
     // Update state with retrieved data
       // console.log("Item: " + data) //check if data was cleared
@@ -44,42 +73,7 @@ const EditProfile = () => {
       setRelation(data[profileID-1].EmergRelation);
   };
 
-  
   // console.log(tableData.nodes)
-
-  const[data, setData] =useState([])
-    useEffect(() => {
-        fetch('http://localhost:3001/api/GetProfileTable')
-        .then(res => res.json())
-        .then(data => setData(data))
-        .then(console.log(data))
-        .catch(err => console.log(err));
-        // getSite();
-    }, [])
-//console.log(data)
-
-    // const getSite = async ()=>{
-    //   //console.log(SearchBar.firstName)
-    //   setSite(sessionStorage.getItem("siteName"))
-    //   //console.log(site)
-    //   //console.log(sessionStorage.getItem("siteName"))
-    //     //e.preventDefault();
-    //     try {
-    //       const response = await Axios.post("http://localhost:3001/getsitename", {
-    //         site: "4"
-    //         });
-    //         setSiteN(response.data)
-    //         console.log(response.data)
-    //         //setSite(response)
-    //         //return response
-            
-    //         //return response  
-    //     }
-    //     catch(error){
-    //       console.error("Error:", error);  
-    
-    //     }
-    //   }
 
 const register_form = async (e)=>{
 
@@ -115,19 +109,6 @@ const tableData = {nodes: data}
 
 
 //set number of pages, number of items per page in the table
-const pagination = usePagination(data, {
-    state: {
-      page:0,
-      size:5,
-    },
-    onChange: onPaginationChange,
-});
-
-
-
-  function onPaginationChange(action, state){
-    console.log(action,state);
-  }
 
   function hideEdit() {
     if(profileID>0){
@@ -371,6 +352,7 @@ console.log(profileID)
     </div>
     </>
   );
+  }
 }
-
 export default EditProfile;
+

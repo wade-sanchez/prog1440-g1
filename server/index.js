@@ -9,6 +9,10 @@ app.use(express.json());
 app.use(bodyParser.json());
 app.use(cors())
 
+
+// const staff = sessionStorage.getItem("StaffLogged")
+// console.log(staff)
+
 // const db = mysql.createPool({
 //     host: "localhost",
 //     user: "root",

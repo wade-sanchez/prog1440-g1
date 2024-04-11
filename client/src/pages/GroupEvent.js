@@ -148,49 +148,56 @@ const selectP = async (e)=>{
   const navigateToStaffMenu = () => {
     navigate('/StaffMenu');
   }
-  return (
-    <>
-    <div className='homepage'>
-    <h1 id="GroupEvent" className='headings'>Group Event Registration</h1>
-    <form onSubmit={regGroupEvent} className='wrappers'>
-        
-        <div>
-        <div>
-            <label class="lblHome" for="siteSelect"><b> Site Selection: </b></label>
-            {/* <Combo className="sites" dataType="data" id="siteSelect" value={selectProgram()} ></Combo> */}
-            <select className="sites" required dataType="data" id="siteSelect" onClick={selectP} onChange ={e => setSelectedSite(e.target.value)}><option value="">Select option:</option>{selectSite()}</select>
-            <p style={{textAlign:'left'}} className='error_message'>{siteStatus}</p>
-         </div>
+  
+  if(!sessionStorage.getItem("StaffLogged")){
+    navigate('/');
+  }
+
+  else{
+    return (
+      <>
+      <div className='homepage'>
+      <h1 id="GroupEvent" className='headings'>Group Event Registration</h1>
+      <form onSubmit={regGroupEvent} className='wrappers'>
+          
           <div>
-            <label class="lblHome" for="programSelect"> <b>Program Selection:</b> </label>
-            {/* <Combo name="programs" className="programs" dataType="siteData" id="programSelect"> </Combo> */}
-            <select className="sites" required dataType="data" onClick={selectP} onChange ={e => setSelectedProgram(e.target.value)} id="programSelect"><option id="a" value="">Select option:</option>{selectProgram()}</select>
-            <p style={{textAlign:'left'}} className='error_message'>{progStatus}</p>
+          <div>
+              <label class="lblHome" for="siteSelect"><b> Site Selection: </b></label>
+              {/* <Combo className="sites" dataType="data" id="siteSelect" value={selectProgram()} ></Combo> */}
+              <select className="sites" required dataType="data" id="siteSelect" onClick={selectP} onChange ={e => setSelectedSite(e.target.value)}><option value="">Select option:</option>{selectSite()}</select>
+              <p style={{textAlign:'left'}} className='error_message'>{siteStatus}</p>
           </div>
-        {/* <div className='spacing'><label className="label">Site:</label><Combo onChange ={e => setSiteName(e.target.value)} id="input-field" className="sites"></Combo></div>
-        <div className='spacing'><label className="label">Program:</label><Combo onChange ={e => setProgramName(e.target.value)} className="programs"></Combo></div> */}
-        <div className='spacing'><label className="label">Date:</label><TextBox required onChange ={e => setnowDate(e.target.value)} className="input-field" tbType={'date'}/></div>
-        </div>
-        <div>   
-        <div className='spacing'><label className="label">City:</label><TextBox required onChange ={e => setCity(e.target.value)} className="input-field"/></div>
-        <div className='spacing'><label className="label">Event Name:</label><TextBox required onChange ={e => setName(e.target.value)} className="input-field" tbType={'text'}/></div>
-        <div className='spacing'><label className="label">Description:</label><textarea required onChange ={e => setDescription(e.target.value)} className="input-field"></textarea></div>
-        </div>
-        <div>
-        <div className='spacing'><label className="label">Attendance Count:</label><TextBox required onChange ={e => setAttendanceCount(e.target.value)} className="input-field" tbType={'number'}/></div>
-        <div className='spacing'><label className="label">Volunteer Count:</label><TextBox required onChange ={e => setVolunteerCount(e.target.value)} className="input-field" tbType={'number'}/></div>
-        <div className='spacing'><label className="label">Total Volunteer Hours:</label><TextBox required onChange ={e => setVolunteerHrs(e.target.value)} className="input-field" tbType={'number'}/></div>
-        </div>
-        <div>
-        <div className="registration-buttons">
-        <button className= "buttons" type="submit">Register Group Event</button>
-        <ReturnToStaffMenu className="buttons"></ReturnToStaffMenu>
-        </div>
-        {/* add bottom spacing */}
-        
-        </div>
-      </form>
-    </div>
-    </>
-  )
+            <div>
+              <label class="lblHome" for="programSelect"> <b>Program Selection:</b> </label>
+              {/* <Combo name="programs" className="programs" dataType="siteData" id="programSelect"> </Combo> */}
+              <select className="sites" required dataType="data" onClick={selectP} onChange ={e => setSelectedProgram(e.target.value)} id="programSelect"><option id="a" value="">Select option:</option>{selectProgram()}</select>
+              <p style={{textAlign:'left'}} className='error_message'>{progStatus}</p>
+            </div>
+          {/* <div className='spacing'><label className="label">Site:</label><Combo onChange ={e => setSiteName(e.target.value)} id="input-field" className="sites"></Combo></div>
+          <div className='spacing'><label className="label">Program:</label><Combo onChange ={e => setProgramName(e.target.value)} className="programs"></Combo></div> */}
+          <div className='spacing'><label className="label">Date:</label><TextBox required onChange ={e => setnowDate(e.target.value)} className="input-field" tbType={'date'}/></div>
+          </div>
+          <div>   
+          <div className='spacing'><label className="label">City:</label><TextBox required onChange ={e => setCity(e.target.value)} className="input-field"/></div>
+          <div className='spacing'><label className="label">Event Name:</label><TextBox required onChange ={e => setName(e.target.value)} className="input-field" tbType={'text'}/></div>
+          <div className='spacing'><label className="label">Description:</label><textarea required onChange ={e => setDescription(e.target.value)} className="input-field"></textarea></div>
+          </div>
+          <div>
+          <div className='spacing'><label className="label">Attendance Count:</label><TextBox required onChange ={e => setAttendanceCount(e.target.value)} className="input-field" tbType={'number'}/></div>
+          <div className='spacing'><label className="label">Volunteer Count:</label><TextBox required onChange ={e => setVolunteerCount(e.target.value)} className="input-field" tbType={'number'}/></div>
+          <div className='spacing'><label className="label">Total Volunteer Hours:</label><TextBox required onChange ={e => setVolunteerHrs(e.target.value)} className="input-field" tbType={'number'}/></div>
+          </div>
+          <div>
+          <div className="registration-buttons">
+          <button className= "buttons" type="submit">Register Group Event</button>
+          <ReturnToStaffMenu className="buttons"></ReturnToStaffMenu>
+          </div>
+          {/* add bottom spacing */}
+          
+          </div>
+        </form>
+      </div>
+      </>
+    )
+  }
 }

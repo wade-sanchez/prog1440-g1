@@ -115,68 +115,72 @@ export const Reports = () => {
   console.log(sessionStorage.getItem("siteName"))
   console.log(sessionStorage.getItem("progName"))
 
+  if(!sessionStorage.getItem("StaffLogged")){
+    navigate('/');
+  }
+  else{
 
+    return (
 
-  return (
-
-  <>
-    <div className='wrapper1'>
-      <form >
-          <h1> Reports and Analytics :</h1>
-            <div className='labelr'>
-              <div>
-                <label className="lblHome" for="siteSelect"><b> Site Selection: </b></label>
-               
-                <select className="sites" dataType="data" id="siteSelect" onClick={selectP} onChange ={e => setSelectedSite(e.target.value)}><option>Select option:</option>{selectSite()}</select>
-              </div>
-
-
-              <div>
-                <label className="lblHome" for="programSelect"> <b>Program Selection:</b> </label>
-               
-                <select className="sites" dataType="data"  onChange ={e => setSelectedProgram(e.target.value)} id="programSelect"><option id="a">Select option:</option>{selectProgram()}</select>
-              </div>
-            </div>
-            
-            <h3>Pick Date Range: </h3>
-            <div className='newSelection'>
-             
-          
-              <div className='labels'>
-                <label className='space'>From: </label>
-                <input id='from' type="date" className='label-spacing' required/>
-                <label className='space'>To: </label>
-                <input id ='to' type="date" className='label-spacing' required/>
-              </div>
-            </div>
-              
-            <h3>Age Groups :</h3>
-            <div className='newSelection'> 
-              
-              <div className='para'>
-                <div>Select the Age Range of the Clients you with to report on.</div>
+    <>
+      <div className='wrapper1'>
+        <form >
+            <h1> Reports and Analytics :</h1>
+              <div className='labelr'>
+                <div>
+                  <label className="lblHome" for="siteSelect"><b> Site Selection: </b></label>
                 
+                  <select className="sites" dataType="data" id="siteSelect" onClick={selectP} onChange ={e => setSelectedSite(e.target.value)}><option>Select option:</option>{selectSite()}</select>
                 </div>
-            </div>
-                <div className='labels'>
-                {inputList.map((group, index) => (
-                  <div key={index}>
-                    <label className='space'>From: </label>
-                    <input id={`ageFrom-${index}`}  value={fromAge} type="number"  className='label-spacing' onChange={ e => setFromAge(e.target.value) } required/>
-                    <label className='space'>To:</label>
-                    <input id={`ageTo-${index}`} type="number" value= {toAge}   className='label-spacing' onChange={ e => setToAge(e.target.value) } required/>
-                  </div>
-                ))}
-              </div>
 
-            <div>
-              <div><button type="submit" className='button' onClick={generateReport}>Generate Report</button> </div> <br/>
-              <div><ReturnToStaffMenu className="button"/></div>
+
+                <div>
+                  <label className="lblHome" for="programSelect"> <b>Program Selection:</b> </label>
+                
+                  <select className="sites" dataType="data"  onChange ={e => setSelectedProgram(e.target.value)} id="programSelect"><option id="a">Select option:</option>{selectProgram()}</select>
+                </div>
+              </div>
               
-            </div>
-     
-      </form>
-    </div>
-    </>
-  )
+              <h3>Pick Date Range: </h3>
+              <div className='newSelection'>
+              
+            
+                <div className='labels'>
+                  <label className='space'>From: </label>
+                  <input id='from' type="date" className='label-spacing' required/>
+                  <label className='space'>To: </label>
+                  <input id ='to' type="date" className='label-spacing' required/>
+                </div>
+              </div>
+                
+              <h3>Age Groups :</h3>
+              <div className='newSelection'> 
+                
+                <div className='para'>
+                  <div>Select the Age Range of the Clients you with to report on.</div>
+                  
+                  </div>
+              </div>
+                  <div className='labels'>
+                  {inputList.map((group, index) => (
+                    <div key={index}>
+                      <label className='space'>From: </label>
+                      <input id={`ageFrom-${index}`}  value={fromAge} type="number"  className='label-spacing' onChange={ e => setFromAge(e.target.value) } required/>
+                      <label className='space'>To:</label>
+                      <input id={`ageTo-${index}`} type="number" value= {toAge}   className='label-spacing' onChange={ e => setToAge(e.target.value) } required/>
+                    </div>
+                  ))}
+                </div>
+
+              <div>
+                <div><button type="submit" className='button' onClick={generateReport}>Generate Report</button> </div> <br/>
+                <div><ReturnToStaffMenu className="button"/></div>
+                
+              </div>
+      
+        </form>
+      </div>
+      </>
+    )
+  }
 }

@@ -113,37 +113,43 @@ export const SiteSelect = (props) => {
   window.onpopstate = function () {
   window.history.go(1);
   };
-  return (
-      
-    <div className='image'>
-      <div className='box-container'>
-        <form onSubmit={navigateToSignIn}>
-        <h1>Please select the appropriate Site and Program:</h1>
-        <br/>
-        <div>
+
+  if(!sessionStorage.getItem("StaffLogged")){
+    navigate('/');
+  }
+  else{
+    return (
+        
+      <div className='image'>
+        <div className='box-container'>
+          <form onSubmit={navigateToSignIn}>
+          <h1>Please select the appropriate Site and Program:</h1>
+          <br/>
           <div>
-            <label class="lblHome" for="siteSelect"><b> Site Selection: </b></label>
-            {/* <Combo className="sites" dataType="data" id="siteSelect" value={selectProgram()} ></Combo> */}
-            <select className="sites" dataType="data" id="siteSelect" onClick={selectP} onChange ={e => setSelectedSite(e.target.value)} required><option value="" selected="selected" disabled="disabled">Select option:</option>{selectSite()}</select>
+            <div>
+              <label class="lblHome" for="siteSelect"><b> Site Selection: </b></label>
+              {/* <Combo className="sites" dataType="data" id="siteSelect" value={selectProgram()} ></Combo> */}
+              <select className="sites" dataType="data" id="siteSelect" onClick={selectP} onChange ={e => setSelectedSite(e.target.value)} required><option value="" selected="selected" disabled="disabled">Select option:</option>{selectSite()}</select>
+            </div>
+            <div>
+              <label class="lblHome" for="programSelect"> <b>Program Selection:</b> </label>
+              {/* <Combo name="programs" className="programs" dataType="siteData" id="programSelect"> </Combo> */}
+              <select className="sites" dataType="data" onClick={selectP} onChange ={e => setSelectedProgram(e.target.value)} id="programSelect" required><option id="a" value="" selected="selected" disabled="disabled">Select option:</option>{selectProgram()}</select>
+            </div>
+              <br/>
+              
+              {/* <BlueButton onClick={navigateToSignIn} btnText={'Go to Sign-In'}/> */}
+              {/* Component Button^ */}
+              <button class="button1" type="submit" value="Submit">Go to Sign-In</button>
+              {/* Hard Coded Button^ */}
+              <Routes>
+                  <Route path='home' element={<Home/>} />
+              </Routes>
+              
           </div>
-          <div>
-            <label class="lblHome" for="programSelect"> <b>Program Selection:</b> </label>
-            {/* <Combo name="programs" className="programs" dataType="siteData" id="programSelect"> </Combo> */}
-            <select className="sites" dataType="data" onClick={selectP} onChange ={e => setSelectedProgram(e.target.value)} id="programSelect" required><option id="a" value="" selected="selected" disabled="disabled">Select option:</option>{selectProgram()}</select>
-          </div>
-            <br/>
-            
-            {/* <BlueButton onClick={navigateToSignIn} btnText={'Go to Sign-In'}/> */}
-            {/* Component Button^ */}
-            <button class="button1" type="submit" value="Submit">Go to Sign-In</button>
-            {/* Hard Coded Button^ */}
-            <Routes>
-                <Route path='home' element={<Home/>} />
-            </Routes>
-            
+          </form>
         </div>
-        </form>
-      </div>
-      </div>
-  )
+        </div>
+    )
+  }
 }
