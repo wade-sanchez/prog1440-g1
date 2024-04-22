@@ -6,8 +6,6 @@ import { useNavigate } from "react-router-dom";
 import { ReturnToStaffMenu } from '../components/ReturnToStaffMenuBtn';
 
 
-//import { ExportToExcel } from './ExportToExcel';
-
 export const Reports = () => {
   
   const navigate = useNavigate() 
@@ -32,12 +30,13 @@ export const Reports = () => {
       navigate('/');
     }
   }, [navigate]);
+  
   //axios route  
   const generateReport = async () => {
     try{ 
       const from = document.getElementById('from').value;
       const to = document.getElementById('to').value;
-      navigate(`/generateReports?site=${selectedSite}&program=${selectedProgram}&fromDate=${from}&toDate=${to}&fromAge=${fromAge}&toAge=${toAge}`)
+      navigate(`/generateReports?site=${selectedSite}&siteName=${siteInfoName}&program=${selectedProgram}&programName=${programInfoName}&fromDate=${from}&toDate=${to}&fromAge=${fromAge}&toAge=${toAge}`)
   
     }
     catch(error){
@@ -46,13 +45,29 @@ export const Reports = () => {
   }
   
 
-//---------------------------------getting data for sitesselect -------------------------
+  //---------------------------------getting data for sitesselect -------------------------
 
- const[siteData, setSiteData] = useState([]);
+    const[siteData, setSiteData] = useState([]);
     const[programData, setProgramData] = useState([]);
     const[selectedSite, setSelectedSite] = useState([]);
     const[selectedProgram, setSelectedProgram] = useState([]);
+    const[siteInfoName , setSiteInfoName] = useState([]);
+    const[programInfoName, setProgramInfoName] = useState({});
+
+    const changeSiteInfo = (value_id , e)=>{
+      const name = e.target.options[e.target.selectedIndex].getAttribute('data-name');
+      setSiteInfoName(name)
+      setSelectedSite(value_id)  
+    }
     
+    const changeProgramInfo = (value_id , e)=>{
+      const name = e.target.options[e.target.selectedIndex].getAttribute('data-name');
+      setProgramInfoName(name)
+      setSelectedProgram(value_id)
+     
+    }
+
+
     useEffect(() => {
         var link1 = 'http://localhost:3001/sites'
         // var link2 = link1+className
@@ -72,8 +87,8 @@ export const Reports = () => {
         .catch(err2 => console.log(err2));
         
     }, [])
-  
-
+    
+    //SETTING UP SESSION FOR SITE AND PROGRAM 
     const selectSite= () => {
       var siteName = sessionStorage.getItem("siteName")
       //initialize session storate
@@ -83,7 +98,7 @@ export const Reports = () => {
 
         return(
     siteData.map(siteData => 
-        (<option key={siteData.id} value={siteData.id}>{siteData.Program}</option>))
+        (<option key={siteData.Program} value={siteData.id} data-name={siteData.Program}>{siteData.Program}</option>))
     )}
 
     const selectProgram= () => {
@@ -94,7 +109,7 @@ export const Reports = () => {
         sessionStorage.setItem("progName", progName);
       return(
         filteredProg.map(filteredProg => 
-          (<option key={filteredProg.id} value={filteredProg.id}>{filteredProg.Program}</option>))
+          (<option key={filteredProg.id} value={filteredProg.id} data-name={filteredProg.Program}>{filteredProg.Program}</option>))
   )}
 
   //print sites only associated with program
@@ -107,28 +122,28 @@ export const Reports = () => {
           selectedSite: selectedSite
         });
         const progVar = response.data;
-        console.log(progVar)
+        //console.log('program variablw = ',progVar)
        
         setFilteredProg(programData.filter(function(cItem) {
           return progVar.find(function(aItem) {
             return cItem.id === aItem.id
           })
         }))
-        console.log(filteredProg)
+        //console.log('filtered programs ',filteredProg)
       }
     catch(error){
       console.error("Error:", error);  
 
     }
   }
-  //check session data if stored
-  console.log(sessionStorage.getItem("siteName"))
-  console.log(sessionStorage.getItem("progName"))
+  // //check session data if stored
+  // console.log(sessionStorage.getItem("siteName"))
+  // console.log(sessionStorage.getItem("progName"))
 
   if(!sessionStorage.getItem("StaffLogged")){
     navigate('/');
   }
-else{
+  else{
 
     return (
 
@@ -140,14 +155,14 @@ else{
                 <div>
                   <label className="lblHome" for="siteSelect"><b> Site Selection: </b></label>
                 
-                  <select className="sites" dataType="data" id="siteSelect" onClick={selectP} onChange ={e => setSelectedSite(e.target.value)}><option>Select option:</option>{selectSite()}</select>
+                  <select className="sites" dataType="data" id="siteSelect" onClick={selectP} onChange ={e => changeSiteInfo(e.target.value , e)}><option>Select option:</option>{selectSite()}</select>
                 </div>
 
 
                 <div>
                   <label className="lblHome" for="programSelect"> <b>Program Selection:</b> </label>
                 
-                  <select className="sites" dataType="data"  onChange ={e => setSelectedProgram(e.target.value)} id="programSelect"><option id="a">Select option:</option>{selectProgram()}</select>
+                  <select className="sites" dataType="data"  onChange ={e => changeProgramInfo(e.target.value,e)} id="programSelect"><option id="a">Select option:</option>{selectProgram()}</select>
                 </div>
               </div>
               <br/>

@@ -39,14 +39,6 @@ app.post('/api/reports', (req, res) => {
 
   try{
     const { fromDate, toDate , fromAge , toAge, site , program } = req.body;
-    console.log('From Date:', fromDate);
-    console.log('To Date:', toDate);
-    console.log(fromAge , toAge);
-    console.log(`site and progam = , ${site} and ${program}`)
-    // const site_id = 3;
-    // const program_id = 2;
-  
-    console.log('button was clicked');
   
     const sql = `Select s.site_Name, pg.Name as ProgramName ,v.visit_ProgramID,
                 a.ShortTitle, vp.vPurposeReasonID, COUNT( vp.vPurposeVisitID) as 'VisitCounted',
@@ -85,7 +77,7 @@ app.post('/api/reports', (req, res) => {
         res.status(500).json({ error: 'Internal Server Error' });
         return;
       }
-        console.log('normal data fetched- ',normalresults);
+       //console.log('normal data fetched- ',normalresults);
         normalData = normalresults;
   
         db.query( uniqueSql,[site,program, fromAge, toAge, fromDate , toDate], (err, uniqueResults) => {
@@ -94,7 +86,7 @@ app.post('/api/reports', (req, res) => {
             res.status(500).json({ error: 'Internal Server Error' });
             return;
           }
-            console.log('normal data fetched- ', uniqueResults);
+            //console.log('normal data fetched- ', uniqueResults);
             uniqueData = uniqueResults;
   
             const response = {
@@ -726,17 +718,6 @@ app.get('/sites', (req, res) => {
 
     })
 })
-//get Site name for Edit Profile or anywhere that site name needs to be shown
-// app.post('/getsitename', (req, res) => {
-//   const {site} = req.body
-//   const sql = "SELECT site_Name from sites where siteID=?";
-//   db.query(sql, [site], (err, data) => {
-//       if (err) return res.json(err);
-//       console.log(data)
-//       return res.json(Object.values(data[0]));
-
-//   })
-// })
 
 app.get('/programs', (req,res) => {
     const {firstName,lastName, birthDate} = req.body
