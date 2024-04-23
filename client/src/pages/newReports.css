@@ -2,88 +2,87 @@
 
 /* Wrapper for the entire form */
 .wrapper1 {
-    margin: auto;
-    margin-top: 2rem;
-    width: 50%;
-    padding: 20px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-    background-color: #f9f9f9;
-  }
-  
-  .newSelection{
-    margin:2rem;
+  margin: auto;
+  margin-top: 2rem;
+  width: 90%;
+  max-width: 800px;
+  padding: 20px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  background-color: #f9f9f9;
+}
+
+/* Form title */
+h1 {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+/* Label and select elements */
+.labelr, .labels {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.lblHome {
+  font-weight: bold;
+}
+
+/* Age groups section */
+.para {
+  margin-bottom: 20px;
+}
+
+/* Buttons */
+.button {
+  padding: 10px 20px;
+  background-color: #4caf50;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.button:hover {
+  background-color: #45a049;
+}
+
+/* Table */
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 20px;
+}
+
+th, td {
+  border: 1px solid #ddd;
+  padding: 8px;
+  text-align: left;
+}
+
+th {
+  background-color: #f2f2f2;
+}
+
+/* Media queries for responsiveness */
+@media screen and (max-width: 768px) {
+  .wrapper1 {
+    width: 90%;
   }
 
-  /* Form title */
-  h1 {
-    text-align: center;
-    margin-bottom: 20px;
+  .newSelection {
+    margin: 1rem;
   }
-  
-  /* Label and select elements */
-  .labelr {
-    display: flex;
-    justify-content: space-between;
-    margin-bottom: 20px;
+
+  .labelr, .labels {
+    flex-direction: column;
+    align-items: flex-start;
   }
-  
-  .lblHome {
-    font-weight: bold;
-  }
-  
-  /* Date range labels and inputs */
-  .labels {
-    display: flex;
-    justify-content: space-between;
-    margin-bottom: 20px;
-  }
-  
-  .space {
-    margin-right: 10px;
-  }
-  
-  .label-spacing {
-    margin-right: 5px;
-  }
-  
-  /* Age groups section */
-  .para {
-    margin-bottom: 20px;
-  }
-  
-  /* Buttons */
+
   .button {
-    padding: 10px 20px;
-    margin-right: 10px;
-    background-color: #4caf50;
-    color: white;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
-  }
-  
-  .button:hover {
-    background-color: #45a049;
-  }
-  
-  /* Table */
-  table {
     width: 100%;
-    border-collapse: collapse;
-    margin-top: 20px;
   }
-  
-  th, td {
-    border: 1px solid #ddd;
-    padding: 8px;
-    text-align: left;
-  }
-  
-  th {
-    background-color: #f2f2f2;
-  }
-  
-  /* Add more CSS rules as needed */
-  
+}

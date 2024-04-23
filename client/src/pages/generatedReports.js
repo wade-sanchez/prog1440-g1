@@ -4,6 +4,7 @@ import axios from 'axios';
 import '../pages/table.css';
 import { ReportTable } from '../components/ReportTable';
 import { useNavigate } from 'react-router-dom';
+import '../pages/generatedReports.css'
 
 const GeneratedReports = () => {
   const [data, setData] = useState('');
@@ -17,7 +18,9 @@ const GeneratedReports = () => {
   const fromAge = queryParams.get('fromAge');
   const toAge = queryParams.get('toAge');
   const site = queryParams.get('site');
-  const program = queryParams.get('program');
+  const program = queryParams.get('program')
+  const siteName = queryParams.get('siteName')
+  const programName = queryParams.get('programName')
 
   useEffect(() => {
     //displaying heading
@@ -26,9 +29,10 @@ const GeneratedReports = () => {
         fromDate: fromDate,
         toDate: toDate,
         age: `${fromAge} - ${toAge}`,
-        site: site,
-        program: program,
-      });
+        siteName: siteName,
+        programName: programName,
+
+      })
     }
 
     //axios req
@@ -42,7 +46,7 @@ const GeneratedReports = () => {
         program,
       })
       .then((d) => {
-        console.log(d.data);
+        
         setData(d.data.normalData);
         setUniqueData(d.data.uniqueData);
       })
@@ -61,9 +65,9 @@ const GeneratedReports = () => {
         </div>
       ) : (
         <div>
-          <h1>Welcome to the Reports Page</h1>
+          <h1>Reports data</h1>
           <h2>
-            Reports generated for site - {parametersFetched.site} and program {parametersFetched.program}
+            Site: "{parametersFetched.siteName}" <br/> Program :-  "{parametersFetched.programName}"
           </h2>
           <h3>
             {parametersFetched.fromDate} to {parametersFetched.toDate}
