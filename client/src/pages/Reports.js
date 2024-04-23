@@ -48,11 +48,12 @@ export const Reports = () => {
 
 //---------------------------------getting data for sitesselect -------------------------
 
- const[siteData, setSiteData] = useState([]);
+    const[siteData, setSiteData] = useState([]);
     const[programData, setProgramData] = useState([]);
     const[selectedSite, setSelectedSite] = useState([]);
     const[selectedProgram, setSelectedProgram] = useState([]);
-    
+    const[siteName, setSiteName] = useState([]);
+    const[programName, setProgramName] = useState([]);
     useEffect(() => {
         var link1 = 'http://localhost:3001/sites'
         // var link2 = link1+className
@@ -79,19 +80,23 @@ export const Reports = () => {
       //initialize session storate
       siteName=selectedSite;
       //update session storage
-      sessionStorage.setItem("siteName", siteName);
+      sessionStorage.setItem("siteName", siteName); //id
+      sessionStorage.setItem("site", programName); //name
 
         return(
     siteData.map(siteData => 
         (<option key={siteData.id} value={siteData.id}>{siteData.Program}</option>))
-    )}
+        
+    )
+  }
 
     const selectProgram= () => {
       var progName = sessionStorage.getItem("progName");
       //initialize session storate
           progName=selectedProgram;
         //update session storage
-        sessionStorage.setItem("progName", progName);
+        sessionStorage.setItem("progName", progName); //id
+        sessionStorage.setItem("program", programName); //name
       return(
         filteredProg.map(filteredProg => 
           (<option key={filteredProg.id} value={filteredProg.id}>{filteredProg.Program}</option>))
@@ -140,14 +145,14 @@ else{
                 <div>
                   <label className="lblHome" for="siteSelect"><b> Site Selection: </b></label>
                 
-                  <select className="sites" dataType="data" id="siteSelect" onClick={selectP} onChange ={e => setSelectedSite(e.target.value)}><option>Select option:</option>{selectSite()}</select>
+                  <select className="sites" dataType="data" id="siteSelect" onClick={selectP} onSelect={e=>setSiteName(e.target.key)} onChange ={e => setSelectedSite(e.target.value)}><option>Select option:</option>{selectSite()}</select>
                 </div>
 
 
                 <div>
                   <label className="lblHome" for="programSelect"> <b>Program Selection:</b> </label>
                 
-                  <select className="sites" dataType="data"  onChange ={e => setSelectedProgram(e.target.value)} id="programSelect"><option id="a">Select option:</option>{selectProgram()}</select>
+                  <select className="sites" dataType="data" onSelect={e=>setProgramName(e.target.key)} onChange ={e => setSelectedProgram(e.target.value)} id="programSelect"><option id="a">Select option:</option>{selectProgram()}</select>
                 </div>
               </div>
               <br/>

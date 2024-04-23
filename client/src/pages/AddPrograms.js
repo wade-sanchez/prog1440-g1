@@ -100,7 +100,7 @@ export const AddPrograms = () => {
           });
           //setInputPurpose=([{ shortTitle: '', Title: '' }])
           //fetchPurpose() 
-          alert('purpose added')     
+          //alert('purpose added')     
       }
       catch(error){
         console.error("Error while creating purpose", error);  

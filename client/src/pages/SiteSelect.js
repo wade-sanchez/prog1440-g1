@@ -100,13 +100,13 @@ export const SiteSelect = (props) => {
   //console.log(sessionStorage.getItem("siteName"))
   //console.log(sessionStorage.getItem("progName"))
   // console.log(document.getElementById('selectSite'))
-  const nextPage = () => {
-    if (document.getElementById('selectSite') !== null){
-      if (document.getElementById('selectProgram') !== null){
-        navigateToSignIn()
-      }
-    }
-  }
+  // const nextPage = () => {
+  //   if (document.getElementById('selectSite') !== null){
+  //     if (document.getElementById('selectProgram') !== null){
+  //       navigateToSignIn()
+  //     }
+  //   }
+  // }
 
   //disable back
   window.history.pushState(null, null, window.location.href);

@@ -37,6 +37,12 @@ export const StaffMenu = () => {
       // insert report stuff
       navigate('/Reports');
     }
+    const clearStaff = () => {
+      sessionStorage.removeItem("StaffLogged")
+      window.location.href = '/StaffLoginForMenu'
+      //this.forceupdate()
+      // staff = null
+    }
 
       //disable back button
       window.history.pushState(null, null, window.location.href);
@@ -66,7 +72,7 @@ export const StaffMenu = () => {
               <button className="buttons" onClick={generateReport}>Generate Report</button>
           </div>
           <div className="staffMenuButtons">
-              <button className="buttons" onClick={navigateToSiteSelect}>Logout</button>
+              <button className="buttons" onClick={clearStaff}>Logout</button>
           </div>
           </div>
           </div>

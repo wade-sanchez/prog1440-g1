@@ -13,12 +13,12 @@ app.use(cors())
 // const staff = sessionStorage.getItem("StaffLogged")
 // console.log(staff)
 
-// const db = mysql.createPool({
-//     host: "localhost",
-//     user: "root",
-//     password: "UnixLover123@",
-//     database: "claringtonsignin"
-// });
+const db = mysql.createPool({
+    host: "localhost",
+    user: "root",
+    password: "UnixLover123@",
+    database: "claringtonsignin"
+});
 
 // const db = mysql.createPool({
 //     host: "localhost", 
@@ -27,12 +27,12 @@ app.use(cors())
 //     database: "claringtonsignin"
 // });
 
-const db = mysql.createPool({
-  host: "localhost",
-  user: "root",
-  password: "sjain28",
-  database: "claringtonsignin"
-});
+// const db = mysql.createPool({
+//   host: "localhost",
+//   user: "root",
+//   password: "sjain28",
+//   database: "claringtonsignin"
+// })
 
 //generting reports 
 app.post('/api/reports', (req, res) => {

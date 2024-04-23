@@ -61,7 +61,7 @@ const GeneratedReports = () => {
         </div>
       ) : (
         <div>
-          <h1>Welcome to reports page</h1>
+          <h1>Welcome to the Reports Page</h1>
           <h2>
             Reports generated for site - {parametersFetched.site} and program {parametersFetched.program}
           </h2>

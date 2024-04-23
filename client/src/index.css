@@ -293,3 +293,43 @@ input#bDay{
   
 
 }
+
+@media only screen and (max-width: 1400px) {
+  .comboboxReg{
+    width: 17vw !important;
+  }
+
+  .comboBirthDate{
+    width: 17vw !important;
+  }
+  /* Mobile Component */
+.mobile-component {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+}
+}
+
+@media (min-width: 768px) {
+  /* Tablet Component */
+  .tablet-component {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    height: 50vh;
+  }
+}
+
+@media (min-width: 1025px) {
+  /* Desktop Component */
+  .desktop-component {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    height: 100vh;
+  }
+}
